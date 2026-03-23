@@ -544,5 +544,21 @@ document.querySelectorAll('.subscribe-form').forEach(function(form) {
     document.querySelectorAll('.callout').forEach(el => observer.observe(el));
     document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
   </script>
+<script>
+// Sticky CTA - show when hero scrolls out of view
+(function(){
+    var hero = document.querySelector('.hero');
+    var sticky = document.querySelector('.sticky-cta');
+    if (hero && sticky) {
+        new IntersectionObserver(function(entries) {
+            if (!entries[0].isIntersecting) {
+                sticky.style.transform = 'translateY(0)';
+            } else {
+                sticky.style.transform = 'translateY(-100%)';
+            }
+        }, { threshold: 0 }).observe(hero);
+    }
+})();
+</script>
 </body>
 </html>
