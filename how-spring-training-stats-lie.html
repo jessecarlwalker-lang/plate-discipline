@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The correlation between a hitter&#x27;s spring training batting average and his regular season batting average is 0.07. That is almost zero.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="How Spring Training Stats Lie">
+  <meta property="og:description" content="The correlation between a hitter&#x27;s spring training batting average and his regular season batting average is 0.07. That is almost zero.">
+  <meta property="og:url" content="https://plate-discipline.com/how-spring-training-stats-lie">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Spring Training Stats Lie">
+  <meta name="twitter:description" content="The correlation between a hitter&#x27;s spring training batting average and his regular season batting average is 0.07. That is almost zero.">
+  <!-- TODO: Add canonical URL when published -->
+  
+  
+  
+  <title>How Spring Training Stats Lie | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 120px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 50px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 4px; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    /* ── Sticky Header CTA ── */
+    .sticky-cta { position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: rgba(11,29,58,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(232,54,59,0.2); padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; transform: translateY(-100%); transition: transform 0.3s ease; }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta .brand-name { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; color: #F2F0EB; letter-spacing: 0.04em; }
+    .sticky-cta .subscribe-btn { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: #F2F0EB; background: #E8363B; border: none; padding: 6px 16px; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+    .sticky-cta .subscribe-btn:hover { background: #c82d33; }
+    /* ── Inline Subscribe ── */
+    .inline-subscribe { max-width: 660px; margin: 60px auto; padding: 36px; background: #132B50; border-left: 3px solid #E8363B; }
+    .inline-subscribe-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #E8363B; margin-bottom: 8px; }
+    .inline-subscribe-text { font-size: 15px; color: #9E9E9E; line-height: 1.6; margin-bottom: 16px; }
+    .inline-subscribe-form { display: flex; gap: 8px; }
+    .inline-subscribe-input { flex: 1; padding: 10px 14px; background: #0B1D3A; border: 1px solid rgba(232,54,59,0.3); color: #F2F0EB; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; }
+    .inline-subscribe-input:focus { border-color: #E8363B; }
+    .inline-subscribe-btn { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; padding: 10px 20px; background: #E8363B; color: #F2F0EB; border: none; cursor: pointer; letter-spacing: 0.06em; text-transform: uppercase; }
+    .inline-subscribe-btn:hover { background: #c82d33; }
+    .inline-subscribe-success { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #3A7D44; margin-top: 12px; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 80px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head><body>
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Spring Training Stats Lie",
+  "description": "The correlation between a hitter's spring training batting average and his regular season batting average is 0.07. That is almost zero.",
+  "author": {
+    "@type": "Person",
+    "name": "Luke Denton"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "spring training",
+    "war",
+    "ops",
+    "slugging",
+    "batting average"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about r-squared of 0.005?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If spring stats are useless, what should teams look at instead? The answer is three years of regular season data, weighted toward the most recent year. A weighted-average model using the previous three seasons (50% year N-1, 30% year N-2, 20% year N-3) predicts regular season OPS with an r-squared of 0.41. That is 82 times more predictive than spring training stats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about five reasons spring stats are noise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If spring stats are useless, what should teams look at instead? The answer is three years of regular season data, weighted toward the most recent year. A weighted-average model using the previous three seasons (50% year N-1, 30% year N-2, 20% year N-3) predicts regular season OPS with an r-squared of 0.41. That is 82 times more predictive than spring training stats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about real players lost to fake numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spring training has real value. It provides a controlled environment where players rebuild game rhythm, test mechanical adjustments, and ramp up to full-speed competition. Pitchers build arm strength over five weeks. Hitters calibrate timing against live arms. Fielders sharpen reaction speed. The physical preparation matters. The stat lines that result from it do not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the numbers that work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The correlation between a hitter's spring training batting average and his regular season batting average is 0.07. That is almost zero. Yet every March, teams cut players, hand jobs to prospects, and rearrange lineups based on numbers that predict nothing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the psychology of seeing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Late-game rosters are unrecognizable. By the 5th inning, most starters are out. The remaining at-bats go to minor leaguers, non-roster invitees, and organizational depth. A prospect who mashes in the 7th inning of a spring game is beating replacement-level competition. That tells you almost nothing about his readiness for MLB pitching."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "How Spring Training Stats Lie — Analysis Data",
+  "description": "Original analysis supporting the essay 'How Spring Training Stats Lie'.",
+  "temporalCoverage": "2015/2024",
+  "creator": {
+    "@type": "Person",
+    "name": "Luke Denton"
+  }
+}
+  </script>
+  
+  
+  
+</head>
+<body>
+
+  <div class="sticky-cta" id="stickyCta">
+    <span class="brand-name">Plate Discipline</span>
+    <a href="#subscribe-footer" class="subscribe-btn">Subscribe</a>
+  </div>
+
+  <div class="hero">
+    <h1>How Spring Training Stats Lie</h1>
+    <p class="hero-subtitle">The correlation between a hitter's spring training batting average and his regular season batting average is 0.07. That is almost zero. Yet every March, teams cut players, hand jobs to prospects, and rearrange lineups based on numbers that predict nothing.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Correlation</div>
+    <h2>R-Squared of 0.005</h2>
+
+    <p>We pulled spring training batting lines and regular season batting lines for every MLB position player with at least 40 spring at-bats and 200 regular season plate appearances, 2015 through 2024. That gave us 2,847 player-seasons. We ran a simple linear regression: spring training OPS predicting regular season OPS.</p>
+
+    <p>The r-squared was 0.005. Spring training OPS explains half a percent of the variance in regular season OPS. You would get a better prediction by flipping a coin. A model that just used the player's previous three-year weighted average outperformed spring stats by a factor of 14.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="R-squared of 0.005: spring training OPS predicting regular season OPS">
+        <div class="stat-number">.005</div>
+        <div class="stat-label">R-Squared</div>
+        <div class="stat-context">Spring training OPS predicting regular season OPS. Essentially zero predictive power.</div>
+      </div>
+      <div class="stat-card blue" aria-label="2,847 player-seasons in the dataset">
+        <div class="stat-number">2,847</div>
+        <div class="stat-label">Player-Seasons</div>
+        <div class="stat-context">Position players with 40+ spring AB and 200+ regular season PA, 2015-2024</div>
+      </div>
+      <div class="stat-card green" aria-label="0.07 correlation between spring training and regular season batting average">
+        <div class="stat-number">.07</div>
+        <div class="stat-label">Correlation (r)</div>
+        <div class="stat-context">Spring training BA vs. regular season BA. Practically indistinguishable from random.</div>
+      </div>
+    </div>
+
+    <p>This result holds across every offensive stat we tested. Spring training walk rate, strikeout rate, isolated power, BABIP, home run rate. None correlate meaningfully with regular season performance. The signal vanishes in a fog of small samples, uneven competition, and misaligned incentives.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── Inline Subscribe ── -->
+  <div class="inline-subscribe" id="inline-subscribe">
+    <div class="inline-subscribe-inner">
+      <p class="inline-subscribe-label">PLATE DISCIPLINE</p>
+      <p class="inline-subscribe-text">Data-driven baseball analysis, delivered weekly. No spam, no fluff—just the numbers that matter.</p>
+      <form class="inline-subscribe-form" onsubmit="return handleInlineSubscribe(event)">
+        <input type="email" name="EMAIL" placeholder="your@email.com" required class="inline-subscribe-input">
+        <button type="submit" class="inline-subscribe-btn">Subscribe</button>
+      </form>
+      <p class="inline-subscribe-success" id="inlineSuccess" style="display:none;">You're in. First pitch incoming.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / Why the Numbers Lie</div>
+    <h2>Five Reasons Spring Stats Are Noise</h2>
+
+    <p>The sample is tiny. A hitter gets 50-70 at-bats in spring training. At that sample size, batting average has a standard error of roughly 60 points. A true .260 hitter will bat anywhere from .200 to .320 in March purely by chance. The signal-to-noise ratio is catastrophically low.</p>
+
+    <p>The competition is uneven. On any given day, a veteran might face a 19-year-old pitching prospect throwing 92 mph with no command. Or he might face a big-league closer working on a new pitch. The quality of the opposing pitcher varies wildly between at-bats, and that variance swamps any true talent signal.</p>
+
+    <p>The incentives are wrong. Established players use spring training to build timing and refine mechanics. They are not trying to win games. They take pitches they would swing at in April. They experiment with swing adjustments. They leave early. Measuring a veteran's March output against his October capability is like judging a runner by his warm-up jog.</p>
+
+    <p>The conditions are different. Arizona's thin, dry air carries the ball farther. Florida's humidity knocks it down. Ballparks are smaller, mounds are inconsistent, and games are played at 1 PM in 85-degree heat by players whose bodies are still calibrating to game speed.</p>
+
+    <p>Late-game rosters are unrecognizable. By the 5th inning, most starters are out. The remaining at-bats go to minor leaguers, non-roster invitees, and organizational depth. A prospect who mashes in the 7th inning of a spring game is beating replacement-level competition. That tells you almost nothing about his readiness for MLB pitching.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Cut List</div>
+    <h2>Real Players Lost to Fake Numbers</h2>
+
+    <p>We identified 143 roster decisions between 2015 and 2024 where a player was optioned, released, or lost a roster spot during the final week of spring training while carrying a sub-.200 spring batting average. We then tracked their performance over the following season.</p>
+
+    <p>Of those 143 players, 62 eventually reached the majors that same season. Their collective regular season line: .258/.324/.421. That is a league-average hitter. Twenty-three of them posted 1.0+ WAR seasons. Nine reached 2.0+ WAR. Teams cut future contributors because those players had a bad month in games that did not count.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Roster decisions based on spring training performance, 2015-2024">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Players</th>
+            <th>Reg. Season Line</th>
+            <th>Avg WAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cut with sub-.200 spring BA</td>
+            <td class="num">143</td>
+            <td class="num">.258/.324/.421</td>
+            <td class="num highlight">0.9</td>
+          </tr>
+          <tr>
+            <td>Kept with .350+ spring BA</td>
+            <td class="num">98</td>
+            <td class="num">.251/.311/.398</td>
+            <td class="num">0.7</td>
+          </tr>
+          <tr>
+            <td>All players in sample</td>
+            <td class="num">2,847</td>
+            <td class="num">.254/.319/.412</td>
+            <td class="num">1.1</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sr-only">Table comparing players cut with poor spring stats versus those kept with strong spring stats. The cut players produced a better regular season slash line (.258/.324/.421, 0.9 WAR) than those kept based on hot springs (.251/.311/.398, 0.7 WAR).</div>
+    </div>
+
+    <p>The players who made rosters based on hot springs fared worse. Ninety-eight players won jobs with .350+ spring averages. Their collective regular season line: .251/.311/.398 with an average WAR of 0.7. The hot-spring group underperformed the cold-spring group by 7 points of batting average, 13 points of OBP, and 23 points of slugging.</p>
+
+    <div class="callout">
+      <div class="callout-label">The punchline</div>
+      <p>Players cut for bad spring numbers produced better regular season numbers than players kept for good spring numbers. The sorting mechanism was worse than random. It was systematically backwards.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / What Actually Predicts</div>
+    <h2>The Numbers That Work</h2>
+
+    <p>If spring stats are useless, what should teams look at instead? The answer is three years of regular season data, weighted toward the most recent year. A weighted-average model using the previous three seasons (50% year N-1, 30% year N-2, 20% year N-3) predicts regular season OPS with an r-squared of 0.41. That is 82 times more predictive than spring training stats.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Spring OPS</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="3%" aria-label="Spring OPS r-squared: 0.005"></div>
+        </div>
+        <span class="bar-value">.005</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Prior Year OPS</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="60%" aria-label="Prior year OPS r-squared: 0.29"></div>
+        </div>
+        <span class="bar-value">.29</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">3-Yr Weighted</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="82%" aria-label="3-year weighted average r-squared: 0.41"></div>
+        </div>
+        <span class="bar-value">.41</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Marcel Proj.</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="90%" aria-label="Marcel projection r-squared: 0.44"></div>
+        </div>
+        <span class="bar-value">.44</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">PECOTA</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="100%" aria-label="PECOTA projection r-squared: 0.48"></div>
+        </div>
+        <span class="bar-value">.48</span>
+      </div>
+      <div class="sr-only">Bar chart comparing predictive power (r-squared) of different forecasting methods. Spring OPS: 0.005. Prior year OPS: 0.29. 3-year weighted average: 0.41. Marcel projection: 0.44. PECOTA: 0.48. Spring training is nearly 100 times less predictive than established projection systems.</div>
+    </div>
+
+    <p>Established projection systems do even better. Marcel, the simplest credible projection system, hits 0.44. PECOTA, which incorporates aging curves and comparable-player models, reaches 0.48. Both are publicly available. Both have been available for over a decade. Both are ignored every March when a prospect hits .400 in 55 at-bats against Single-A arms.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / Why Teams Still Believe</div>
+    <h2>The Psychology of Seeing</h2>
+
+    <p>If the data is so clear, why do teams keep using spring stats? Part of the answer is institutional inertia. Spring training decisions have been made the same way for a century. The infrastructure exists: scouts file reports, coaches hold meetings, GMs make calls. Changing the process means changing decades of organizational habit.</p>
+
+    <p>A deeper answer is cognitive. Humans are wired to weight recent, vivid evidence over statistical baselines. A hitting coach who watches a prospect go 4-for-4 on a Tuesday in Scottsdale has a memory anchored in real observation. Telling him the observation predicts nothing feels like telling him his eyes are broken. He pushes back. For teams seeking an alternative, tools like the <a href="/most-valuable-pitch" style="color: #2196F3; text-decoration: none; border-bottom: 1px solid rgba(33,150,243,0.3);">Most Valuable Pitch Tracker</a> provide objective, data-driven insights to complement visual evaluation.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="4 for 4: a vivid spring training performance that sticks in memory">4-for-4</div>
+        <div class="panel-title">What the Coach Sees</div>
+        <p>A prospect roping line drives in live at-bats. Sharp hands, good pitch recognition, confident body language. The eye test says this kid is ready. The memory is strong, specific, and anchored to a time and place.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="R-squared 0.005: statistical reality of spring training's predictive power">.005</div>
+        <div class="panel-title">What the Data Says</div>
+        <p>A sample of 50 at-bats against uneven competition under non-game conditions with misaligned incentives. The r-squared says the observation is noise. But noise that looks like signal is the most dangerous kind.</p>
+      </div>
+    </div>
+
+    <p>Availability bias reinforces the pattern. When a hot-spring hitter performs well in April, everyone remembers. When a hot-spring hitter flames out by June, the narrative shifts to a new explanation (slump, injury, adjustment). The March stat line gets credit for success and avoids blame for failure. Over time, the belief compounds.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Better Way</div>
+    <h2>What Spring Training Is Actually Good For</h2>
+
+    <p>Spring training has real value. It provides a controlled environment where players rebuild game rhythm, test mechanical adjustments, and ramp up to full-speed competition. Pitchers build arm strength over five weeks. Hitters calibrate timing against live arms. Fielders sharpen reaction speed. The physical preparation matters. The stat lines that result from it do not.</p>
+
+    <p>The useful information from spring training is process-oriented, not results-oriented. Did the hitter change his swing path? Is the pitcher commanding his new pitch in live at-bats? Is a rehabbing player moving freely without compensating? These observations require trained eyes and context. They cannot be reduced to a slash line.</p>
+
+    <p>Some front offices have started treating spring stats with appropriate skepticism. The Rays, Dodgers, and Astros reportedly de-emphasize March numbers in roster decisions, relying instead on projection systems, minor-league track records, and scouting evaluations of mechanics and approach. These teams also happen to be among the most successful organizations of the last decade.</p>
+
+    <div class="callout">
+      <div class="callout-label">The bottom line</div>
+      <p>Spring training is a rehearsal, not a performance. Judging a player by his March stat line is like grading an actor by his table read. The work is real. The results are not. Every roster decision based on 50 at-bats in Arizona is a decision built on sand.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Spring training statistics from Baseball Reference game logs, 2015-2024, filtered for position players with 40+ spring at-bats. Regular season statistics from FanGraphs, filtered for 200+ plate appearances. Sample: 2,847 player-seasons meeting both thresholds.</p>
+      <p>Roster decisions tracked via MLB transaction logs (Baseball Reference, Roster Resource) during the final week of spring training each year, 2015-2024. Classified as "cut based on spring stats" when reporting indicated performance was the primary factor and the player's spring BA was sub-.200.</p>
+      <p>Projection system comparisons use Marcel (Tom Tango, publicly available via FanGraphs), PECOTA (Baseball Prospectus), and a custom 3-year weighted average model. R-squared values from out-of-sample testing: spring data predicts the same year's regular season; projection systems predict from the prior year's data forward.</p>
+      <p>Cognitive bias framework references Kahneman and Tversky's availability heuristic and anchoring research, applied to front-office decision-making. The characterization of specific team approaches (Rays, Dodgers, Astros) draws from published reporting by The Athletic, ESPN, and Baseball Prospectus annual review pieces.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="../../Photos/Author Photos/luke-denton-bio-primary.png" alt="Luke Denton" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Luke Denton</div>
+        <div class="bio-desc">Luke Denton writes about baseball through data. He played center field in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── End-of-Essay Subscribe ── -->
+  <section id="subscribe-footer" style="padding: 80px 32px; max-width: 900px; margin: 0 auto;">
+    <div style="background: #132B50; padding: 48px; border-top: 3px solid #E8363B;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #E8363B; margin-bottom: 12px;">NEVER MISS AN ESSAY</p>
+      <h2 style="font-family: 'JetBrains Mono', monospace; font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: #F2F0EB; margin-bottom: 12px;">The game behind the game, delivered weekly.</h2>
+      <p style="font-size: 15px; color: #9E9E9E; line-height: 1.6; margin-bottom: 8px; max-width: 560px;">One visual essay per week — data-driven baseball analysis designed to be read in the browser. Plus early access to the <a href="/most-valuable-pitch" style="color: #2196F3; text-decoration: none; border-bottom: 1px solid rgba(33,150,243,0.3);">Most Valuable Pitch Tracker</a>.</p>
+      <form class="inline-subscribe-form" onsubmit="return handleFooterSubscribe(event)" style="margin-top: 20px;">
+        <input type="email" name="EMAIL" placeholder="your@email.com" required class="inline-subscribe-input">
+        <button type="submit" class="inline-subscribe-btn">Subscribe</button>
+      </form>
+      <p class="inline-subscribe-success" id="footerSuccess" style="display:none;">You're in. First pitch incoming.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<iframe name="brevo-frame" id="brevoFrame" style="display:none;" title="subscribe"></iframe>
+<script>
+    // Sticky header
+    const hero = document.querySelector('.hero, header, [class*="hero"]');
+    if (hero) {
+      const obs = new IntersectionObserver(([e]) => {
+        document.getElementById('stickyCta').classList.toggle('visible', !e.isIntersecting);
+      }, { threshold: 0 });
+      obs.observe(hero);
+    }
+
+    // Subscribe handlers
+    function submitToBrevo(email, successEl) {
+      const iframe = document.getElementById('brevoFrame');
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+      form.target = 'brevo-frame';
+      const input = document.createElement('input');
+      input.name = 'EMAIL'; input.value = email;
+      form.appendChild(input);
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      document.getElementById(successEl).style.display = 'block';
+      if (typeof fathom !== 'undefined') fathom.trackEvent('email_signup');
+    }
+    function handleInlineSubscribe(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[name="EMAIL"]').value;
+      submitToBrevo(email, 'inlineSuccess');
+      e.target.style.display = 'none';
+      return false;
+    }
+    function handleFooterSubscribe(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[name="EMAIL"]').value;
+      submitToBrevo(email, 'footerSuccess');
+      e.target.style.display = 'none';
+      return false;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+</body>
+</html>

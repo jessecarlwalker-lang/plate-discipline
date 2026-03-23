@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archive of Plate Discipline essays and tools on baseball analytics and Statcast data.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://plate-discipline.com/archive">
+  <title>Archive — Plate Discipline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Archive</h1>
+  <p>Every essay and tool we've published.</p>
+</div>
+
+<section>
+  <div class="archive-list">
+    <div class="archive-item">
+      <a href="/the-slider-epidemic">
+        <span class="archive-item-title">The Slider Epidemic</span>
+        <span class="archive-item-date">March 2026</span>
+      </a>
+    </div>
+    <div class="archive-item">
+      <a href="/the-closer-is-a-myth">
+        <span class="archive-item-title">The Closer Is a Myth</span>
+        <span class="archive-item-date">March 2026</span>
+      </a>
+    </div>
+    <div class="archive-item">
+      <a href="/the-dead-ball-is-back">
+        <span class="archive-item-title">The Dead Ball Is Back</span>
+        <span class="archive-item-date">March 2026</span>
+      </a>
+    </div>
+    <div class="archive-item">
+      <a href="/pitch-clock-and-the-rhythm-of-the-game">
+        <span class="archive-item-title">Pitch Clock and the Rhythm of the Game</span>
+        <span class="archive-item-date">March 2026</span>
+      </a>
+    </div>
+    <div class="archive-item">
+      <a href="/hall-of-fame">
+        <span class="archive-item-title">Build Your Own Hall of Fame (Tool)</span>
+        <span class="archive-item-date">March 2026</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="subscribe-block" style="margin-top: var(--spacing-xxl);">
+    <h3>More arriving soon</h3>
+    <p>Subscribe to stay in the loop.</p>
+    <form class="subscribe-form">
+      <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+    <p class="form-message"></p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-also">Also from the publisher: <a href="https://meaningintheageofai.com">Meaning in the Age of AI</a> &middot; <a href="https://investingintheageofai.com">Investing in the Age of AI</a></div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script src="/js/main.js" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+</body>
+</html>

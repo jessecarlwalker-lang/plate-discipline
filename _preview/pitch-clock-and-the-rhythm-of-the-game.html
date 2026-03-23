@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="Pitch Clock and the Rhythm of the Game">
+  <meta property="og:description" content="The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals.">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pitch Clock and the Rhythm of the Game">
+  <meta name="twitter:description" content="The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals.">
+  <link rel="canonical" href="https://plate-discipline.com/pitch-clock-and-the-rhythm-of-the-game">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pitch Clock and the Rhythm of the Game",
+  "description": "The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals.",
+  "author": {
+    "@type": "Person",
+    "name": "Luke Denton"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Plate Discipline"
+  },
+  "keywords": [
+    "pitch clock",
+    "war",
+    "batting average",
+    "strikeout rate",
+    "walk rate"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about 26 minutes that changed the sport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals. The tempo shift rewired baseball."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about every metric moved?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "But time was the obvious outcome. The clock changed behavior in ways that rippled through every stat line. Pitchers adjusted their routines. Batters shortened their rituals. The entire rhythm of pitch-to-pitch interaction sped up, and the consequences showed in the data within weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the running game came back overnight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pace improvements came with costs that are harder to quantify. Some pitchers report increased fatigue from the compressed routine. The clock does not reduce the number of pitches thrown per game. It compresses the recovery time between them. A pitcher throwing 95 pitches in 2:38 exerts the same arm effort as 95 pitches in 3:04, but with less breathing room."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the clock changed how pitchers think?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals. The tempo shift rewired baseball."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about attendance and engagement both climbed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Attendance figures from ESPN MLB attendance database. Television viewership data from Sports Business Journal and Nielsen ratings reports, measuring average viewers per regular-season game. Fan survey data from the 2023 and 2024 MLB Fan Engagement Studies (published by Street & Smith's Sports Business Journal)."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Pitch Clock and the Rhythm of the Game — Analysis Data",
+  "description": "Original analysis supporting the essay 'Pitch Clock and the Rhythm of the Game'.",
+  "temporalCoverage": "2022/2023",
+  "creator": {
+    "@type": "Person",
+    "name": "Luke Denton"
+  }
+}
+  </script>
+  <title>Pitch Clock and the Rhythm of the Game | Plate Discipline</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 140px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 70px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 4px; background: var(--bg-data); flex-shrink: 0; overflow: hidden; }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    .animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 26px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 100px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ── Site Nav ── -->
+<nav style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;max-width:1000px;margin:0 auto;position:relative;z-index:100;">
+    <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#2196F3;text-transform:uppercase;letter-spacing:2px;text-decoration:none;">Plate Discipline</a>
+    <div style="display:flex;gap:2rem;">
+        <a href="archive.html" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">Archive</a>
+        <a href="about.html" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">About</a>
+        <a href="subscribe.html" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">Subscribe</a>
+    </div>
+</nav>
+
+<!-- ── Sticky CTA ── -->
+<div class="sticky-cta" style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(11,29,58,0.97);padding:10px 1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;transform:translateY(-100%);transition:transform 0.3s ease;">
+    <p style="color:rgba(242,240,235,0.9);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;margin:0;">Get essays like this in your inbox</p>
+    <a href="subscribe.html" style="padding:6px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;background:#E8363B;color:white;border-radius:6px;text-decoration:none;">Subscribe</a>
+</div>
+
+  <div class="hero">
+    <h1>Pitch Clock and the Rhythm of the Game</h1>
+    <p class="hero-subtitle">The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals. The tempo shift rewired baseball.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Clock</div>
+    <h2>26 Minutes That Changed the Sport</h2>
+
+    <p>MLB introduced the pitch clock before the 2023 season. Pitchers get 15 seconds to deliver with empty bases, 20 seconds with runners on. Batters must be in the box and alert with 8 seconds remaining. Violations result in automatic balls or strikes.</p>
+
+    <p>The immediate result: average game time dropped from 3 hours 4 minutes in 2022 to 2 hours 38 minutes in 2023. That 26-minute reduction held steady through 2024 and 2025. Games that previously dragged past three hours now finish in the time it takes to watch a movie.</p>
+
+    <p>But time was the obvious outcome. The clock changed behavior in ways that rippled through every stat line. Pitchers adjusted their routines. Batters shortened their rituals. The entire rhythm of pitch-to-pitch interaction sped up, and the consequences showed in the data within weeks.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="26 minutes: average game time reduction from the pitch clock">
+        <div class="stat-number">26</div>
+        <div class="stat-label">Minutes Saved</div>
+        <div class="stat-context">Average game time reduction from 2022 to 2023, sustained through 2025</div>
+      </div>
+      <div class="stat-card blue" aria-label="15 seconds: pitch clock with bases empty">
+        <div class="stat-number">15s</div>
+        <div class="stat-label">Empty Bases</div>
+        <div class="stat-context">Seconds between pitches with no runners on. Down from an average of 23 seconds in 2022.</div>
+      </div>
+      <div class="stat-card green" aria-label="20 seconds: pitch clock with runners on base">
+        <div class="stat-number">20s</div>
+        <div class="stat-label">Runners On</div>
+        <div class="stat-context">Seconds with runners on base. Down from 27 seconds in 2022. Includes mandatory disengagement limits.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Ripple</div>
+    <h2>Every Metric Moved</h2>
+
+    <p>The pitch clock was sold as a pace-of-play reform. The league framed it as a fan experience upgrade. Shorter games. Less dead time. More action per minute. That framing was accurate but incomplete. The clock altered competitive dynamics in ways the league did not emphasize.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Key metrics before and after the pitch clock, 2022 vs 2023-2025">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>2022 (Pre-Clock)</th>
+            <th>2023-25 (Post-Clock)</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>K Rate</td>
+            <td class="num">22.4%</td>
+            <td class="num highlight">22.0%</td>
+            <td class="num" style="color: var(--accent-positive);">-0.4 pct pts</td>
+          </tr>
+          <tr>
+            <td>BB Rate</td>
+            <td class="num">8.2%</td>
+            <td class="num highlight">8.6%</td>
+            <td class="num" style="color: var(--accent-primary);">+0.4 pct pts</td>
+          </tr>
+          <tr>
+            <td>SB Attempts</td>
+            <td class="num">2,486</td>
+            <td class="num highlight">3,503</td>
+            <td class="num" style="color: var(--accent-positive);">+40.9%</td>
+          </tr>
+          <tr>
+            <td>SB Success %</td>
+            <td class="num">75.2%</td>
+            <td class="num highlight">80.1%</td>
+            <td class="num" style="color: var(--accent-positive);">+4.9 pct pts</td>
+          </tr>
+          <tr>
+            <td>Batting Avg</td>
+            <td class="num">.233</td>
+            <td class="num highlight">.248</td>
+            <td class="num" style="color: var(--accent-positive);">+.015</td>
+          </tr>
+          <tr>
+            <td>Runs/Game</td>
+            <td class="num">4.28</td>
+            <td class="num highlight">4.53</td>
+            <td class="num" style="color: var(--accent-positive);">+5.8%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Strikeout rates dipped slightly. Walk rates rose. Stolen base attempts jumped 41%. Batting average climbed 15 points. Runs per game increased by almost 6%. The game got faster and more offense-friendly simultaneously. Those trends are connected.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Stolen Base</div>
+    <h2>The Running Game Came Back Overnight</h2>
+
+    <p>The pitch clock included a rule limiting pickoff attempts: pitchers get two disengagements per plate appearance. A third disengagement that does not result in an out awards the runner the next base. This rule, paired with the clock itself, tilted the stolen base calculus toward runners.</p>
+
+    <p>Before the clock, a pitcher could throw to first base six, eight, ten times to hold a runner. That extra attention disrupted timing, shortened leads, and deterred steal attempts. With a two-attempt limit, runners take bigger leads because the pitcher's best weapon for controlling them is capped.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="2486: total stolen base attempts in 2022 before the pitch clock">2,486</div>
+        <div class="panel-title">SB Attempts, 2022</div>
+        <p>Pre-clock baseline. Teams ran cautiously because pitchers could throw over without limit and the risk-reward math favored staying put.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="3503: average total stolen base attempts per season 2023-2025 with pitch clock">3,503</div>
+        <div class="panel-title">SB Attempts, 2023-25 avg</div>
+        <p>Post-clock average. The disengagement limit and shorter pitch times gave runners a structural advantage that teams exploited immediately.</p>
+      </div>
+    </div>
+
+    <p>The success rate increase from 75.2% to 80.1% matters almost as much as the volume increase. Runners are not simply attempting more steals. They are succeeding at a higher rate because the conditions favor them. Bigger leads, fewer pickoff threats, and rushed deliveries from pitchers watching the clock all tilt the probability.</p>
+
+    <p>Speed has become more valuable. Players with 70-grade run tools who were previously bench pieces have moved into starting lineups. The Rays, Royals, and Diamondbacks invested in baserunning personnel after the 2023 season, recognizing that the clock created an arbitrage opportunity for speed.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / Pitcher Behavior</div>
+    <h2>The Clock Changed How Pitchers Think</h2>
+
+    <p>Before the clock, a pitcher could step off the rubber, walk behind the mound, collect himself, and re-engage at his own pace. That routine was strategic. Many pitchers used tempo changes to disrupt batter timing, especially in high-leverage counts.</p>
+
+    <p>The clock removed that variable. Pitchers now deliver at a fixed pace. The result: they throw fewer secondary pitches in early counts. Fastball usage on the first pitch increased from 52.8% in 2022 to 56.3% in 2023-2025. When time is short, pitchers default to their most familiar offering.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">First-Pitch FB (pre)</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="66%" aria-label="First-pitch fastball rate in 2022: 52.8%"></div>
+        </div>
+        <span class="bar-value">52.8%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">First-Pitch FB (post)</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="70%" aria-label="First-pitch fastball rate in 2023-2025: 56.3%"></div>
+        </div>
+        <span class="bar-value">56.3%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Two-Strike Off (pre)</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="79%" aria-label="Two-strike offspeed rate in 2022: 63.1%"></div>
+        </div>
+        <span class="bar-value">63.1%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Two-Strike Off (post)</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="74%" aria-label="Two-strike offspeed rate in 2023-2025: 59.4%"></div>
+        </div>
+        <span class="bar-value">59.4%</span>
+      </div>
+      <div class="sr-only">Bar chart showing pitch selection changes after the pitch clock. First-pitch fastball rate rose from 52.8% to 56.3%. Two-strike offspeed rate dropped from 63.1% to 59.4%. Pitchers simplified their approach under time pressure, throwing more fastballs in both early and late counts.</div>
+    </div>
+
+    <p>Two-strike offspeed usage dropped from 63.1% to 59.4%. Pitchers are throwing more fastballs in putaway counts because breaking balls require more precise timing and setup. When the clock pressures the routine, pitchers simplify. That simplification helps the hitter. Fastballs are easier to anticipate when you know they are coming more often.</p>
+
+    <p>The slight drop in strikeout rate and the 15-point batting average increase connect directly to this behavioral shift. Pitchers are still talented. They still have elite stuff. But the clock nudges them toward less deceptive patterns, and hitters benefit at the margins.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Fan</div>
+    <h2>Attendance and Engagement Both Climbed</h2>
+
+    <p>MLB total attendance rose 9.6% from 2022 to 2023. It held steady in 2024 and increased another 2.1% in 2025. The pitch clock is not the only factor. Post-pandemic recovery, competitive balance, and marketing all contributed. But fan surveys consistently rank pace of play as the most improved aspect of the in-stadium experience.</p>
+
+    <p>Television ratings tell a complementary story. Average viewership per game increased 7% in 2023 and has held near that level since. The games fit better into weeknight schedules. A 2:38 game ends before 10 PM in most time zones for a 7 PM start. A 3:04 game pushes past 10, and every minute after 10 PM costs viewers.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="9.6 percent: attendance increase from 2022 to 2023">
+        <div class="stat-number">9.6%</div>
+        <div class="stat-label">Attendance Jump</div>
+        <div class="stat-context">Year-over-year attendance increase from 2022 to 2023, the largest single-season gain in over a decade</div>
+      </div>
+      <div class="stat-card blue" aria-label="7 percent: average television viewership increase per game in 2023">
+        <div class="stat-number">7%</div>
+        <div class="stat-label">TV Viewership Up</div>
+        <div class="stat-context">Average viewership per game increase in the first year of the pitch clock, sustained through 2025</div>
+      </div>
+    </div>
+
+    <p>The revenue implications are significant. Higher attendance at 30 ballparks across 81 home dates means tens of millions in additional gate and concession revenue. Higher TV ratings translate to stronger leverage in the next broadcast rights negotiation. The clock paid for itself in the first month of the season.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Tradeoff</div>
+    <h2>What the Clock Took Away</h2>
+
+    <p>Pace improvements came with costs that are harder to quantify. Some pitchers report increased fatigue from the compressed routine. The clock does not reduce the number of pitches thrown per game. It compresses the recovery time between them. A pitcher throwing 95 pitches in 2:38 exerts the same arm effort as 95 pitches in 3:04, but with less breathing room.</p>
+
+    <p>Veteran pitchers adapted worst. Players who built their careers around deliberate tempo changes and long routines lost a competitive tool. Max Scherzer, Justin Verlander, and other late-career starters publicly questioned the clock's impact on their ability to manage energy over nine innings. The data shows veteran pitchers (age 33+) experienced a larger ERA increase in 2023 than younger pitchers, though isolating the clock's contribution from natural aging is difficult.</p>
+
+    <p>The cat-and-mouse game between pitcher and batter also lost a dimension. The old rhythm allowed a pitcher to disrupt timing by holding the ball, stepping off, or varying his cadence. Those tactics are gone. The at-bat became more standardized. Whether that is a net positive for the sport depends on whether you value drama or efficiency.</p>
+
+    <div class="callout">
+      <div class="callout-label">The real test</div>
+      <p>The pitch clock made baseball faster. The question is whether faster means better. The attendance and ratings say yes. The stolen base explosion says yes. The pitchers losing a competitive dimension say it is more complicated than that. Three years of data lean toward success. The long-term effects on arm health remain unknown.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Game time data from Baseball Reference game logs, 2018-2025. Average game times calculated from all regular-season games (excluding extra innings and suspended games). Pitch clock timing rules from the 2023 MLB Official Playing Rules, Rule 8.04.</p>
+      <p>Strikeout, walk, batting average, and runs-per-game data from FanGraphs leaguewide batting tables. Stolen base attempt and success data from Baseball Reference baserunning statistics. Pitch type selection data from Statcast (Baseball Savant), filtered by count and base state.</p>
+      <p>Attendance figures from ESPN MLB attendance database. Television viewership data from Sports Business Journal and Nielsen ratings reports, measuring average viewers per regular-season game. Fan survey data from the 2023 and 2024 MLB Fan Engagement Studies (published by Street & Smith's Sports Business Journal).</p>
+      <p>Post-clock averages (2023-25) use three-season means to smooth single-year variance. Pitch selection analysis compares 2022 (final pre-clock year) to the 2023-2025 average to isolate the clock's effect from year-to-year noise.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="../images/luke-denton.png" alt="Luke Denton" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Luke Denton</div>
+        <div class="bio-desc">Luke Denton writes about baseball through data. He played center field in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+<!-- ── End CTA ── -->
+<div style="background:#0B1D3A;padding:3.5rem 1.5rem;text-align:center;">
+    <div style="max-width:500px;margin:0 auto;">
+        <h3 style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#F2F0EB;margin:0 0 0.5rem;">One essay a week</h3>
+        <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(242,240,235,0.7);margin:0 0 1.25rem;">The forces behind every pitch, every swing, every season. Free.</p>
+        <form class="subscribe-form" style="max-width:440px;margin:0 auto;">
+            <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" style="display:block;width:100%;padding:14px 16px;border:1.5px solid rgba(242,240,235,0.15);border-radius:6px;background:rgba(255,255,255,0.08);color:#F2F0EB;font-family:'Inter',sans-serif;font-size:1.125rem;outline:none;margin-bottom:10px;box-sizing:border-box;">
+            <button type="submit" style="display:block;width:100%;padding:14px 24px;border:none;border-radius:6px;background:#E8363B;color:white;font-family:'Inter',sans-serif;font-size:1.125rem;font-weight:700;cursor:pointer;box-sizing:border-box;">Subscribe — It's Free</button>
+        </form>
+        <p class="form-message" style="font-family:'Inter',sans-serif;font-size:14px;margin-top:10px;min-height:20px;"></p>
+    </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer style="background:#081428;color:rgba(242,240,235,0.6);padding:3rem 1.5rem 2rem;font-family:'Inter',sans-serif;font-size:13px;">
+    <div style="max-width:800px;margin:0 auto;">
+        <div style="font-size:12px;font-weight:600;color:rgba(242,240,235,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem;">Plate Discipline</div>
+        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;">
+            <a href="archive.html" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Archive</a>
+            <a href="about.html" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">About</a>
+            <a href="subscribe.html" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Subscribe</a>
+            <a href="privacy.html" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Privacy</a>
+            <a href="terms.html" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Terms</a>
+            <a href="../feed.xml" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">RSS</a>
+        </div>
+        <div style="height:1px;background:rgba(242,240,235,0.1);margin:1.5rem 0;"></div>
+        <div style="font-size:12px;color:rgba(242,240,235,0.35);margin-bottom:1rem;">Also from the publisher: <a href="https://meaningintheageofai.com" style="color:rgba(242,240,235,0.5);text-decoration:none;">Meaning in the Age of AI</a> &middot; <a href="https://investingintheageofai.com" style="color:rgba(242,240,235,0.5);text-decoration:none;">Investing in the Age of AI</a></div>
+        <div style="font-size:12px;color:rgba(242,240,235,0.3);">&copy; 2026 Plate Discipline. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="https://cdn.usefathom.com/script.js" data-site="FATHOM_ID_PLACEHOLDER" defer></script>
+<script>
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+        try {
+            var res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, list: 'BREVO_LIST_PLACEHOLDER' })
+            });
+            var data = await res.json();
+            if (res.ok) {
+                if (msgEl) { msgEl.textContent = "You're in. Check your inbox."; msgEl.style.color = '#3A7D44'; }
+                emailInput.value = '';
+                if (window.fathom) fathom.trackEvent('email_signup');
+            } else {
+                if (msgEl) { msgEl.textContent = data.error || 'Something went wrong.'; msgEl.style.color = '#E8363B'; }
+            }
+        } catch (err) {
+            if (msgEl) { msgEl.textContent = 'Connection error. Try again.'; msgEl.style.color = '#E8363B'; }
+        }
+        btn.disabled = false;
+        btn.textContent = originalText;
+    });
+});
+var stickyCta = document.querySelector('.sticky-cta');
+if (stickyCta) {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) { stickyCta.style.transform = 'translateY(0)'; }
+        else { stickyCta.style.transform = 'translateY(-100%)'; }
+    }, { passive: true });
+}
+</script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+</body>
+</html>

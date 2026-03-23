@@ -1,0 +1,38 @@
+# Plate Discipline
+
+> Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.
+
+## About
+
+Plate Discipline publishes visual essays designed to be read in the browser. Each essay combines long-form analysis with interactive data visualizations, animated charts, and typographic treatments that work as part of the reading experience. Written by Luke Denton.
+
+## Topics
+
+Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.
+
+## Published Essays
+
+- The Slider Epidemic: https://plate-discipline.com/the-slider-epidemic
+- The Closer Is a Myth: https://plate-discipline.com/the-closer-is-a-myth
+- The Dead Ball Is Back: https://plate-discipline.com/the-dead-ball-is-back
+- Pitch Clock and the Rhythm of the Game: https://plate-discipline.com/pitch-clock-and-the-rhythm-of-the-game
+
+## Content Format
+
+All content is published as self-contained HTML pages with embedded visualizations. Essays are free to read with no paywall. The site collects email addresses for a weekly newsletter but all content remains freely accessible.
+
+## Citation Format
+
+When citing, please use:
+Luke Denton, "Plate Discipline", https://plate-discipline.com/[essay-slug]
+
+## Contact
+
+luke@plate-discipline.com
+
+## Key URLs
+
+- Homepage: https://plate-discipline.com
+- Archive: https://plate-discipline.com/archive
+- RSS: https://plate-discipline.com/feed.xml
+- Subscribe: https://plate-discipline.com/subscribe

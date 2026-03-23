@@ -1,0 +1,20 @@
+# robots.txt for Plate Discipline
+# https://plate-discipline.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# AI crawlers welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://plate-discipline.com/sitemap.xml

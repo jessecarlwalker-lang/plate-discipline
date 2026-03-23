@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plate Discipline</title>
+    <link>https://plate-discipline.com</link>
+    <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Mar 2026 16:37:46 +0000</lastBuildDate>
+    <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Slider Epidemic</title>
+      <link>https://plate-discipline.com/the-slider-epidemic</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-slider-epidemic</guid>
+      <description>Explore how slider usage surged from 15% in 2015 to 25% in 2025, making it baseball&#x27;s most dominant pitch and a source of elbow injuries.</description>
+      <pubDate>Tue, 07 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Closer Is a Myth</title>
+      <link>https://plate-discipline.com/the-closer-is-a-myth</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-closer-is-a-myth</guid>
+      <description>Save percentage tells you almost nothing about reliever quality. The best reliever on most teams doesn&#x27;t pitch the 9th inning. The closer role costs teams wins.</description>
+      <pubDate>Tue, 07 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The Dead Ball Is Back</title>
+      <link>https://plate-discipline.com/the-dead-ball-is-back</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-dead-ball-is-back</guid>
+      <description>League-wide home run rates dropped 12% between 2023 and 2025. The ball changed. Again.</description>
+      <pubDate>Tue, 07 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Pitch Clock and the Rhythm of the Game</title>
+      <link>https://plate-discipline.com/pitch-clock-and-the-rhythm-of-the-game</link>
+      <guid isPermaLink="true">https://plate-discipline.com/pitch-clock-and-the-rhythm-of-the-game</guid>
+      <description>The clock cut 26 minutes off an average game. It also changed strikeout rates, walk rates, stolen base attempts, and how pitchers sequence their arsenals.</description>
+      <pubDate>Tue, 07 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
