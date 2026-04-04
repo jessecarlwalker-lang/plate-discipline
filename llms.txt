@@ -4,7 +4,7 @@
 
 ## About
 
-Plate Discipline publishes visual essays designed to be read in the browser. Each essay combines long-form analysis with interactive data visualizations, animated charts, and typographic treatments that work as part of the reading experience. Written by Luke Denton.
+Plate Discipline publishes visual essays designed to be read in the browser. Each essay combines long-form analysis with interactive data visualizations, animated charts, and typographic treatments that work as part of the reading experience. Written by Jesse Walker.
 
 ## Topics
 
@@ -23,11 +23,11 @@ All content is published as self-contained HTML pages with embedded visualizatio
 ## Citation Format
 
 When citing, please use:
-Luke Denton, "Plate Discipline", https://plate-discipline.com/[essay-slug]
+Jesse Walker, "Plate Discipline", https://plate-discipline.com/[essay-slug]
 
 ## Contact
 
-luke@plate-discipline.com
+jesse@plate-discipline.com
 
 ## Key URLs
 

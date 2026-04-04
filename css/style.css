@@ -21,10 +21,10 @@
   --text-muted: #9E9E9E;
 
   /* Accent Colors (Brand System) */
-  --accent-primary: #E8363B;    /* Signal Red â key stats, alerts */
-  --accent-secondary: #2196F3;  /* Statcast Blue â charts, links, structural */
-  --accent-positive: #3A7D44;   /* Field Green â success, positive indicators */
-  --accent-warning: #F5A623;    /* Amber â warnings, secondary highlights */
+  --accent-primary: #E8363B;    /* Signal Red — key stats, alerts */
+  --accent-secondary: #2196F3;  /* Statcast Blue — charts, links, structural */
+  --accent-positive: #3A7D44;   /* Field Green — success, positive indicators */
+  --accent-warning: #F5A623;    /* Amber — warnings, secondary highlights */
 
   /* Typography Stack */
   --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
@@ -718,7 +718,7 @@ input[type="submit"] {
    ============================================================================= */
 
 /* =============================================================================
-   HERO OVERLAY â Strike Zone + Pitch Trajectories
+   HERO OVERLAY — Strike Zone + Pitch Trajectories
    ============================================================================= */
 
 .hero {
@@ -837,7 +837,7 @@ input[type="submit"] {
   animation: fadeInUp 0.8s ease var(--ease-smooth) 0.4s both;
 }
 
-/* Subpage hero â compact, left-aligned */
+/* Subpage hero — compact, left-aligned */
 .page-hero {
   width: 100%;
   max-width: var(--max-viz);

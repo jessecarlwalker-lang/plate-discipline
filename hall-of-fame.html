@@ -1731,15 +1731,32 @@ function handleEmailSubmit(){
     document.getElementById('emailBtn').disabled=true;
     document.getElementById('emailBtn').textContent='Loading\u2026';
 
-    // Post to sibforms via fetch (no page navigation)
+    // Post to sibforms via hidden form
     const sibformsURL='https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
-    const formData=new FormData();
-    formData.append('EMAIL',email);
-    formData.append('SOURCE_TAG','most-valuable-pitch');
+    const form=document.createElement('form');
+    form.method='POST';
+    form.action=sibformsURL;
+    form.style.display='none';
 
-    fetch(sibformsURL,{method:'POST',body:formData,mode:'no-cors'})
-        .catch(()=>{})
-        .finally(()=>showReport());
+    const emailField=document.createElement('input');
+    emailField.type='hidden';
+    emailField.name='EMAIL';
+    emailField.value=email;
+    form.appendChild(emailField);
+
+    const sourceField=document.createElement('input');
+    sourceField.type='hidden';
+    sourceField.name='SOURCE_TAG';
+    sourceField.value='most-valuable-pitch';
+    form.appendChild(sourceField);
+
+    document.body.appendChild(form);
+    form.submit();
+
+    setTimeout(()=>{
+        document.body.removeChild(form);
+        showReport();
+    },800);
 }
 
 // ==================== INIT ==================== //

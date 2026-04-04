@@ -76,7 +76,7 @@
     .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
     /* ── Bio Box ── */
     .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
-    .bio-photo { width: 80px; height: 80px; border-radius: 4px; background: var(--bg-data); flex-shrink: 0;
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
       overflow: hidden;
     }
     .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
@@ -101,7 +101,7 @@
     .inline-subscribe-btn:hover { background: #c82d33; }
     .inline-subscribe-success { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #3A7D44; margin-top: 12px; }
     @media (max-width: 768px) {
-      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 80px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; } .inline-subscribe-form { flex-direction: column; }
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 80px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
     }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
@@ -118,7 +118,7 @@
   "description": "The correlation between a hitter's spring training batting average and his regular season batting average is 0.07. That is almost zero.",
   "author": {
     "@type": "Person",
-    "name": "Luke Denton"
+    "name": "Jesse Walker"
   },
   "publisher": {
     "@type": "Organization",
@@ -190,7 +190,7 @@
   "temporalCoverage": "2015/2024",
   "creator": {
     "@type": "Person",
-    "name": "Luke Denton"
+    "name": "Jesse Walker"
   }
 }
   </script>
@@ -437,10 +437,10 @@
     <div style="margin-top: 40px;"></div>
 
     <div class="bio-box">
-      <div class="bio-photo"><img src="/images/luke-denton.png" alt="Luke Denton" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      <div class="bio-photo"><img src="../../Photos/Author Photos/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
       <div class="bio-text">
-        <div class="bio-name">Luke Denton</div>
-        <div class="bio-desc">Luke Denton writes about baseball through data. He played center field in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played center field in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
       </div>
     </div>
   </section>
@@ -522,5 +522,21 @@
     document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
   </script>
 <script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Sticky CTA - show when hero scrolls out of view
+(function(){
+    var hero = document.querySelector('.hero');
+    var sticky = document.querySelector('.sticky-cta');
+    if (hero && sticky) {
+        new IntersectionObserver(function(entries) {
+            if (!entries[0].isIntersecting) {
+                sticky.style.transform = 'translateY(0)';
+            } else {
+                sticky.style.transform = 'translateY(-100%)';
+            }
+        }, { threshold: 0 }).observe(hero);
+    }
+})();
+</script>
 </body>
 </html>
