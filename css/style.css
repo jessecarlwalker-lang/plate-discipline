@@ -1947,6 +1947,16 @@ section > .section-label::before {
   transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Sticky CTA: pin to bottom only. Essay inline styles sometimes set
+   `top: 0`, which combined with sitewide `bottom: 0` stretches the bar
+   to full viewport height. Force top: auto and auto height so the bar
+   only ever renders as a slim bottom-pinned pill. */
+.sticky-cta {
+  top: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
 /* =============================================================================
    END STYLESHEET
    ============================================================================= */
