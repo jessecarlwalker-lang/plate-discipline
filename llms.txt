@@ -15,6 +15,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Closer Is a Myth: https://plate-discipline.com/the-closer-is-a-myth
 - Pitch Clock and the Rhythm of the Game: https://plate-discipline.com/pitch-clock-and-the-rhythm-of-the-game
 - How Spring Training Stats Lie: https://plate-discipline.com/how-spring-training-stats-lie
+- The Dead Ball Is Back: https://plate-discipline.com/the-dead-ball-is-back
 
 ## Content Format
 

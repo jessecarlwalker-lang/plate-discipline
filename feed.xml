@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Apr 2026 13:57:17 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Apr 2026 16:11:45 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Dead Ball Is Back</title>
+      <link>https://plate-discipline.com/the-dead-ball-is-back</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-dead-ball-is-back</guid>
+      <description>League-wide home run rates dropped 12% between 2023 and 2025. The ball changed. Again.</description>
+      <pubDate>Wed, 15 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Closer Is a Myth</title>
       <link>https://plate-discipline.com/the-closer-is-a-myth</link>
