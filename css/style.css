@@ -1834,14 +1834,20 @@ a:focus-visible {
    and consistent content padding across all published essays.
    ============================================================================= */
 
-/* Center-justify ALL essay section content — headings, body paragraphs,
-   callouts, methodology, bio box, data sources, etc. Each element keeps its
-   own max-width; margin: 0 auto centers the block, text-align: center
-   centers the text within it. */
+/* Essay section layout:
+   - Body content is LEFT-justified (readability)
+   - Section labels and H2/H3 headings are CENTER-justified
+   - Body content is indented ~50px inward from the section edge so text
+     never hugs the background boundary */
 section {
-  text-align: center;
+  text-align: left;
+  padding-left: 50px !important;
+  padding-right: 50px !important;
 }
-section > * {
+section > h2,
+section > h3,
+section > .section-label {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1852,32 +1858,41 @@ section > .section-label::before {
   display: none;
 }
 
-/* Text inside common nested containers should also be centered */
+/* Restore left-alignment for body containers that were force-centered */
 .callout,
 .methodology,
 .bio-text,
 .bio-desc,
 .bio-name,
 .panel,
-.stat-card,
-.chart-caption,
+.chart-caption {
+  text-align: left;
+}
+
 .bar-chart-title {
   text-align: center;
 }
 
-/* Bio box: stack photo on top of text, both centered */
+/* Bio box: horizontal layout (photo left, text right), both left-aligned */
 .bio-box {
-  flex-direction: column !important;
-  align-items: center !important;
-  text-align: center;
-}
-
-/* Bar chart rows should center the bar column within the chart */
-.bar-chart {
+  flex-direction: row;
   align-items: center;
+  text-align: left;
 }
 
-/* Data tables keep their tabular alignment; do not force-center cell text */
+@media (max-width: 768px) {
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .bio-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Data tables keep their tabular alignment */
 .data-table,
 .data-table th,
 .data-table td {
