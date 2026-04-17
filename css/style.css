@@ -1886,6 +1886,17 @@ section > .section-label::before {
   }
 }
 
+/* Bar charts: make rows visible by default (the IntersectionObserver that
+   flips `.animate-in` isn't reliable across all essays; widths are inlined
+   by the build pipeline so the chart renders correctly without JS). */
+.bar-row {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.bar-fill {
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* =============================================================================
    END STYLESHEET
    ============================================================================= */
