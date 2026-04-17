@@ -1834,13 +1834,11 @@ a:focus-visible {
    and consistent content padding across all published essays.
    ============================================================================= */
 
-/* Center ALL essay section content — headings, paragraphs, callouts, charts,
-   tables, bio box, methodology, etc. Each element keeps its own max-width
-   constraint; margin: 0 auto just centers it within the wider section. */
-section > h2,
-section > h3,
-section > .section-label,
-section > p {
+/* Center-justify ALL essay section content — headings, body paragraphs,
+   callouts, methodology, bio box, data sources, etc. Each element keeps its
+   own max-width; margin: 0 auto centers the block, text-align: center
+   centers the text within it. */
+section {
   text-align: center;
 }
 section > * {
@@ -1852,6 +1850,41 @@ section > .section-label {
 }
 section > .section-label::before {
   display: none;
+}
+
+/* Text inside common nested containers should also be centered */
+.callout,
+.methodology,
+.bio-text,
+.bio-desc,
+.bio-name,
+.panel,
+.stat-card,
+.chart-caption,
+.bar-chart-title {
+  text-align: center;
+}
+
+/* Bio box: stack photo on top of text, both centered */
+.bio-box {
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center;
+}
+
+/* Bar chart rows should center the bar column within the chart */
+.bar-chart {
+  align-items: center;
+}
+
+/* Data tables keep their tabular alignment; do not force-center cell text */
+.data-table,
+.data-table th,
+.data-table td {
+  text-align: left;
+}
+.data-table-wrap {
+  text-align: left;
 }
 
 /* Prevent stat numbers and panel stats from bursting out of their cards */
