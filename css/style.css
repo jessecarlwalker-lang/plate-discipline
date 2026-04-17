@@ -722,9 +722,10 @@ input[type="submit"] {
    ============================================================================= */
 
 .hero {
-  width: 100%;
-  max-width: var(--max-viz);
-  margin: 0 auto;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -733,7 +734,10 @@ input[type="submit"] {
   z-index: var(--z-base);
   background: transparent;
   text-align: left;
-  padding: var(--spacing-xxxl) 0 var(--spacing-xxl) 0;
+  padding-top: var(--spacing-xxxl);
+  padding-bottom: var(--spacing-xxl);
+  padding-left: max(var(--h-pad-desktop), calc((100vw - var(--max-viz)) / 2));
+  padding-right: max(var(--h-pad-desktop), calc((100vw - var(--max-viz)) / 2));
   border-bottom: none;
   overflow: hidden;
   min-height: 520px;
@@ -839,9 +843,10 @@ input[type="submit"] {
 
 /* Subpage hero — compact, left-aligned */
 .page-hero {
-  width: 100%;
-  max-width: var(--max-viz);
-  margin: 0 auto;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -850,7 +855,10 @@ input[type="submit"] {
   z-index: var(--z-base);
   background: transparent;
   text-align: left;
-  padding: var(--spacing-xxl) 0 var(--spacing-xl) 0;
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xl);
+  padding-left: max(var(--h-pad-desktop), calc((100vw - var(--max-viz)) / 2));
+  padding-right: max(var(--h-pad-desktop), calc((100vw - var(--max-viz)) / 2));
   border-bottom: 1px solid rgba(158, 158, 158, 0.15);
 }
 

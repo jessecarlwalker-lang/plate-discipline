@@ -168,15 +168,20 @@
 </head>
 <body>
 
-<!-- ── Site Nav ── -->
-<nav style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;max-width:1000px;margin:0 auto;position:relative;z-index:100;">
-    <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#2196F3;text-transform:uppercase;letter-spacing:2px;text-decoration:none;">Plate Discipline</a>
-    <div style="display:flex;gap:2rem;">
-        <a href="/archive" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">Archive</a>
-        <a href="/about" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">About</a>
-        <a href="/subscribe" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#9E9E9E;text-decoration:none;">Subscribe</a>
-    </div>
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
 </nav>
+
 
 <!-- ── Sticky CTA ── -->
 <div class="sticky-cta" style="position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(11,29,58,0.97);padding:10px 1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;transform:translateY(-100%);transition:transform 0.3s ease;">
@@ -422,7 +427,7 @@
       <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
       <div class="bio-text">
         <div class="bio-name">Jesse Walker</div>
-        <div class="bio-desc">Jesse Walker writes about baseball through data. He played center field in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
       </div>
     </div>
   </section>
@@ -442,23 +447,32 @@
     </div>
 </div>
 
-<!-- ── Footer ── -->
-<footer style="background:#081428;color:rgba(242,240,235,0.6);padding:3rem 1.5rem 2rem;font-family:'Inter',sans-serif;font-size:13px;">
-    <div style="max-width:800px;margin:0 auto;">
-        <div style="font-size:12px;font-weight:600;color:rgba(242,240,235,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem;">Plate Discipline</div>
-        <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.5rem;">
-            <a href="/archive" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Archive</a>
-            <a href="/about" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">About</a>
-            <a href="/subscribe" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Subscribe</a>
-            <a href="/privacy" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Privacy</a>
-            <a href="/terms" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">Terms</a>
-            <a href="/feed.xml" style="color:rgba(242,240,235,0.6);text-decoration:none;font-size:13px;">RSS</a>
-        </div>
-        <div style="height:1px;background:rgba(242,240,235,0.1);margin:1.5rem 0;"></div>
-        <div style="font-size:12px;color:rgba(242,240,235,0.35);margin-bottom:1rem;">Also from the publisher: <a href="https://meaningintheageofai.com" style="color:rgba(242,240,235,0.5);text-decoration:none;">Meaning in the Age of AI</a> &middot; <a href="https://investingintheageofai.com" style="color:rgba(242,240,235,0.5);text-decoration:none;">Investing in the Age of AI</a></div>
-        <div style="font-size:12px;color:rgba(242,240,235,0.3);">&copy; 2026 Plate Discipline. All rights reserved.</div>
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
     </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
 </footer>
+
 
 <script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
 <script>
