@@ -46,8 +46,8 @@
   --radius-lg: 6px;
 
   /* Responsive Padding */
-  --h-pad-desktop: 32px;
-  --h-pad-mobile: 20px;
+  --h-pad-desktop: 72px;
+  --h-pad-mobile: 24px;
 
   /* Max Widths */
   --max-prose: 660px;
@@ -1469,18 +1469,9 @@ input[type="submit"] {
   transform: translateY(0);
 }
 
-/* Bar fill animation */
+/* Bar fill transition (widths set per-chart via data-width + JS; no full-sweep animation) */
 .bar-fill {
-  animation: barFill 1.4s ease-out 0.1s forwards;
-}
-
-@keyframes barFill {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Stat number animation */
@@ -1833,6 +1824,65 @@ a:focus-visible {
 
   a {
     text-decoration: underline;
+  }
+}
+
+/* =============================================================================
+   22. ESSAY CONSISTENCY OVERRIDES
+   Applied after any per-essay inline <style> because the sitewide stylesheet
+   is linked last. Enforces centered section headings, number overflow-safety,
+   and consistent content padding across all published essays.
+   ============================================================================= */
+
+/* Center H2/H3 headings within essay sections and the section label above them */
+section > h2,
+section > h3,
+section > .section-label {
+  text-align: center;
+}
+section > h2,
+section > h3 {
+  margin-left: auto;
+  margin-right: auto;
+}
+section > .section-label {
+  display: block;
+}
+section > .section-label::before {
+  display: none;
+}
+
+/* Prevent stat numbers and panel stats from bursting out of their cards */
+.stat-card,
+.panel,
+.stat-number,
+.big-number {
+  min-width: 0;
+}
+.stat-card,
+.panel {
+  overflow: hidden;
+}
+.stat-card .number,
+.stat-card .stat-number,
+.panel .panel-stat,
+.stat-number,
+.big-number {
+  font-size: clamp(32px, 6vw, 60px) !important;
+  line-height: 1.05;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 480px) {
+  .stat-card .number,
+  .stat-card .stat-number,
+  .panel .panel-stat,
+  .stat-number,
+  .big-number {
+    font-size: clamp(28px, 10vw, 48px) !important;
   }
 }
 
