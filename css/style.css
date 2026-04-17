@@ -1834,14 +1834,16 @@ a:focus-visible {
    and consistent content padding across all published essays.
    ============================================================================= */
 
-/* Center H2/H3 headings within essay sections and the section label above them */
+/* Center ALL essay section content — headings, paragraphs, callouts, charts,
+   tables, bio box, methodology, etc. Each element keeps its own max-width
+   constraint; margin: 0 auto just centers it within the wider section. */
 section > h2,
 section > h3,
-section > .section-label {
+section > .section-label,
+section > p {
   text-align: center;
 }
-section > h2,
-section > h3 {
+section > * {
   margin-left: auto;
   margin-right: auto;
 }
