@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://plate-discipline.com/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/about</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/archive</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/subscribe</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/privacy</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/terms</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://plate-discipline.com/hall-of-fame</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
@@ -53,6 +53,11 @@
   <url>
     <loc>https://plate-discipline.com/the-dead-ball-is-back</loc>
     <lastmod>2026-04-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://plate-discipline.com/what-100-mph-used-to-mean</loc>
+    <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>

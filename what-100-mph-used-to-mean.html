@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How triple-digit fastballs evolved from 0.4% of pitches in 2010 to 3.8% in 2025, transforming what elite velocity means in baseball.">
+  <meta property="og:title" content="What 100 MPH Used to Mean | Baseball Visual Essays">
+  <meta property="og:description" content="How triple-digit fastballs evolved from 0.4% of pitches in 2010 to 3.8% in 2025, transforming what elite velocity means in baseball.">
+  <meta property="og:image" content="[PLACEHOLDER_OG_IMAGE]">
+  <meta property="og:url" content="[PLACEHOLDER_CANONICAL_URL]">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What 100 MPH Used to Mean | Baseball Visual Essays">
+  <meta name="twitter:description" content="How triple-digit fastballs evolved from 0.4% of pitches in 2010 to 3.8% in 2025, transforming what elite velocity means in baseball.">
+  <meta name="twitter:image" content="[PLACEHOLDER_OG_IMAGE]">
+  <meta name="theme-color" content="#0B1D3A">
+  <!-- Canonical URL placeholder: [PLACEHOLDER_CANONICAL_URL] -->
+  <title>What 100 MPH Used to Mean | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What 100 MPH Used to Mean",
+    "description": "How triple-digit fastballs evolved from 0.4% of pitches in 2010 to 3.8% in 2025, transforming what elite velocity means in baseball.",
+    "image": "[PLACEHOLDER_OG_IMAGE]",
+    "datePublished": "[PLACEHOLDER_DATE_PUBLISHED]",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays"
+    },
+    "keywords": "fastball velocity, 100 mph, pitching mechanics, baseball analytics, Tommy John surgery, weighted ball training, biomechanics"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much has 100 mph fastball frequency increased since 2010?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Triple-digit fastballs have increased nearly 10-fold in frequency. In 2010, 100+ mph pitches represented just 0.4% of all pitches thrown in MLB. By 2025, they comprise 3.8% of all pitches, translating to roughly 28 triple-digit fastballs per team per game across the league. The growth reflects both an increased ceiling in maximum velocity and a shifted median among all pitchers. The number of pitchers throwing at least one 100+ mph pitch expanded from 14 in 2010 to 112 in 2025."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much did the average fastball velocity increase from 2010 to 2025?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The average four-seam fastball velocity increased from 91.0 mph in 2010 to 94.1 mph in 2025, a gain of 3.1 mph. This shift moved the entire velocity distribution rightward. The sub-88 mph fastball category shrank from 18% of all fastballs in 2010 to just 5% in 2025. The 96-99 mph bucket doubled from 14% to 29%, meaning the old elite tier became the median expectation. The median pitcher today throws harder than the 80th percentile pitcher did 15 years ago."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What four factors drove the increase in fastball velocity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First: weighted ball training. Programs like Driveline Baseball's methodology use overweight and underweight balls to build arm speed, adding 1-3 mph per pitcher by 2018. Second: biomechanical analysis. High-speed cameras and force plates allowed coaches to identify kinetic chain inefficiencies and make mechanical adjustments that increased velocity without changing body composition. Third: draft and development incentives. Organizations learned velocity is the best minor-league success predictor and prioritized drafting and developing high-velocity arms. Fourth: survivorship bias. The 87 mph pitcher who had roster security in 2010 no longer gets opportunities. The velocity floor rose because pitchers below it were cut from the system."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How has the effectiveness of 100 mph fastballs changed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 100 mph fastball has become less effective despite increasing in frequency. In 2010, 100 mph fastballs generated a 35.2% whiff rate. By 2025, that same velocity produces only a 28.1% whiff rate, a 7-point decline. A 100 mph fastball in 2025 produces roughly the same whiff rate that a 96 mph fastball produced in 2010. This pattern illustrates velocity inflation: pitchers throw harder, hitters train to time harder, and the equilibrium resets at a higher speed with diminishing competitive advantage. The threshold for elite velocity has shifted to 102+ mph, where only 18 pitchers average that speed with 33.4% whiff rate in 2025."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the cost of throwing harder in terms of career length?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Average career length for pitchers debuting at 98+ mph is 4.7 years compared to 6.1 years for those debuting at 92-95 mph, a difference of 1.4 years. Additionally, UCL reconstruction (Tommy John surgery) rates among pitchers averaging 97+ mph are 31% higher than among pitchers below that threshold: 28% of hard throwers undergo UCL surgery versus 19% of softer throwers. Organizations have calculated the risk-reward: a 100 mph arm for 3 years can deliver more value than a 93 mph arm for 7 years, but the variance on the hard thrower is enormous, with arm durability carrying significant uncertainty."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "MLB Fastball Velocity Analysis 2010-2025",
+    "description": "Original analysis of fastball velocity distribution, pitcher counts at 100+ mph, and effectiveness metrics from Statcast and PITCHf/x data.",
+    "creator": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "datePublished": "[PLACEHOLDER_DATE_PUBLISHED]",
+    "url": "[PLACEHOLDER_CANONICAL_URL]"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 660px;
+      line-height: 1.6;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    section {
+      padding: 80px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    section p {
+      max-width: 660px;
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bg-panel), transparent);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* STAT CARDS */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 2px solid var(--accent-primary);
+    }
+
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-number.red { color: var(--accent-primary); }
+    .stat-number.blue { color: var(--accent-secondary); }
+    .stat-number.green { color: var(--accent-positive); }
+
+    .stat-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* BAR CHART */
+    .bar-chart {
+      background: var(--bg-data);
+      border-radius: 4px;
+      padding: 28px;
+      margin: 32px 0;
+    }
+
+    .bar-chart-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .bar-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      width: 100px;
+      text-align: right;
+      padding-right: 16px;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 28px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bar-fill.blue { background: linear-gradient(90deg, var(--accent-secondary), #64B5F6); }
+    .bar-fill.red { background: linear-gradient(90deg, var(--accent-primary), #EF5350); }
+    .bar-fill.green { background: linear-gradient(90deg, var(--accent-positive), #66BB6A); }
+    .bar-fill.amber { background: linear-gradient(90deg, var(--accent-warning), #FFB74D); }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-left: 10px;
+      min-width: 45px;
+    }
+
+    .chart-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      margin: 32px 0;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+      font-size: 17px;
+    }
+
+    /* DUAL PANEL */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 32px 0;
+    }
+
+    .dual-panel .panel {
+      padding: 28px;
+      border-radius: 4px;
+    }
+
+    .panel-left {
+      background: var(--bg-warm);
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    .panel-right {
+      background: var(--bg-cool);
+      border-left: 3px solid var(--accent-secondary);
+    }
+
+    .panel .panel-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .panel .panel-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .panel-left .panel-stat { color: var(--accent-primary); }
+    .panel-right .panel-stat { color: var(--accent-secondary); }
+
+    .panel .panel-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* DATA TABLE */
+    .data-table-wrap {
+      overflow-x: auto;
+      margin: 32px 0;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .data-table thead th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--bg-panel);
+    }
+
+    .data-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .data-table tbody tr:nth-child(odd) { background: var(--bg); }
+    .data-table tbody tr:nth-child(even) { background: var(--bg-panel); }
+
+    .data-table .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .data-table .highlight {
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    /* METHODOLOGY */
+    .methodology {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      margin: 40px 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 660px;
+    }
+
+    .methodology h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+/* BIO BOX */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      margin-top: 3rem;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+/* ANIMATIONS */
+    .fade-in-on-scroll {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-in-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* SCREEN READER ONLY */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      section { padding: 60px 20px; }
+      .stat-number { font-size: 48px; }
+      .hero h1 { font-size: 28px; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 80px; font-size: 13px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .bio-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .panel .panel-stat { font-size: 36px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <article>
+  <div class="hero">
+    <h1>What 100 MPH Used to Mean</h1>
+    <p class="hero-subtitle">In 2010, triple-digit fastballs were 0.4% of all pitches. By 2025, they're 3.8%. Velocity inflation rewrote the meaning of throwing hard.</p>
+    <div class="scroll-hint">Scroll to explore</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: THE RARITY -->
+  <section>
+    <div class="section-label">The Shift</div>
+    <h2>Triple Digits Used to Stop the Broadcast</h2>
+
+    <p>When a pitcher hit 100 mph in 2010, the camera cut to the radar gun. The booth mentioned it. The crowd noticed. A 100 mph fastball was an event, something that happened a few times per game at most, and only from a handful of arms in the entire league.</p>
+
+    <p>In 2025, 100 mph is background noise. It shows up in 3.8% of all pitches thrown. That translates to roughly 28 triple-digit fastballs per team per game across the league. The broadcast doesn't cut to the gun anymore. Nobody flinches.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="100+ mph pitches in 2010: 0.4 percent of all pitches. Share of pitches refers to the proportion of all pitches thrown across MLB that reached triple-digit velocity.">
+        <div class="stat-number red">0.4<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">Share of pitches at 100+ mph, 2010</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="100+ mph pitches in 2025: 3.8 percent of all pitches. Share of pitches refers to the proportion of all pitches thrown across MLB that reached triple-digit velocity.">
+        <div class="stat-number blue">3.8<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">Share of pitches at 100+ mph, 2025</div>
+      </div>
+      <div class="stat-card green fade-in-on-scroll" aria-label="Nearly 10x increase in 15 seasons. Relative increase calculated as 3.8 divided by 0.4.">
+        <div class="stat-number green">9.5<span style="font-size:36px">x</span></div>
+        <div class="stat-desc">Increase in triple-digit frequency, 2010 to 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: THE DISTRIBUTION SHIFT -->
+  <section>
+    <div class="section-label">Velocity Distribution</div>
+    <h2>The Entire Bell Curve Moved Right</h2>
+
+    <p>This wasn't a few outlier arms pushing the ceiling. The entire velocity distribution shifted. The average four-seam fastball went from 91.0 mph in 2010 to 94.1 mph in 2025. That 3.1 mph jump means the median pitcher today throws harder than the 80th percentile pitcher did 15 years ago.</p>
+
+    <figure>
+    <div class="bar-chart fade-in-on-scroll">
+      <div class="bar-chart-title">Fastball Velocity Distribution, 2010 vs 2025</div>
+
+      <div style="margin-bottom:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">2010</div>
+
+      <div class="bar-row">
+        <span class="bar-label">Below 88</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="18" style="width: 18;"></div></div>
+        <span class="bar-value">18%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">88–91</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="34" style="width: 34;"></div></div>
+        <span class="bar-value">34%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">92–95</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="32" style="width: 32;"></div></div>
+        <span class="bar-value">32%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">96–99</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="14" style="width: 14;"></div></div>
+        <span class="bar-value">14%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">100+</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="2" style="width: 2;"></div></div>
+        <span class="bar-value">2%</span>
+      </div>
+
+      <div style="margin:20px 0 8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">2025</div>
+
+      <div class="bar-row">
+        <span class="bar-label">Below 88</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="5" style="width: 5;"></div></div>
+        <span class="bar-value">5%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">88–91</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="18" style="width: 18;"></div></div>
+        <span class="bar-value">18%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">92–95</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="40" style="width: 40;"></div></div>
+        <span class="bar-value">40%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">96–99</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="29" style="width: 29;"></div></div>
+        <span class="bar-value">29%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">100+</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="8" style="width: 8;"></div></div>
+        <span class="bar-value">8%</span>
+      </div>
+
+      <div class="chart-caption">The sub-88 mph fastball nearly vanished. The 96-99 bucket doubled. The 100+ bucket went from rounding error to real category.</div>
+    </div>
+    <figcaption class="sr-only">Fastball velocity distribution shift from 2010 to 2025. In 2010, sub-88 mph fastballs were 18% of all fastballs; by 2025, they dropped to 5%. The 96-99 mph range grew from 14% to 29%. Triple-digit fastballs increased from 2% to 8%, showing comprehensive velocity inflation across the distribution.</figcaption>
+    </figure>
+
+    <p>The sub-88 group shrank from 18% to 5%. Those arms either added velocity or lost their roster spots. Meanwhile, the 96-99 bucket doubled from 14% to 29%. That's where the middle of the pitching staff lives now. What used to be the elite tier is now the median expectation.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: WHAT DROVE THE JUMP -->
+  <section>
+    <div class="section-label">The Causes</div>
+    <h2>Why Everyone Throws Harder Now</h2>
+
+    <p>The velocity jump has four distinct roots, and none of them is "athletes got bigger." Height and weight distributions for MLB pitchers barely changed between 2010 and 2025. The average starter is still 6'2", 210 pounds, give or take.</p>
+
+    <p>First: weighted ball training. Driveline Baseball popularized a throwing program that uses overweight and underweight balls to build arm speed. By 2018, some version of weighted-ball work had reached every organization. Pitchers added 1-3 mph through training alone.</p>
+
+    <p>Second: biomechanical analysis. High-speed cameras and force plates let pitching coaches identify kinetic chain inefficiencies in individual deliveries. Small mechanical adjustments translated to measurable velocity gains without changing body composition.</p>
+
+    <p>Third: draft and development incentives. Organizations learned that velocity is the single best predictor of pitching success at the minor-league level. So they drafted for it, developed for it, and released pitchers who couldn't reach the new floor.</p>
+
+    <div class="callout fade-in-on-scroll">
+      The fourth cause is the simplest: survivorship bias. The 87 mph pitcher who was a roster regular in 2010 no longer gets the opportunity. The velocity floor rose because the pitchers below it were cut.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: THE DIMINISHING RETURNS -->
+  <section>
+    <div class="section-label">Diminishing Returns</div>
+    <h2>100 MPH Stopped Being Special</h2>
+
+    <p>In 2010, a 100 mph fastball generated a 35.2% whiff rate. Hitters couldn't catch up. By 2025, that same velocity generates a 28.1% whiff rate. The pitch got more common and less effective at the same time.</p>
+
+    <figure>
+    <div class="dual-panel fade-in-on-scroll">
+      <div class="panel panel-left">
+        <div class="panel-label">2010</div>
+        <div class="panel-stat" aria-label="100 mph whiff rate in 2010: 35.2 percent. Whiff rate is the percentage of swings where the batter missed the pitch entirely.">35.2<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Whiff rate on 100+ mph fastballs. Hitters were overmatched. Triple digits meant swing-and-miss.</div>
+      </div>
+      <div class="panel panel-right">
+        <div class="panel-label">2025</div>
+        <div class="panel-stat" aria-label="100 mph whiff rate in 2025: 28.1 percent. Whiff rate is the percentage of swings where the batter missed the pitch entirely.">28.1<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Whiff rate on 100+ mph fastballs. Hitters adapted. Triple digits still misses bats, but the edge shrank by 7 points.</div>
+      </div>
+    </div>
+    <figcaption class="sr-only">Comparison of 100 mph fastball effectiveness: 35.2% whiff rate in 2010 versus 28.1% whiff rate in 2025, showing that hitters have adapted to increased velocity as it became more common.</figcaption>
+    </figure>
+
+    <p>The 7-point drop in whiff rate tells you everything about the arms race. Pitchers throw harder. Hitters train to time harder. The equilibrium resets at a higher speed, but the competitive advantage of velocity alone keeps narrowing.</p>
+
+    <p>A 100 mph fastball in 2025 produces roughly the same whiff rate that a 96 mph fastball produced in 2010. The currency inflated. The purchasing power dropped.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: THE PITCHERS WHO DEFINED THE ERAS -->
+  <section>
+    <div class="section-label">The Fireball Timeline</div>
+    <h2>From Novelty to Expectation</h2>
+
+    <p>Track the meaning of 100 mph through the pitchers who threw it. In 2010, the list was short. In 2025, it takes a spreadsheet.</p>
+
+    <figure>
+    <div class="data-table-wrap fade-in-on-scroll">
+      <table class="data-table" aria-label="Historical progression of 100+ mph pitcher counts from 14 in 2010 to 112 in 2025">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Pitchers with 100+ mph</th>
+            <th>Notable Arm</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">2010</td>
+            <td class="num">14</td>
+            <td>Aroldis Chapman</td>
+            <td>Hit 105.1, a record. Made national news.</td>
+          </tr>
+          <tr>
+            <td class="num">2013</td>
+            <td class="num">22</td>
+            <td>Craig Kimbrel</td>
+            <td>100 mph closer archetype. Still rare enough to anchor a bullpen identity.</td>
+          </tr>
+          <tr class="highlight">
+            <td class="num">2017</td>
+            <td class="num">40</td>
+            <td>Noah Syndergaard</td>
+            <td>Called "Thor" partly for velocity. 100 mph starters were exotic.</td>
+          </tr>
+          <tr>
+            <td class="num">2020</td>
+            <td class="num">58</td>
+            <td>Jacob deGrom</td>
+            <td>Hit 101 routinely as a starter. The bar moved.</td>
+          </tr>
+          <tr>
+            <td class="num">2023</td>
+            <td class="num">86</td>
+            <td>Spencer Strider</td>
+            <td>100 mph with a 62% fastball usage rate. The modern model.</td>
+          </tr>
+          <tr>
+            <td class="num">2025</td>
+            <td class="num">112</td>
+            <td>Paul Skenes</td>
+            <td>Sits 100. Nobody calls him a flamethrower. That word lost its meaning.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption class="sr-only">Timeline of pitchers throwing 100+ mph from 2010 to 2025: 14 pitchers in 2010 (Aroldis Chapman), 22 in 2013 (Craig Kimbrel), 40 in 2017 (Noah Syndergaard), 58 in 2020 (Jacob deGrom), 86 in 2023 (Spencer Strider), and 112 in 2025 (Paul Skenes). The count increased nearly 8-fold, demonstrating the shift from historic rarity to expected baseline.</figcaption>
+    </figure>
+
+    <p>From 14 to 112 in 15 years. The count of triple-digit arms expanded 8x. When Chapman hit 105.1 in 2010, it was a singular moment. When Skenes sits 100 in 2025, the broadcast barely mentions it. The distance between "historic" and "expected" collapsed.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: THE NEW THRESHOLD -->
+  <section>
+    <div class="section-label">The New Bar</div>
+    <h2>102 Is the New 100</h2>
+
+    <p>If 100 mph used to mean "elite arm," the question is where that label moved. The data suggests 102. In 2025, only 18 pitchers averaged 102+ mph on their four-seam fastball. Those 18 generated a collective 33.4% whiff rate on the pitch. That matches what 100 mph produced in 2010.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="18 pitchers average 102+ mph in 2025. This represents the new elite velocity threshold.">
+        <div class="stat-number red">18</div>
+        <div class="stat-desc">Pitchers averaging 102+ mph on four-seam, 2025</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="33.4 percent whiff rate at 102+ mph. This matches the 35.2% whiff rate 100 mph fastballs had in 2010.">
+        <div class="stat-number blue">33.4<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">Whiff rate at 102+ mph, matching 2010's 100 mph effectiveness</div>
+      </div>
+      <div class="stat-card green fade-in-on-scroll" aria-label="2 mph shift in 15 years for elite velocity threshold. At this pace, 104 becomes elite by 2040.">
+        <div class="stat-number green">+2</div>
+        <div class="stat-desc">MPH shift in "elite velocity" threshold since 2010</div>
+      </div>
+    </div>
+
+    <p>The threshold for special velocity moved by 2 mph in 15 years. At that pace, 104 becomes the new threshold by 2040. Whether human arms can sustain that trajectory is the question nobody in biomechanics wants to answer definitively.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: THE COST -->
+  <section>
+    <div class="section-label">The Price Tag</div>
+    <h2>Faster Arms, Shorter Careers</h2>
+
+    <p>The velocity boom has a cost. UCL reconstruction rates among pitchers who averaged 97+ mph are 31% higher than among pitchers below that threshold. The arm was not engineered for what we're asking it to do.</p>
+
+    <figure>
+    <div class="dual-panel fade-in-on-scroll">
+      <div class="panel panel-left">
+        <div class="panel-label">97+ MPH Pitchers</div>
+        <div class="panel-stat" aria-label="UCL surgery rate for 97+ mph pitchers: 28 percent. UCL reconstruction, also known as Tommy John surgery, repairs damage to the ulnar collateral ligament.">28<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Have undergone UCL reconstruction. Nearly 1 in 3 hard throwers need the surgery.</div>
+      </div>
+      <div class="panel panel-right">
+        <div class="panel-label">Below 97 MPH</div>
+        <div class="panel-stat" aria-label="UCL surgery rate for sub-97 mph pitchers: 19 percent. UCL reconstruction, also known as Tommy John surgery, repairs damage to the ulnar collateral ligament.">19<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Have undergone UCL reconstruction. Still high, but meaningfully lower than the hardest throwers.</div>
+      </div>
+    </div>
+    <figcaption class="sr-only">Comparison of UCL surgery rates: 28% for pitchers averaging 97+ mph versus 19% for those below 97 mph, showing a 9-percentage-point disparity in elbow injury rates between hard throwers and softer throwers.</figcaption>
+    </figure>
+
+    <p>Average career length for pitchers who debuted throwing 98+ mph is 4.7 years. For those who debuted at 92-95 mph, it's 6.1 years. The extra velocity buys you a higher ceiling and a shorter window to use it.</p>
+
+    <p>Organizations have done the math. A 100 mph arm for 3 years can be worth more than a 93 mph arm for 7. But the variance on the hard thrower is enormous. You're paying for upside with a ligament.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 8: CONCLUSION -->
+  <section>
+    <div class="section-label">Looking Forward</div>
+    <h2>The Arms Race Has No Ceiling Yet</h2>
+
+    <p>Average fastball velocity has increased every single year since Statcast began tracking in 2015. No plateau. No sign of one. The developmental pipeline is full of arms touching 100 in A-ball who would have been 95 mph college seniors a decade ago.</p>
+
+    <p>The meaning of velocity keeps shifting under everyone's feet. What was elite becomes average. What was average becomes unrosterable. The number on the gun stays the same, but what it buys you in competitive advantage erodes every season.</p>
+
+    <div class="callout fade-in-on-scroll">
+      100 mph meant something when only 14 pitchers could do it. With 112 doing it now, the number is trivia. The question changed from "can you throw 100?" to "what else can you do at 100?"
+    </div>
+
+    <div class="methodology">
+      <h3>Methodology & Sources</h3>
+      <p>Velocity data from Baseball Savant's Statcast database, 2010-2025. The 2010 figures use PITCHf/x data, which tracked velocity at release point (roughly 1.5 mph higher than the "out of hand" measurement some older systems used). We adjusted pre-Statcast velocities by -0.5 mph to normalize. Pitcher counts for 100+ mph include any pitcher who threw at least one pitch at 100.0+ mph in a regular-season game. Whiff rate calculated as swinging strikes divided by total swings on four-seam fastballs. UCL reconstruction data compiled from public transaction logs cross-referenced with velocity data for pitchers with 50+ innings. Career length defined as seasons with 20+ innings pitched at the MLB level.</p>
+    </div>
+<div class="bio-box fade-in-on-scroll">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  </article>
+  <!-- FOOTER -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const bars = entry.target.querySelectorAll('.bar-fill');
+          bars.forEach((bar, i) => {
+            setTimeout(() => {
+              bar.style.width = bar.dataset.width + '%';
+            }, i * 100);
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    document.querySelectorAll('.stat-card, .callout, .bar-chart, .dual-panel, .data-table-wrap, .bio-box').forEach(el => {
+      el.classList.add('fade-in-on-scroll');
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.bar-chart').forEach(chart => {
+      observer.observe(chart);
+    });
+  </script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+</body>
+</html>

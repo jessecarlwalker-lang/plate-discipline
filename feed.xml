@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Apr 2026 14:43:27 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Apr 2026 10:30:09 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>What 100 MPH Used to Mean</title>
+      <link>https://plate-discipline.com/what-100-mph-used-to-mean</link>
+      <guid isPermaLink="true">https://plate-discipline.com/what-100-mph-used-to-mean</guid>
+      <description>How triple-digit fastballs evolved from 0.4% of pitches in 2010 to 3.8% in 2025, transforming what elite velocity means in baseball.</description>
+      <pubDate>Wed, 22 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Dead Ball Is Back</title>
       <link>https://plate-discipline.com/the-dead-ball-is-back</link>
