@@ -1837,12 +1837,27 @@ a:focus-visible {
 /* Essay section layout:
    - Body content is LEFT-justified (readability)
    - Section labels and H2/H3 headings are CENTER-justified
-   - Body content is indented ~50px inward from the section edge so text
-     never hugs the background boundary */
+   - Section grows responsively up to 1400px on wide viewports (was 900px)
+   - Left padding scales from 64px on tablets up to 200px on very wide screens,
+     so body text doesn't hug the left edge but the column still reaches further
+     right on big monitors. */
 section {
   text-align: left;
-  padding-left: 50px !important;
-  padding-right: 50px !important;
+  max-width: clamp(900px, 85vw, 1400px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: clamp(64px, 10vw, 200px) !important;
+  padding-right: clamp(32px, 5vw, 96px) !important;
+}
+/* Allow body paragraphs and visual elements to extend with the wider column.
+   Per-essay inline styles cap these at 660px; this lifts the cap responsively. */
+section p,
+section .callout,
+section .methodology,
+section .bar-chart,
+section .data-table-wrap,
+section .bio-box {
+  max-width: clamp(660px, 70vw, 1080px) !important;
 }
 section > h2,
 section > h3,
