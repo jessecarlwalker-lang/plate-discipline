@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Apr 2026 10:35:41 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2026 10:29:31 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Cutter Took Over Baseball</title>
+      <link>https://plate-discipline.com/the-cutter-took-over-baseball</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-cutter-took-over-baseball</guid>
+      <description>Cutter usage tripled from 4.2% to 12.8% of all pitches between 2018 and 2025. It is now the third most common pitch in baseball.</description>
+      <pubDate>Wed, 29 Apr 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>What 100 MPH Used to Mean</title>
       <link>https://plate-discipline.com/what-100-mph-used-to-mean</link>

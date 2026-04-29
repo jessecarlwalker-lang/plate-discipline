@@ -17,6 +17,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - How Spring Training Stats Lie: https://plate-discipline.com/how-spring-training-stats-lie
 - The Dead Ball Is Back: https://plate-discipline.com/the-dead-ball-is-back
 - What 100 MPH Used to Mean: https://plate-discipline.com/what-100-mph-used-to-mean
+- The Cutter Took Over Baseball: https://plate-discipline.com/the-cutter-took-over-baseball
 
 ## Content Format
 
