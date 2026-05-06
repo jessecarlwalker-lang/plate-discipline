@@ -18,6 +18,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Dead Ball Is Back: https://plate-discipline.com/the-dead-ball-is-back
 - What 100 MPH Used to Mean: https://plate-discipline.com/what-100-mph-used-to-mean
 - The Cutter Took Over Baseball: https://plate-discipline.com/the-cutter-took-over-baseball
+- The Death of the Fastball: https://plate-discipline.com/the-death-of-the-fastball
 
 ## Content Format
 
