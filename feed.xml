@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 May 2026 10:30:08 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 10:32:39 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Slider Epidemic</title>
+      <link>https://plate-discipline.com/the-slider-epidemic</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-slider-epidemic</guid>
+      <description>Slider usage surged from 15% in 2015 to 25% in 2025, making it baseball&#x27;s most dominant pitch — and a leading driver of elbow injuries.</description>
+      <pubDate>Wed, 13 May 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Death of the Fastball</title>
       <link>https://plate-discipline.com/the-death-of-the-fastball</link>

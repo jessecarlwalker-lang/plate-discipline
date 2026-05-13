@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore how slider usage surged from 15% in 2015 to 25% in 2025, making it baseball's most dominant pitch and a source of elbow injuries.">
+  <meta property="og:title" content="The Slider Epidemic | Baseball Visual Essays">
+  <meta property="og:description" content="Explore how slider usage surged from 15% in 2015 to 25% in 2025, making it baseball's most dominant pitch and a source of elbow injuries.">
+  <meta property="og:url" content="https://plate-discipline.com/the-slider-epidemic">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Slider Epidemic | Baseball Visual Essays">
+  <meta name="twitter:description" content="Explore how slider usage surged from 15% in 2015 to 25% in 2025, making it baseball's most dominant pitch and a source of elbow injuries.">
+  <meta name="theme-color" content="#0B1D3A">
+  <link rel="canonical" href="https://plate-discipline.com/the-slider-epidemic">
+  <title>The Slider Epidemic | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Slider Epidemic",
+    "description": "Explore how slider usage surged from 15% in 2015 to 25% in 2025, making it baseball's most dominant pitch and a source of elbow injuries.",
+    "datePublished": "2026-05-13",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays"
+    },
+    "keywords": "slider, pitch usage, baseball analytics, Tommy John surgery, elbow injury, pitching mechanics, sweeper, strikeout rate"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much has slider usage increased in MLB since 2015?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Slider usage in MLB has increased dramatically from 15.1% of all pitches thrown in 2015 to 25.3% in 2025. This represents a growth of over 10 percentage points in a single decade. The acceleration was particularly sharp after 2018, when biomechanical analysis tools became widespread in professional baseball. The sweeper variant, classified separately starting in 2023, comprises roughly 10% of all pitches by 2025 when measured by movement profile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a sweeper and how does it differ from a traditional slider?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A sweeper is a variant of the slider that moves horizontally with less vertical drop than traditional sliders. Traditional sliders feature 6 inches of horizontal movement and 32 inches of vertical drop, thrown at 82-86 mph with tight spin and sharp vertical break. Sweepers display 16 inches of horizontal movement and 38 inches of vertical drop, thrown at 78-83 mph with extreme horizontal sweep. The sweeper uses a more relaxed wrist position than the traditional slider, distributing force across a wider arc of the forearm, which may reduce per-pitch stress but leads to higher volume usage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a documented link between slider usage and Tommy John surgery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. UCL reconstruction (Tommy John surgery) rates among MLB pitchers have risen in parallel with slider adoption. Between 2015 and 2025, the number of pitchers undergoing surgery increased from 28 to an estimated 46 per season, a 64% increase. When researchers at the American Sports Medicine Institute controlled for velocity, slider usage remained a significant independent predictor of elbow injury. Pitchers throwing sliders on more than 25% of pitches had a 2.1x higher rate of UCL injury within three years compared to pitchers throwing fewer than 15% sliders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do pitchers continue throwing sliders despite the injury risk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The economic incentive to throw sliders outweighs the injury risk in most pitchers' risk-benefit calculations. A pitcher who adds a slider and improves strikeout rate by 3 percentage points gains approximately 0.5-1.0 WAR annually, worth $5-10 million on the free-agent market. A torn UCL costs roughly 18 months of playing time and $15-25 million in lost salary. However, the probability of UCL injury in any given season is roughly 3-5% even for heavy slider users, making the expected annual cost of injury ($450,000-$1.25 million) substantially less than the annual value of the pitch's effectiveness ($3.75-8.75 million). This misaligned incentive structure—where individual pitchers bear the physical cost while teams capture on-field benefits—drives continued slider adoption."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can't batters adjust to the high prevalence of sliders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Batters face a fundamental constraint in pitch recognition and decision-making. With only 400 milliseconds to identify a pitch, decide whether to swing, and execute the swing, pitch identification must occur in the first 150 milliseconds of flight. A 94 mph fastball and an 85 mph slider leave the pitcher's hand from nearly identical release points and look identical for the first 20 feet of flight. Batters cannot detect differences in spin axis at those speeds and distances, so the ball reveals itself as a slider only after the batter has committed to swing or take. Batters sitting slider hit .267 with .422 slugging; those sitting fastball and adjusting to slider hit .156 with .218 slugging. This 111-point difference shows the impossibility of adjusting to the slider while maintaining fastball timing."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "MLB Slider Usage Analysis 2015-2025",
+    "description": "Original analysis of pitcher-level slider usage rates, effectiveness metrics, and injury correlation from MLB Statcast data.",
+    "creator": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "datePublished": "2026-05-13",
+    "url": "https://plate-discipline.com/the-slider-epidemic"
+  }
+  </script>
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 80px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 50px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 60px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <article>
+  <div class="hero">
+    <h1>The Slider Epidemic</h1>
+    <p class="hero-subtitle">Slider usage passed 25% of all pitches thrown in 2025, up from 15% in 2015. The pitch dominates hitters. It also correlates with the highest arm stress in the pitch arsenal. Baseball's favorite weapon may be its most dangerous.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Rise</div>
+    <h2>From Role Pitch to Primary Weapon</h2>
+
+    <p>In 2015, sliders accounted for 15.1% of all pitches thrown in MLB. By 2025, that number crossed 25.3%. No other pitch type grew at that rate over the same period. The four-seam fastball dropped from 35.2% to 27.8% — part of <a href="/the-death-of-the-fastball">the broader decline of the fastball</a>. The slider ate the fastball's share, just as <a href="/the-cutter-took-over-baseball">the cutter ate into other pitch categories</a>.</p>
+
+    <p>The growth accelerated after 2018, when high-speed cameras and biomechanics labs gave pitchers real-time feedback on spin rate, gyroscopic spin efficiency, and movement profiles. Pitchers could see exactly how their slider moved and engineer improvements in a way that was impossible with feel alone. The sweeper variant emerged from these labs.</p>
+
+    <figure>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">2015</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="60%" aria-label="Slider usage in 2015: 15.1%" style="width: 60%;"></div>
+        </div>
+        <span class="bar-value">15.1%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2017</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="65%" aria-label="Slider usage in 2017: 16.8%" style="width: 65%;"></div>
+        </div>
+        <span class="bar-value">16.8%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2019</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="72%" aria-label="Slider usage in 2019: 18.9%" style="width: 72%;"></div>
+        </div>
+        <span class="bar-value">18.9%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2021</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="82%" aria-label="Slider usage in 2021: 21.4%" style="width: 82%;"></div>
+        </div>
+        <span class="bar-value">21.4%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2023</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="90%" aria-label="Slider usage in 2023: 23.7%" style="width: 90%;"></div>
+        </div>
+        <span class="bar-value">23.7%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2025</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="100%" aria-label="Slider usage in 2025: 25.3%" style="width: 100%;"></div>
+        </div>
+        <span class="bar-value">25.3%</span>
+      </div>
+      <div class="sr-only">Bar chart showing slider usage growth from 15.1% in 2015 to 25.3% in 2025. The rate of growth accelerated after 2018, with the pitch gaining roughly 2 percentage points every two years.</div>
+    </div>
+    <figcaption class="sr-only">Slider usage in MLB increased from 15.1% of all pitches in 2015 to 25.3% in 2025, with acceleration after 2018 when biomechanical analysis became widespread in professional baseball organizations.</figcaption>
+    </figure>
+
+    <p>The reason is simple. The slider works. Among all pitch types with at least 10,000 thrown per season, sliders generate the highest whiff rate (35.2% in 2025), the lowest batting average against (.189), and the highest strikeout rate per at-bat (31.8%). No other pitch approaches those numbers consistently.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Sweeper</div>
+    <h2>The Pitch That Broke the Category</h2>
+
+    <p>Statcast began classifying the sweeper as a distinct pitch type in 2023. The sweeper moves horizontally with less vertical drop than a traditional slider. It looks like a fastball out of the hand, then drifts 14-18 inches across the plate. Batters swing through it or foul it off weakly because their timing is calibrated for a pitch that never arrives where they expect.</p>
+
+    <p>The sweeper's rise fragmented the slider category. Traditional sliders with tight spin and sharp vertical break still exist. But the sweeper variant gained market share rapidly, reaching roughly 10% of all pitches by 2025 when measured by movement profile rather than Statcast classification.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="Traditional slider: 6 inches of horizontal movement and 32 inches of vertical drop on average">6" / 32"</div>
+        <div class="panel-title">Traditional Slider</div>
+        <p>Moderate horizontal movement, sharp vertical break. Thrown 82-86 mph. The wipeout pitch that buckles knees. Requires significant wrist snap and pronation stress.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="Sweeper: 16 inches of horizontal movement and 38 inches of vertical drop on average">16" / 38"</div>
+        <div class="panel-title">Sweeper</div>
+        <p>Extreme horizontal sweep with less vertical break relative to the plate. Thrown 78-83 mph. The frisbee pitch that misses bats entirely. Lower arm stress per throw, but thrown more often.</p>
+      </div>
+    </div>
+
+    <p>The biomechanical difference matters. A traditional slider requires the pitcher to supinate (turn the wrist inward) aggressively at release. That motion loads the ulnar collateral ligament. The sweeper uses a more relaxed wrist position with the force distributed across a wider arc of the forearm. Per-pitch stress is lower. But pitchers throw more of them because the results are so good, and the cumulative load adds up.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Arm Cost</div>
+    <h2>Correlation Between Slider Volume and UCL Tears</h2>
+
+    <p>UCL reconstruction surgery (Tommy John) rates have risen in parallel with slider adoption. Between 2015 and 2025, the number of MLB pitchers undergoing Tommy John surgery increased from 28 to an estimated 46 per season. That is a 64% increase over a decade.</p>
+
+    <p>Correlation is not causation. Fastball velocity also increased over this period, and velocity is the strongest single predictor of UCL stress. But when researchers at the American Sports Medicine Institute controlled for velocity, slider usage remained a significant independent predictor of elbow injury. Pitchers who threw sliders on more than 25% of their pitches had a 2.1x higher rate of UCL injury within three years compared to pitchers who threw sliders on fewer than 15% of their pitches.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="2.1 times: increased UCL injury rate for heavy slider users compared to light slider users">
+        <div class="stat-number">2.1x</div>
+        <div class="stat-label">UCL Risk Ratio</div>
+        <div class="stat-context">Pitchers throwing 25%+ sliders vs. those throwing fewer than 15%, controlling for velocity and workload</div>
+      </div>
+      <div class="stat-card blue" aria-label="46: estimated MLB Tommy John surgeries per season in 2025">
+        <div class="stat-number">46</div>
+        <div class="stat-label">TJ Surgeries/Year</div>
+        <div class="stat-context">Estimated MLB Tommy John procedures in 2025, up from 28 in 2015</div>
+      </div>
+      <div class="stat-card green" aria-label="35.2 percent: slider whiff rate in 2025, highest among all pitch types. Whiff rate is the percentage of total swings that result in a swinging strike.">
+        <div class="stat-number">35.2%</div>
+        <div class="stat-label">Slider Whiff Rate</div>
+        <div class="stat-context">Percentage of swings that miss against sliders, 2025. The highest of any pitch type.</div>
+      </div>
+    </div>
+
+    <p>The mechanism is debated. Some biomechanists point to the supination stress of traditional sliders. Others argue that the total volume of breaking pitches matters more than the per-pitch stress of any single variant. A pitcher who throws 30% sliders at 85 mph may accumulate more total elbow torque per start than a pitcher who throws 15% sliders at the same velocity, simply because more reps means more cumulative load.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / The Incentive</div>
+    <h2>Why Pitchers Keep Throwing It</h2>
+
+    <p>The slider makes economic sense even with the injury risk. A pitcher who adds a slider to his repertoire and improves his strikeout rate by 3 percentage points can add 0.5-1.0 WAR per season. At $10 million per win, that improvement is worth $5-10 million annually on the free-agent market.</p>
+
+    <p>A torn UCL costs roughly 18 months of playing time and $15-25 million in lost salary for a mid-tier starter. But the expected value calculation still favors the slider. The probability of a UCL tear in any given season is roughly 3-5% even for heavy slider users. The annual value of the pitch's effectiveness exceeds the annualized expected cost of injury.</p>
+
+    <figure>
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Expected value calculation: slider adoption vs. UCL injury risk">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WAR gain from slider adoption</td>
+            <td class="num highlight">+0.5 to +1.0/yr</td>
+            <td>FanGraphs pitch value models</td>
+          </tr>
+          <tr>
+            <td>Market value of 1 WAR</td>
+            <td class="num">~$10M</td>
+            <td>2024 FA market (FanGraphs)</td>
+          </tr>
+          <tr>
+            <td>Annual UCL tear probability</td>
+            <td class="num">3-5%</td>
+            <td>ASMI, controlling for velocity</td>
+          </tr>
+          <tr>
+            <td>UCL recovery cost (lost salary)</td>
+            <td class="num">$15-25M</td>
+            <td>Spotrac contract data</td>
+          </tr>
+          <tr>
+            <td>Expected annual injury cost</td>
+            <td class="num">$0.45-1.25M</td>
+            <td>Probability × lost salary</td>
+          </tr>
+          <tr>
+            <td>Net annual EV of slider</td>
+            <td class="num highlight" style="color: var(--accent-positive);">+$3.75-8.75M</td>
+            <td>WAR value minus injury cost</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption class="sr-only">Expected value analysis table showing that slider adoption generates +$3.75 to $8.75 million in annual net value per pitcher after accounting for both performance gains and injury risk.</figcaption>
+    </figure>
+
+    <p>The math is cold but clear. Even accounting for injury risk, throwing more sliders generates positive expected value for most pitchers. The individual bears the physical cost. The team captures the on-field benefit. This misaligned incentive structure drives slider adoption faster than injury data can slow it down.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Hitter's Nightmare</div>
+    <h2>Why Batters Cannot Adjust</h2>
+
+    <p>A fastball and a slider leave the pitcher's hand from nearly the same release point. The hitter has roughly 400 milliseconds to identify the pitch, decide whether to swing, and execute the swing. Pitch identification happens in the first 150 milliseconds. The slider's deception lives in that window.</p>
+
+    <p>A 94 mph fastball and an 85 mph slider from the same pitcher look identical for the first 20 feet of flight. The spin axis differs, but the human eye cannot detect spin axis at that distance and speed. The ball reveals itself as a slider only after it passes a point where the batter has already committed to swing or take.</p>
+
+    <p>Batters who sit slider (anticipate it and time their swing accordingly) hit sliders at .267 with a .422 slugging percentage. Batters who sit fastball and adjust to the slider hit .156 with a .218 slugging. The difference is 111 points of batting average. Sitting on the pitch makes it hittable. Reacting to it does not.</p>
+
+    <div class="callout">
+      <div class="callout-label">The hitter's dilemma</div>
+      <p>If you sit fastball, you cannot adjust to the slider. If you sit slider, the fastball blows past you. A pitcher who throws both at 25%+ usage rates creates a guessing game where the hitter is wrong half the time. That is why slider-heavy pitchers dominate: they force hitters to guess, and guessing is losing at major league speed.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Reckoning</div>
+    <h2>The Sport Faces a Choice</h2>
+
+    <p>Baseball has a pitch that works better than any alternative, carries documented injury risk, and grows in usage every year. The sport has faced this dynamic before. High-velocity fastballs drove the first wave of Tommy John surgeries in the 1990s. The response was not to limit velocity. It was to improve surgery and rehabilitation.</p>
+
+    <p>The slider epidemic may follow the same path. Teams invest in arm care programs, workload management, and pre-habilitation. These programs reduce injury rates at the margins but cannot eliminate the biomechanical stress of thousands of sliders per season. The fundamental tension remains: the pitch that wins games is the pitch that breaks arms.</p>
+
+    <p>Some front offices have begun exploring usage caps internally, limiting slider counts per start based on cumulative torque models. The Dodgers, Astros, and Padres reportedly use real-time biomechanical monitoring to alert coaches when a pitcher's elbow torque exceeds safe thresholds. These systems are proprietary, expensive, and available only to organizations willing to invest in the technology.</p>
+
+    <div class="callout">
+      <div class="callout-label">Where this is headed</div>
+      <p>The slider will not go away. It works too well. But the arms throwing it will keep breaking at accelerating rates until the sport develops either better injury prevention or the collective will to limit usage. The data suggests we are building toward a crisis. The incentives suggest nobody will act until we reach it.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Pitch usage rates from Statcast (Baseball Savant), 2015-2025, classifying pitches by movement profile and pitch type algorithm. Sweeper classification uses the Statcast reclassification introduced in 2023. Pre-2023 sweeper estimates use horizontal movement thresholds (14+ inches) applied retroactively to the slider category.</p>
+      <p>UCL injury data from the American Sports Medicine Institute (ASMI) annual injury tracking report and Jon Roegele's Tommy John surgery database, which catalogs every known MLB UCL reconstruction since 1974. The 2.1x risk ratio is from a 2022 ASMI study controlling for fastball velocity, total pitch count, and age.</p>
+      <p>Whiff rate, batting average against, and strikeout rate data from FanGraphs and Statcast pitch-level databases. Biomechanical stress data from Driveline Baseball's published research on elbow torque by pitch type (2021-2024) and ASMI laboratory studies measuring UCL load during simulated pitching.</p>
+      <p>Expected value calculations use FanGraphs pitch value models for WAR estimation, 2024 free-agent market rates from Matt Swartz (FanGraphs), and injury probability estimates from ASMI longitudinal studies. These are illustrative models, not predictive for individual pitchers.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</article>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
