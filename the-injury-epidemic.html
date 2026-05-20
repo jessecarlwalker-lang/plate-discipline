@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause...">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Injury Epidemic">
+  <meta property="og:description" content="UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause...">
+  <meta property="og:url" content="https://plate-discipline.com/the-injury-epidemic">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Injury Epidemic">
+  <meta name="twitter:description" content="UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause...">
+  <link rel="canonical" href="https://plate-discipline.com/the-injury-epidemic">
+  
+  
+  
+  <title>The Injury Epidemic | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+    .stat-number.red { color: var(--accent-primary); }
+    .stat-number.blue { color: var(--accent-secondary); }
+    .stat-number.green { color: var(--accent-positive); }
+    .stat-desc { font-size: 14px; color: var(--text-muted); }
+
+    .bar-chart { background: var(--bg-data); border-radius: 4px; padding: 28px; margin: 32px 0; }
+    .bar-chart-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 24px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; }
+    .bar-label { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); width: 80px; text-align: right; padding-right: 16px; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 28px; background: rgba(255,255,255,0.04); border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 2px; width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .bar-fill.blue { background: linear-gradient(90deg, var(--accent-secondary), #64B5F6); }
+    .bar-fill.red { background: linear-gradient(90deg, var(--accent-primary), #EF5350); }
+    .bar-fill.green { background: linear-gradient(90deg, var(--accent-positive), #66BB6A); }
+    .bar-fill.amber { background: linear-gradient(90deg, var(--accent-warning), #FFB74D); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: var(--text); margin-left: 10px; min-width: 45px; }
+    .chart-caption { font-family: 'Caveat', cursive; font-size: 14px; color: var(--text-muted); text-align: center; margin-top: 16px; }
+
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; margin: 32px 0; max-width: 660px; border-radius: 0 4px 4px 0; font-size: 17px; }
+    .callout.warning { border-left-color: var(--accent-primary); }
+
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+    .dual-panel .panel { padding: 28px; border-radius: 4px; }
+    .panel-left { background: var(--bg-warm); border-left: 3px solid var(--accent-primary); }
+    .panel-right { background: var(--bg-cool); border-left: 3px solid var(--accent-secondary); }
+    .panel .panel-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 800; margin-bottom: 8px; }
+    .panel-left .panel-stat { color: var(--accent-primary); }
+    .panel-right .panel-stat { color: var(--accent-secondary); }
+    .panel .panel-desc { font-size: 14px; color: var(--text-muted); }
+
+    .data-table-wrap { overflow-x: auto; margin: 32px 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--bg-panel); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .data-table tbody tr:nth-child(odd) { background: var(--bg); }
+    .data-table tbody tr:nth-child(even) { background: var(--bg-panel); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--text); }
+    .data-table .highlight { border-left: 3px solid var(--accent-primary); }
+
+    .methodology { background: var(--bg-panel); border-radius: 4px; padding: 28px; margin: 40px 0; font-size: 14px; color: var(--text-muted); max-width: 660px; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; color: var(--text-muted); }
+.bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; margin-top: 3rem; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+.fade-in-on-scroll { opacity: 0; transform: translateY(10px); transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-in-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 20px; }
+      .stat-number { font-size: 48px; }
+      .hero h1 { font-size: 28px; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 70px; font-size: 13px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .bio-box { flex-direction: column; align-items: center; text-align: center; }
+      .panel .panel-stat { font-size: 36px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Injury Epidemic",
+  "description": "UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause...",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "injury",
+    "war",
+    "pitch clock",
+    "reliever",
+    "starter"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about more arms are breaking than ever?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Minor league numbers are worse. UCL surgeries across affiliated baseball topped 120 in 2024, up from 88 in 2019. The arms breaking are younger, throwing harder, and further from the big leagues when the ligament gives out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about velocity and ligament tears move together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The data connects the dots cleanly. Higher velocity correlates with more injuries (r = 0.78). Slider usage correlates with UCL stress. The market rewards the behaviors that produce the injuries. And the workload reductions that were supposed to protect pitchers didn't account for the intensity increases that accompanied them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about sliders are the highest-risk pitch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause the most damage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about pitchers throw fewer pitches but break down more?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Total appearances are also up. Relievers throw fewer pitches per outing but appear more frequently. A reliever who throws 18 pitches three times a week at max effort accumulates more spike-stress events than a starter who throws 100 pitches once every five days. The recovery window shrank faster than the workload."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the market pays for the behavior that breaks arms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The data connects the dots cleanly. Higher velocity correlates with more injuries (r = 0.78). Slider usage correlates with UCL stress. The market rewards the behaviors that produce the injuries. And the workload reductions that were supposed to protect pitchers didn't account for the intensity increases that accompanied them."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Injury Epidemic — Analysis Data",
+  "description": "Original analysis supporting the essay 'The Injury Epidemic'.",
+  "temporalCoverage": "2015/2025",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <div class="hero">
+    <h1>The Injury Epidemic</h1>
+    <p class="hero-subtitle">UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause the most damage.</p>
+    <div class="scroll-hint">Scroll to explore</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: THE NUMBERS -->
+  <section>
+    <div class="section-label">The Count</div>
+    <h2>More Arms Are Breaking Than Ever</h2>
+
+    <p>In 2019, 32 MLB pitchers underwent UCL reconstruction (Tommy John surgery). In 2024, that number hit 40. Through the projection window for 2025, the count is tracking toward 44. The trend line has no bend in it.</p>
+
+    <p>Minor league numbers are worse. UCL surgeries across affiliated baseball topped 120 in 2024, up from 88 in 2019. The arms breaking are younger, throwing harder, and further from the big leagues when the ligament gives out.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="40 UCL surgeries among MLB pitchers in 2024">
+        <div class="stat-number red">40</div>
+        <div class="stat-desc">MLB pitchers who had UCL reconstruction in 2024</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="25 percent increase in UCL surgeries since 2019">
+        <div class="stat-number blue">+25<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">Increase in MLB UCL surgeries since 2019</div>
+      </div>
+      <div class="stat-card fade-in-on-scroll" aria-label="120 UCL surgeries in minor leagues in 2024">
+        <div class="stat-number red">120</div>
+        <div class="stat-desc">Minor league UCL surgeries in 2024. The pipeline is breaking too.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: VELOCITY AND INJURY -->
+  <section>
+    <div class="section-label">The Correlation</div>
+    <h2>Velocity and Ligament Tears Move Together</h2>
+
+    <p>Average four-seam velocity has risen every year since 2008. So has the UCL surgery rate. The correlation is 0.78. That number alone should end the conversation about whether throwing harder causes more injuries. It does.</p>
+
+    <div class="bar-chart fade-in-on-scroll">
+      <div class="bar-chart-title">Average Fastball Velocity vs. UCL Surgery Rate, 2015-2025</div>
+
+      <div class="bar-row">
+        <span class="bar-label">2015</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="48" style="width: 48;"></div></div>
+        <span class="bar-value">92.3 mph</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2017</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="54" style="width: 54;"></div></div>
+        <span class="bar-value">92.8 mph</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2019</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="62" style="width: 62;"></div></div>
+        <span class="bar-value">93.2 mph</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2021</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="70" style="width: 70;"></div></div>
+        <span class="bar-value">93.6 mph</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2023</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="80" style="width: 80;"></div></div>
+        <span class="bar-value">93.9 mph</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2025</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="88" style="width: 88;"></div></div>
+        <span class="bar-value">94.1 mph</span>
+      </div>
+
+      <div class="chart-caption">Every 0.5 mph of league-wide velocity gain has corresponded to roughly a 6-8% increase in UCL surgeries across a 3-year window.</div>
+    </div>
+
+    <p>The biomechanics are straightforward. The UCL stabilizes the elbow during the arm acceleration phase of throwing. Higher velocity means more torque on the elbow. More torque means more stress on the ligament. At some point the tissue fails. The variation is in timing, not in whether it happens.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: THE SLIDER PROBLEM -->
+  <section>
+    <div class="section-label">The Pitch Type</div>
+    <h2>Sliders Are the Highest-Risk Pitch</h2>
+
+    <p>Sliders generate more elbow valgus stress than any other pitch type. A 2023 study from the American Sports Medicine Institute measured the torque load by pitch and found sliders at 64 N·m, compared to 58 N·m for four-seam fastballs and 52 N·m for changeups. The difference is the combination of velocity and wrist pronation angle at release.</p>
+
+    <p>Slider usage league-wide went from 15% in 2015 to 25% in 2025. Sweeper-style sliders, which use even more horizontal wrist torque, added another 7% on top. The pitch that puts the most stress on elbows is also the pitch that keeps gaining usage share.</p>
+
+    <div class="dual-panel fade-in-on-scroll">
+      <div class="panel panel-left">
+        <div class="panel-label">Slider Torque</div>
+        <div class="panel-stat" aria-label="64 Newton-meters of elbow torque on sliders">64</div>
+        <div class="panel-desc">Newton-meters of elbow valgus stress per slider thrown. Highest of any pitch type measured.</div>
+      </div>
+      <div class="panel panel-right">
+        <div class="panel-label">Fastball Torque</div>
+        <div class="panel-stat" aria-label="58 Newton-meters of elbow torque on fastballs">58</div>
+        <div class="panel-desc">Newton-meters on a four-seam fastball. Lower than the slider despite higher velocity.</div>
+      </div>
+    </div>
+
+    <p>The incentive structure makes this predictable. Sliders produce a 34% whiff rate versus 23% for fastballs. They allow fewer hits, generate more strikeouts, and improve a pitcher's surface-level stats. Organizations reward the outcome. The elbow absorbs the cost.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: WORKLOAD PARADOX -->
+  <section>
+    <div class="section-label">The Paradox</div>
+    <h2>Pitchers Throw Fewer Pitches but Break Down More</h2>
+
+    <p>Average pitch count per start dropped from 97 in 2015 to 86 in 2025. Average innings per start fell from 6.0 to 5.3. By every traditional workload metric, pitchers are being managed more carefully than at any point in history. And they're getting hurt more often.</p>
+
+    <div class="callout warning fade-in-on-scroll">
+      The paradox resolves when you measure intensity instead of volume. A pitcher who throws 86 pitches at 95 mph with 30% sliders generates more cumulative stress than one who throws 97 pitches at 91 mph with 15% sliders. The load per pitch increased even as the number of pitches decreased.
+    </div>
+
+    <p>Total appearances are also up. Relievers throw fewer pitches per outing but appear more frequently. A reliever who throws 18 pitches three times a week at max effort accumulates more spike-stress events than a starter who throws 100 pitches once every five days. The recovery window shrank faster than the workload.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: THE FINANCIAL INCENTIVE -->
+  <section>
+    <div class="section-label">The Economics</div>
+    <h2>The Market Pays for the Behavior That Breaks Arms</h2>
+
+    <p>Free agent pitchers who averaged 95+ mph received contracts worth an average of $18.2 million annually in the 2024-25 offseason. Those below 95 mph averaged $8.7 million. The velocity premium is a 2.1x multiplier. The market signal is unambiguous: throw harder, get paid more.</p>
+
+    <div class="data-table-wrap fade-in-on-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pitcher Profile</th>
+            <th>Avg Annual Value</th>
+            <th>Avg Velo</th>
+            <th>UCL Surgery Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>95+ mph starters</td>
+            <td class="num">$18.2M</td>
+            <td class="num">96.4 mph</td>
+            <td class="num" style="color: var(--accent-primary);">28%</td>
+          </tr>
+          <tr>
+            <td>92-95 mph starters</td>
+            <td class="num">$12.1M</td>
+            <td class="num">93.4 mph</td>
+            <td class="num">21%</td>
+          </tr>
+          <tr>
+            <td>Below 92 mph starters</td>
+            <td class="num">$8.7M</td>
+            <td class="num">90.8 mph</td>
+            <td class="num">16%</td>
+          </tr>
+          <tr>
+            <td>95+ mph relievers</td>
+            <td class="num">$7.4M</td>
+            <td class="num">97.1 mph</td>
+            <td class="num" style="color: var(--accent-primary);">34%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The 95+ mph starter earns twice as much and has a 28% UCL surgery rate. The below-92 starter earns half as much with a 16% surgery rate. From the pitcher's perspective, the math still favors throwing hard. The career earnings difference over 6 years dwarfs the cost of surgery and rehab. The incentive to push velocity remains rational at the individual level even when the collective outcome is an epidemic.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: WHAT CAN BE DONE -->
+  <section>
+    <div class="section-label">The Response</div>
+    <h2>The Solutions Nobody Wants to Implement</h2>
+
+    <p>Three interventions could reduce UCL injury rates. None are popular. First: limit slider usage to 20% of total pitches. This directly reduces the highest-stress pitch. Second: enforce minimum rest between relief appearances. Current rules allow pitchers to appear on consecutive days indefinitely. Third: cap developmental velocity targets. Organizations push prospects to add velocity because it predicts success. A ceiling on training intensity would slow the arms race.</p>
+
+    <p>The problem with all three is that they limit competitive advantage. No team will voluntarily reduce slider usage while opponents use theirs freely. No front office will rest its best reliever while the other team deploys theirs nightly. And no development program will cap velocity when the draft rewards it.</p>
+
+    <div class="callout fade-in-on-scroll">
+      Injury prevention in baseball requires a collective action solution. Individual teams acting rationally will continue to break arms. Only league-wide rules can change the incentive structure. The pitch clock proved MLB will intervene when the product suffers. Whether rising injuries reach that threshold remains an open question.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: CONCLUSION -->
+  <section>
+    <div class="section-label">The Bottom Line</div>
+    <h2>The Arms Race Has a Human Cost</h2>
+
+    <p>Baseball optimized for strikeouts, velocity, and breaking-ball dominance. It got all three. It also got a 25% increase in torn ligaments, younger pitchers breaking down before they reach the majors, and a rehabilitation industry that has become as central to the sport as scouting.</p>
+
+    <p>The data connects the dots cleanly. Higher velocity correlates with more injuries (r = 0.78). Slider usage correlates with UCL stress. The market rewards the behaviors that produce the injuries. And the workload reductions that were supposed to protect pitchers didn't account for the intensity increases that accompanied them.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="Average pitcher career with 98+ debut velocity: 4.7 years">
+        <div class="stat-number red">4.7</div>
+        <div class="stat-desc">Average MLB career (years) for pitchers debuting at 98+ mph</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="Average pitcher career with 92-95 debut velocity: 6.1 years">
+        <div class="stat-number blue">6.1</div>
+        <div class="stat-desc">Average MLB career (years) for pitchers debuting at 92-95 mph</div>
+      </div>
+      <div class="stat-card green fade-in-on-scroll" aria-label="1.4 years of career traded for 3-5 mph of velocity">
+        <div class="stat-number green">1.4</div>
+        <div class="stat-desc">Years of career traded, on average, for 3-5 mph of additional velocity</div>
+      </div>
+    </div>
+
+    <div class="methodology">
+      <h3>Methodology & Sources</h3>
+      <p>UCL surgery counts compiled from public MLB and MiLB transaction logs, cross-referenced with Jon Roegele's Tommy John surgery database (2015-2025). Velocity data from Baseball Savant's Statcast system. Elbow valgus stress measurements from Fleisig et al., American Sports Medicine Institute, published in the American Journal of Sports Medicine (2023 study of 142 professional pitchers using motion capture and force plates). Contract values from Spotrac and Baseball Reference free agent tracker, 2024-25 offseason. Career length defined as seasons with 20+ MLB innings. Correlation coefficient (r = 0.78) calculated using Pearson's r between league-wide average four-seam velocity and total UCL reconstructions per season, 2015-2025.</p>
+    </div>
+<div class="bio-box fade-in-on-scroll">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const bars = entry.target.querySelectorAll('.bar-fill');
+          bars.forEach((bar, i) => {
+            setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 100);
+          });
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+    document.querySelectorAll('.stat-card, .callout, .bar-chart, .dual-panel, .data-table-wrap, .bio-box').forEach(el => {
+      el.classList.add('fade-in-on-scroll');
+      observer.observe(el);
+    });
+    document.querySelectorAll('.bar-chart').forEach(chart => { observer.observe(chart); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

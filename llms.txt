@@ -20,6 +20,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Cutter Took Over Baseball: https://plate-discipline.com/the-cutter-took-over-baseball
 - The Death of the Fastball: https://plate-discipline.com/the-death-of-the-fastball
 - The Slider Epidemic: https://plate-discipline.com/the-slider-epidemic
+- The Injury Epidemic: https://plate-discipline.com/the-injury-epidemic
 
 ## Content Format
 

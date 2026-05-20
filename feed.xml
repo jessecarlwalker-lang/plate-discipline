@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 May 2026 10:32:39 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2026 10:32:30 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Injury Epidemic</title>
+      <link>https://plate-discipline.com/the-injury-epidemic</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-injury-epidemic</guid>
+      <description>UCL surgeries are up 25% since 2019. Velocity keeps climbing. The sport is breaking its own arms, and the incentive structure rewards the pitches that cause it.</description>
+      <pubDate>Wed, 20 May 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Slider Epidemic</title>
       <link>https://plate-discipline.com/the-slider-epidemic</link>
