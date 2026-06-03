@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren&#x27;t ready.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Regression Candidate | Baseball Visual Essays">
+  <meta property="og:description" content="Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren&#x27;t ready.">
+  <meta property="og:url" content="https://plate-discipline.com/the-regression-candidate">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Regression Candidate | Baseball Visual Essays">
+  <meta name="twitter:description" content="Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren&#x27;t ready.">
+  <link rel="canonical" href="https://plate-discipline.com/the-regression-candidate">
+  
+  
+  <title>The Regression Candidate | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700;800&family=Inter:wght@400;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .annotation {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .container-wide {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .container,
+      .container-wide {
+        padding: 0 24px;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 32px;
+      background: linear-gradient(135deg, var(--bg-cool) 0%, var(--bg) 100%);
+    }
+
+    .hero h1 {
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .hero .cta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInBar {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: var(--width);
+        opacity: 1;
+      }
+    }
+
+    .fade-in-on-scroll {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    /* STAT CARDS */
+    .stat-card {
+      background: var(--bg-panel);
+      border-top: 2px solid var(--accent-primary);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    .stat-card-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .stat-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+      .stat-card-number {
+        font-size: 48px;
+      }
+    }
+
+    /* CALLOUT */
+    .callout {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 2rem;
+      margin: 3rem 0;
+      border-radius: 4px;
+    }
+
+    .callout p {
+      margin: 0;
+    }
+
+    /* BAR CHART */
+    .chart-container {
+      background: var(--bg-data);
+      padding: 2rem;
+      border-radius: 4px;
+      margin: 2rem 0;
+      border: 1px solid var(--bg-panel);
+    }
+
+    .chart-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .bar-group {
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      min-width: 120px;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 24px;
+      background: var(--bg-panel);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--accent-primary);
+      border-radius: 2px;
+      width: 0;
+      animation: slideInBar 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 800;
+      min-width: 40px;
+      text-align: right;
+    }
+
+    .bar-group:nth-child(2) .bar-fill {
+      animation-delay: 0.1s;
+    }
+    .bar-group:nth-child(3) .bar-fill {
+      animation-delay: 0.2s;
+    }
+    .bar-group:nth-child(4) .bar-fill {
+      animation-delay: 0.3s;
+    }
+    .bar-group:nth-child(5) .bar-fill {
+      animation-delay: 0.4s;
+    }
+
+    /* DUAL PANELS */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .panel-warm {
+      background: var(--bg-warm);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .panel-cool {
+      background: var(--bg-cool);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .panel-warm h3,
+    .panel-cool h3 {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .dual-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* METHODOLOGY */
+    .methodology {
+      background: var(--bg-panel);
+      padding: 2rem;
+      border-radius: 4px;
+      border-top: 2px solid var(--accent-secondary);
+      margin-top: 3rem;
+    }
+
+    .methodology h3 {
+      margin-top: 0;
+    }
+
+    .methodology ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .methodology li {
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--bg-cool);
+    }
+
+    .methodology li:last-child {
+      border-bottom: none;
+    }
+
+    /* BIO BOX */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      margin-top: 3rem;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .bio-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    /* FOOTER */
+/* DIVIDERS */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bg-panel), transparent);
+      margin: 2rem 0;
+    }
+
+    /* UTILITY */
+    .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+  
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Regression Candidate | Baseball Visual Essays",
+  "description": "Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren't ready.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "regression",
+    "war",
+    "exit velocity",
+    "park factor",
+    "woba"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about a collapse in process?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Second half, .216/.262/.372. A 59-point drop in wRC+. In his final 200 plate appearances, he hit .188. The Cubs collectively are about to learn that one brilliant half doesn't erase a structural problem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about walk rate collapse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The second half showed effort. Chase rate dropped to 37.4%. By September, 35.6%. But the problem is embedded. Crow-Armstrong doesn't walk. Walk rate determines OBP. OBP wins games."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about wrigleyville bias?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Second half, .216/.262/.372. A 59-point drop in wRC+. In his final 200 plate appearances, he hit .188. The Cubs collectively are about to learn that one brilliant half doesn't erase a structural problem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about 2026 outlook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This essay is about the 2026 regression story nobody wants to tell. The projections are in. And they're brutal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about chicago isn't ready for this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Second half, .216/.262/.372. A 59-point drop in wRC+. In his final 200 plate appearances, he hit .188. The Cubs collectively are about to learn that one brilliant half doesn't erase a structural problem."
+      }
+    }
+  ]
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>The Regression Candidate</h1>
+    <p>Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren't ready.</p>
+    <span class="cta">Scroll to explore</span>
+  </section>
+
+  <!-- INTRO -->
+  <section>
+    <div class="container">
+      <span class="label">The Setup</span>
+      <h2>A Collapse In Process</h2>
+      <p>Pete Crow-Armstrong had a season that looked like a breakout, then looked like a breakdown. First half, he hit <span class="num">.272/.309/.559</span> with <span class="num">27 HR</span> and <span class="num">29 SB</span> in <span class="num">131 wRC+</span> territory. He was a star. Then baseball remembered that he chases anything thrown at him.</p>
+      <p>Second half, <span class="num">.216/.262/.372</span>. A <span class="num">59-point drop</span> in wRC+. In his final 200 plate appearances, he hit <span class="num">.188</span>. The Cubs collectively are about to learn that one brilliant half doesn't erase a structural problem.</p>
+      <p>This essay is about the 2026 regression story nobody wants to tell. The projections are in. And they're brutal.</p>
+    </div>
+  </section>
+
+  <!-- THE WALK PROBLEM -->
+  <section>
+    <div class="container-wide">
+      <span class="label">The Core Issue</span>
+      <h2>Walk Rate Collapse</h2>
+      <div class="divider"></div>
+      <p>Crow-Armstrong finished 2025 with a <span class="num">4.5%</span> walk rate. That's <span class="num">4th percentile</span> in baseball. His OBP of <span class="num">.287</span> was <span class="num">11th lowest</span> among qualified hitters. He posted <span class="num">6.0 WAR</span> while maintaining one of the worst plate disciplines in the league. Only one other player in baseball history has done that.</p>
+      <p>A <span class="num">41.7%</span> chase rate on pitches outside the zone. <span class="num">86% meatball swing rate</span>. Zone swing rate <span class="num">13 percentage points above league average</span>. Crow-Armstrong swings at everything, especially when pitchers are throwing strikes.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-card-label">Walk Rate Percentile</span>
+          <div class="stat-card-number">4th</div>
+          <span class="stat-card-desc">Among qualified MLB hitters</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-label">Chase Rate</span>
+          <div class="stat-card-number">41.7%</div>
+          <span class="stat-card-desc">Worse than all but 4 qualifiers</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-label">Meatball Swing</span>
+          <div class="stat-card-number">86%</div>
+          <span class="stat-card-desc">Swings at pitches in the zone</span>
+        </div>
+      </div>
+
+      <p>The second half showed effort. Chase rate dropped to <span class="num">37.4%</span>. By September, <span class="num">35.6%</span>. But the problem is embedded. Crow-Armstrong doesn't walk. Walk rate determines OBP. OBP wins games.</p>
+
+      <div class="callout">
+        <p><strong>The math:</strong> You can hit 31 home runs with a <span class="num">.287 OBP</span> and still hurt your team's scoring. Crow-Armstrong proved it. Steamer projects him to regress significantly because this flaw doesn't fix in 18 months.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME ROAD SPLIT -->
+  <section>
+    <div class="container-wide">
+      <span class="label">The Environment Factor</span>
+      <h2>Wrigleyville Bias</h2>
+      <div class="divider"></div>
+      <p>At home, Crow-Armstrong hit <span class="num">.279/.311/.505</span> with <span class="num">15 HR</span> in <span class="num">324 PA</span>. On the road, <span class="num">.213/.241/.433</span> with <span class="num">16 HR</span> in <span class="num">293 PA</span>. A <span class="num">66-point gap</span> in OPS between home and away. Wrigley Field masks his plate discipline problems.</p>
+      <p>The exit velo tells a cleaner story: <span class="num">89.5 mph average</span>, <span class="num">41.6% hard-hit rate</span>, <span class="num">13% barrel rate</span>. His xwOBA sits at <span class="num">.321</span>. The underlying talent is real. The problem is the approach will throttle it.</p>
+
+      <div class="dual-panel">
+        <div class="panel-warm">
+          <h3>Home (Wrigley)</h3>
+          <p><span class="num">.279/.311/.505</span></p>
+          <p>15 HR in 324 PA</p>
+          <p><span class="num">.816 OPS</span></p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 1rem;">Park factor advantages. Shorter dimensions. Favorable wind patterns.</p>
+        </div>
+        <div class="panel-cool">
+          <h3>Road (MLB)</h3>
+          <p><span class="num">.213/.241/.433</span></p>
+          <p>16 HR in 293 PA</p>
+          <p><span class="num">.674 OPS</span></p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 1rem;">Real performance without park benefit. Closer to true talent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROJECTION -->
+  <section>
+    <div class="container-wide">
+      <span class="label">Forward Look</span>
+      <h2>2026 Outlook</h2>
+      <div class="divider"></div>
+      <p>Steamer projects Crow-Armstrong to hit <span class="num">.751 OPS</span> in 2026, down from his <span class="num">1.021 OPS</span> average for 2025. That's <span class="num">20 HR</span> and <span class="num">26 SB</span> instead of <span class="num">31 HR</span> and <span class="num">35 SB</span>. The projection: <span class="num">3.3 fWAR</span> versus <span class="num">5.4 actual</span>. A <span class="num">2.1-WAR drop</span>.</p>
+      <p>A <span class="num">6.9-point defensive value decline</span> is baked into those numbers. Steamer expects his defense to decline. The model knows what his bat will do when separated from a favorable home environment and lucky sequencing.</p>
+
+      <div class="chart-container">
+        <span class="chart-title">Crow-Armstrong: 2025 Actual vs 2026 Projected</span>
+        <div class="bar-group">
+          <span class="bar-label">2025 Actual</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="--width: 100%; background: var(--accent-primary);"></div>
+          </div>
+          <span class="bar-value">5.4</span>
+        </div>
+        <div class="bar-group">
+          <span class="bar-label">2026 Proj.</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="--width: 61%; background: var(--accent-warning);"></div>
+          </div>
+          <span class="bar-value">3.3</span>
+        </div>
+      </div>
+
+      <p>Bleacher Report named him one of 10 hitters most likely to regress in 2026. The consensus is building. The first half was real. The second half was realer.</p>
+    </div>
+  </section>
+
+  <!-- CUBS TEAM CONTEXT -->
+  <section>
+    <div class="container-wide">
+      <span class="label">The Team Problem</span>
+      <h2>Chicago Isn't Ready For This</h2>
+      <div class="divider"></div>
+      <p>Crow-Armstrong's regression is one problem in a larger pattern. Steamer projects <strong>every Cubs position player to perform worse in 2026</strong> except Matt Shaw. The cumulative WAR loss: <span class="num">6.6 fWAR</span>. They're losing Kyle Tucker in free agency. They added Alex Bregman and Edward Cabrera. It's not enough.</p>
+      <p>In 2025, the Cubs hit <span class="num">223 home runs</span>, <span class="num">6th in baseball</span>. Steamer projects <span class="num">181 HR</span> in 2026. A <span class="num">42-homer decline</span>. Nico Hoerner is the other Cubs position player projected above <span class="num">3.0 WAR</span>, despite hitting just <span class="num">7 HR</span> in 2025.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-card-label">Cubs WAR Decline</span>
+          <div class="stat-card-number">-6.6</div>
+          <span class="stat-card-desc">2025 actual vs 2026 projected</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-label">HR Projection Drop</span>
+          <div class="stat-card-number">-42</div>
+          <span class="stat-card-desc">From 223 (2025) to 181 (2026)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-label">Position Players Declining</span>
+          <div class="stat-card-number">All but 1</div>
+          <span class="stat-card-desc">Matt Shaw is the only projection gain</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>They still project to win the NL Central. The division is that weak. But a <span class="num">6.6-WAR</span> decline is the difference between competing and struggling. And it starts with one player who learned too late that you can't hit your way out of a bad approach.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVISION CONTEXT -->
+  <section>
+    <div class="container-wide">
+      <span class="label">The Wider Lens</span>
+      <h2>Everyone In The Central Is Regressing</h2>
+      <div class="divider"></div>
+      <p>The Cubs aren't alone in their decline. Cleveland Guardians are projected to win <span class="num">75-76 games</span> after winning the division in 2025. They're hitting <span class="num">81 wRC+</span> against lefties. The Milwaukee Brewers scored <span class="num">806 runs</span> last year, their most since <span class="num">1999</span>. That's hard to repeat. Cincinnati made the postseason and has <span class="num">16% playoff odds</span> in 2026.</p>
+      <p>This is a division-wide hangover. And the Cubs, despite their problems, might still finish first because everyone else is hungover too.</p>
+
+      <div class="chart-container">
+        <span class="chart-title">NL Central Regression Indicators (2025 → 2026)</span>
+        <div class="bar-group">
+          <span class="bar-label">Cleveland</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="--width: 75%; background: var(--accent-secondary);"></div>
+          </div>
+          <span class="bar-value">75-76W</span>
+        </div>
+        <div class="bar-group">
+          <span class="bar-label">Milwaukee</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="--width: 68%; background: var(--accent-secondary);"></div>
+          </div>
+          <span class="bar-value">Repeat Risk</span>
+        </div>
+        <div class="bar-group">
+          <span class="bar-label">Cincinnati</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="--width: 16%; background: var(--accent-secondary);"></div>
+          </div>
+          <span class="bar-value">16% PO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER REGRESSIONS -->
+  <section>
+    <div class="container-wide">
+      <span class="label">Beyond The NL Central</span>
+      <h2>Regression Is Everywhere</h2>
+      <div class="divider"></div>
+      <p>The Blue Jays added George Springer at age <span class="num">35</span> after he hit <span class="num">.674 OPS</span>, then <span class="num">.959 OPS</span> in back-to-back years. Varsh hit <span class="num">133 OPS</span> points higher last year. Bichette left in free agency. How long before that lineup starts feeling thin?</p>
+      <p>The Dodgers offense has an average age of <span class="num">30.7</span> years old, the oldest in baseball. Their runs scored have declined three straight years: <span class="num">906</span> to <span class="num">842</span> to <span class="num">825</span>. That's not random. That's age.</p>
+      <p>The regression class of 2026 is large, and it's starting in Chicago.</p>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section>
+    <div class="container">
+      <div class="methodology">
+        <h3>Data Sources</h3>
+        <ul>
+          <li>FanGraphs: 2025 seasonal stats, plate discipline metrics, defensive metrics</li>
+          <li>Statcast: Exit velocity, hard-hit rate, barrel rate, xwOBA</li>
+          <li>Steamer 2026 projections (FanGraphs)</li>
+          <li>Split analysis: Home/road OPS, park factors</li>
+          <li>Bleacher Report: 2026 regression candidate list</li>
+          <li>MLB.com: Free agent movements, team roster updates</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section>
+    <div class="container">
+      <div class="bio-box">
+        <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+        <div class="bio-text">
+          <div class="bio-name">Jesse Walker</div>
+          <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<script>
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-on-scroll');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all stat cards and callouts
+    document.querySelectorAll('.stat-card, .callout, .chart-container, .dual-panel, .methodology, .bio-box').forEach((el) => {
+      el.classList.add('fade-in-on-scroll');
+      observer.observe(el);
+    });
+
+    // Smooth scroll for CTA
+    document.querySelector('.cta').addEventListener('click', () => {
+      document.querySelector('section:nth-of-type(2)').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

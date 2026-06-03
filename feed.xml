@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 May 2026 10:32:30 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Jun 2026 10:30:10 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Regression Candidate</title>
+      <link>https://plate-discipline.com/the-regression-candidate</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-regression-candidate</guid>
+      <description>Pete Crow-Armstrong hit .272 in the first half and .188 in the final 200 PA. The projections say it gets worse. The Cubs aren&#x27;t ready.</description>
+      <pubDate>Wed, 03 Jun 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Injury Epidemic</title>
       <link>https://plate-discipline.com/the-injury-epidemic</link>
