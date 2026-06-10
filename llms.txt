@@ -22,6 +22,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Slider Epidemic: https://plate-discipline.com/the-slider-epidemic
 - The Injury Epidemic: https://plate-discipline.com/the-injury-epidemic
 - The Regression Candidate: https://plate-discipline.com/the-regression-candidate
+- The First-Pitch Strike Cascade: https://plate-discipline.com/the-first-pitch-strike-cascade
 
 ## Content Format
 

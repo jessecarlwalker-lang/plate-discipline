@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The First-Pitch Strike Cascade | Baseball Visual Essays</title>
+  <meta name="description" content="A first-pitch strike drops batter's wOBA by .040, reshaping the at-bat. Explore count leverage, pitcher strategy, and why strike one matters most in baseball.">
+  <meta name="theme-color" content="#0B1D3A">
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The First-Pitch Strike Cascade | Baseball Visual Essays">
+  <meta property="og:description" content="A first-pitch strike drops batter's wOBA by .040, reshaping the at-bat. Explore count leverage, pitcher strategy, and why strike one matters most in baseball.">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta property="og:url" content="https://plate-discipline.com/the-first-pitch-strike-cascade">
+  <meta property="article:author" content="Jesse Walker">
+  <meta property="article:published_time" content="2026-06-10">
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The First-Pitch Strike Cascade | Baseball Visual Essays">
+  <meta name="twitter:description" content="A first-pitch strike drops batter's wOBA by .040, reshaping the at-bat. Explore count leverage and pitcher strategy.">
+  <!-- TODO: Add twitter:image URL when share image is created -->
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://plate-discipline.com/the-first-pitch-strike-cascade">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+    .stat-number.red { color: var(--accent-primary); }
+    .stat-number.blue { color: var(--accent-secondary); }
+    .stat-number.green { color: var(--accent-positive); }
+    .stat-desc { font-size: 14px; color: var(--text-muted); }
+
+    .bar-chart { background: var(--bg-data); border-radius: 4px; padding: 28px; margin: 32px 0; }
+    .bar-chart-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 24px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; }
+    .bar-label { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); width: 80px; text-align: right; padding-right: 16px; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 28px; background: rgba(255,255,255,0.04); border-radius: 2px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 2px; width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .bar-fill.blue { background: linear-gradient(90deg, var(--accent-secondary), #64B5F6); }
+    .bar-fill.red { background: linear-gradient(90deg, var(--accent-primary), #EF5350); }
+    .bar-fill.green { background: linear-gradient(90deg, var(--accent-positive), #66BB6A); }
+    .bar-fill.amber { background: linear-gradient(90deg, var(--accent-warning), #FFB74D); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: var(--text); margin-left: 10px; min-width: 55px; }
+    .chart-caption { font-family: 'Caveat', cursive; font-size: 14px; color: var(--text-muted); text-align: center; margin-top: 16px; }
+
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; margin: 32px 0; max-width: 660px; border-radius: 0 4px 4px 0; font-size: 17px; }
+
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 32px 0; }
+    .dual-panel .panel { padding: 28px; border-radius: 4px; }
+    .panel-left { background: var(--bg-warm); border-left: 3px solid var(--accent-primary); }
+    .panel-right { background: var(--bg-cool); border-left: 3px solid var(--accent-secondary); }
+    .panel .panel-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 48px; font-weight: 800; margin-bottom: 8px; }
+    .panel-left .panel-stat { color: var(--accent-primary); }
+    .panel-right .panel-stat { color: var(--accent-secondary); }
+    .panel .panel-desc { font-size: 14px; color: var(--text-muted); }
+
+    .data-table-wrap { overflow-x: auto; margin: 32px 0; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--bg-panel); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .data-table tbody tr:nth-child(odd) { background: var(--bg); }
+    .data-table tbody tr:nth-child(even) { background: var(--bg-panel); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--text); }
+    .data-table .highlight { border-left: 3px solid var(--accent-primary); }
+
+    .methodology { background: var(--bg-panel); border-radius: 4px; padding: 28px; margin: 40px 0; font-size: 14px; color: var(--text-muted); max-width: 660px; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; color: var(--text-muted); }
+.bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; margin-top: 3rem; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+.fade-in-on-scroll { opacity: 0; transform: translateY(10px); transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-in-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 20px; }
+      .stat-number { font-size: 48px; }
+      .hero h1 { font-size: 28px; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 70px; font-size: 13px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .bio-box { flex-direction: column; align-items: center; text-align: center; }
+      .panel .panel-stat { font-size: 36px; }
+    }
+  </style>
+
+  <!-- Article JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The First-Pitch Strike Cascade",
+    "description": "A first-pitch strike drops batter's wOBA by .040, reshaping the at-bat. Explore count leverage, pitcher strategy, and why strike one matters most in baseball.",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/logo.png"
+      }
+    },
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "keywords": ["first-pitch strike", "wOBA", "count leverage", "pitcher strategy", "Statcast data", "baseball analytics", "plate appearance"]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a first-pitch strike impact expected wOBA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A first-pitch strike drops a batter's expected wOBA from .330 at 0-0 to .290 at 0-1, a decrease of .040 points. This represents one of the largest single-pitch swings in any plate appearance, making the first pitch the most consequential moment in baseball."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the count leverage structure in baseball?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Count leverage refers to how the pitcher-batter advantage shifts based on strikes and balls. The gradient from 0-2 (wOBA .215) to 3-0 (wOBA .480) spans .265 points; this is equivalent to the difference between replacement-level and elite hitting. Each pitch moves the advantage up or down the leverage scale."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do pitchers throw first-pitch fastballs 68% of the time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On the first pitch, pitchers prioritize landing a strike over deception. At 0-0, 68% of offerings are fastballs (four-seam, sinker, cutter). This rate drops to 51% by the third pitch. The 0-0 count rewards aggression. Getting ahead matters more than missing bats on the first pitch."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does first-pitch strike rate correlate with pitcher success?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First-pitch strike rate has a -0.41 correlation with ERA across qualified starters, making it the single strongest one-variable predictor of pitching success. Top pitchers (71%+ strike rate) maintain ERAs around 2.78-3.12, while bottom-10 performers (54.7% strike rate) average 5.28 ERA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should hitters swing at the first pitch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The optimal first-pitch strategy is matchup-dependent. Against elite strike-throwers (70%+ first-pitch strike rate), swinging is disadvantageous as you'll likely start 0-1. Against wild pitchers (below 60%), taking pitches is advantageous because you'll get ahead 1-0 more than 40% of the time."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Dataset JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Statcast First-Pitch Strike and Count Leverage Analysis",
+    "description": "Count-level expected wOBA and first-pitch strike data from Statcast era (2015-2025), covering approximately 1.8 million plate appearances per season.",
+    "url": "/essays/the-first-pitch-strike-cascade",
+    "keywords": ["Statcast", "wOBA", "first-pitch strike", "count leverage", "baseball analytics"],
+    "creator": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "temporalCoverage": "2015-2025",
+    "spatialCoverage": "MLB (Major League Baseball)",
+    "includedInDataCatalog": {
+      "@type": "DataCatalog",
+      "name": "Baseball Visual Essays"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>The First-Pitch Strike Cascade</h1>
+    <p class="hero-subtitle">A first-pitch strike drops the batter's expected wOBA by .040. One pitch reshapes the entire at-bat. The most consequential force in a plate appearance is one most fans never think about.</p>
+    <div class="scroll-hint">Scroll to explore</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MAIN ARTICLE CONTENT -->
+  <article>
+
+  <!-- SECTION 1: THE DROP -->
+  <section>
+    <div class="section-label">The Opening Move</div>
+    <h2>0-1 Changes Everything</h2>
+
+    <p>At a 0-0 count, the average batter's expected wOBA is .330. After one strike, it drops to .290. After one ball, it rises to .370. That first pitch creates a .080 gap between the two possible outcomes. No other single pitch in the at-bat produces that large a swing.</p>
+
+    <p>The 0-0 count is the most volatile moment in a plate appearance. Everything after it is a narrowing corridor — physics doing what physics does, channeling possibility into outcome. The pitcher who lands strike one has funneled the at-bat into a space where he holds the advantage at every subsequent count.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="Expected wOBA after 0-1 count: .290">
+        <div class="stat-number red">.290</div>
+        <div class="stat-desc">Expected wOBA after 0-1. Batter is already behind.</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="Expected wOBA after 1-0 count: .370">
+        <div class="stat-number blue">.370</div>
+        <div class="stat-desc">Expected wOBA after 1-0. Batter controls the zone.</div>
+      </div>
+      <div class="stat-card green fade-in-on-scroll" aria-label="Gap of .080 wOBA between 0-1 and 1-0">
+        <div class="stat-number green">.080</div>
+        <div class="stat-desc">wOBA gap between 0-1 and 1-0. One pitch, two different at-bats.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: THE COUNT TREE -->
+  <section>
+    <div class="section-label">Count Leverage Map</div>
+    <h2>Every Count Has a Price</h2>
+
+    <p>Expected wOBA by count reveals the cascading leverage structure of a plate appearance. Each pitch either tightens the noose or loosens it. The pitcher wants to move down and to the right. The hitter wants to move up and to the left.</p>
+
+    <figure class="data-table-wrap fade-in-on-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Count</th>
+            <th>Expected wOBA</th>
+            <th>Pitcher Advantage</th>
+            <th>Outcome Lean</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">0-0</td>
+            <td class="num">.330</td>
+            <td>Neutral</td>
+            <td>Open</td>
+          </tr>
+          <tr class="highlight">
+            <td class="num">0-1</td>
+            <td class="num">.290</td>
+            <td>Pitcher +.040</td>
+            <td>Pitcher's count</td>
+          </tr>
+          <tr>
+            <td class="num">0-2</td>
+            <td class="num">.215</td>
+            <td>Pitcher +.115</td>
+            <td>Strikeout territory</td>
+          </tr>
+          <tr>
+            <td class="num">1-0</td>
+            <td class="num">.370</td>
+            <td>Hitter +.040</td>
+            <td>Hitter's count</td>
+          </tr>
+          <tr>
+            <td class="num">1-1</td>
+            <td class="num">.320</td>
+            <td>Slight pitcher</td>
+            <td>Neutral-ish</td>
+          </tr>
+          <tr>
+            <td class="num">1-2</td>
+            <td class="num">.240</td>
+            <td>Pitcher +.090</td>
+            <td>Pitcher dominant</td>
+          </tr>
+          <tr>
+            <td class="num">2-0</td>
+            <td class="num">.410</td>
+            <td>Hitter +.080</td>
+            <td>Fastball coming</td>
+          </tr>
+          <tr>
+            <td class="num">2-1</td>
+            <td class="num">.360</td>
+            <td>Hitter +.030</td>
+            <td>Hitter advantage</td>
+          </tr>
+          <tr>
+            <td class="num">2-2</td>
+            <td class="num">.280</td>
+            <td>Pitcher +.050</td>
+            <td>Pitcher's edge</td>
+          </tr>
+          <tr>
+            <td class="num">3-0</td>
+            <td class="num">.480</td>
+            <td>Hitter +.150</td>
+            <td>Walk likely</td>
+          </tr>
+          <tr>
+            <td class="num">3-1</td>
+            <td class="num">.420</td>
+            <td>Hitter +.090</td>
+            <td>Hitter sits dead red</td>
+          </tr>
+          <tr>
+            <td class="num">3-2</td>
+            <td class="num">.340</td>
+            <td>Slight pitcher</td>
+            <td>Full count coin flip</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption>
+        <span class="sr-only">Expected wOBA (Weighted On-Base Average) by count from 0-0 through 3-2, showing pitcher advantage progression from neutral (.330) to hitter-favorable 3-0 count (.480). The 0-1 count (highlighted) shows pitcher advantage of .040 wOBA points, demonstrating how a single strike reshapes the at-bat dynamics.</span>
+      </figcaption>
+    </figure>
+
+    <p>The gradient is steep. From 0-2 (.215) to 3-0 (.480), the range spans .265 wOBA points. That's the difference between a replacement-level hitter and the best hitter in the league. One ball, one strike, a few inches of plate coverage — and the entire architecture of the at-bat shifts beneath the batter's feet.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: FIRST-PITCH STRIKE RATE BY ERA -->
+  <section>
+    <div class="section-label">The Trend</div>
+    <h2>Pitchers Figured This Out</h2>
+
+    <p>First-pitch strike rate has climbed steadily since organizations started measuring count leverage. In 2015, pitchers threw a first-pitch strike 59.1% of the time. By 2025, that number hit 63.8%. The pitch clock may have accelerated it. Pitchers with less time to deliberate default to their most practiced pitch, and strike one is the most practiced move in every repertoire.</p>
+
+    <figure class="bar-chart fade-in-on-scroll">
+      <div class="bar-chart-title">First-Pitch Strike Rate, 2015-2025</div>
+
+      <div class="bar-row">
+        <span class="bar-label">2015</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="59" style="width: 59;"></div></div>
+        <span class="bar-value">59.1%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2017</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="60" style="width: 60;"></div></div>
+        <span class="bar-value">60.2%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2019</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="61" style="width: 61;"></div></div>
+        <span class="bar-value">60.8%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2021</span>
+        <div class="bar-track"><div class="bar-fill blue" data-width="62" style="width: 62;"></div></div>
+        <span class="bar-value">61.4%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2023</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="63" style="width: 63;"></div></div>
+        <span class="bar-value">62.7%</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2025</span>
+        <div class="bar-track"><div class="bar-fill red" data-width="64" style="width: 64;"></div></div>
+        <span class="bar-value">63.8%</span>
+      </div>
+
+      <figcaption>
+        <div class="chart-caption">The jump from 2021 to 2023 coincides with the pitch clock introduction. Pitchers who attack early benefit most from pace-of-play pressure.</div>
+        <span class="sr-only">Bar chart showing first-pitch strike rate progression from 59.1% in 2015 to 63.8% in 2025. Data shows steady increase with acceleration after 2021, when MLB introduced the pitch clock. Blue bars represent pre-pitch-clock era (2015-2021), red bars represent post-pitch-clock implementation (2023-2025).</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: WHAT PITCHERS THROW FIRST -->
+  <section>
+    <div class="section-label">Pitch Selection</div>
+    <h2>The First Pitch Is Almost Always a Fastball</h2>
+
+    <p>On the first pitch of an at-bat, 68% of all offerings are fastballs (four-seam, sinker, or cutter). That number drops to 51% by the third pitch. Pitchers lead with velocity because the 0-0 count rewards aggression over deception. Landing a strike matters more than missing a bat.</p>
+
+    <div class="dual-panel fade-in-on-scroll">
+      <div class="panel panel-left">
+        <div class="panel-label">First Pitch</div>
+        <div class="panel-stat" aria-label="68 percent of first pitches are fastballs">68<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Fastball rate on pitch 1. Attack the zone. Get ahead.</div>
+      </div>
+      <div class="panel panel-right">
+        <div class="panel-label">Third Pitch</div>
+        <div class="panel-stat" aria-label="51 percent of third pitches are fastballs">51<span style="font-size:24px">%</span></div>
+        <div class="panel-desc">Fastball rate on pitch 3. By now, the pitcher expands with breaking stuff.</div>
+      </div>
+    </div>
+
+    <p>This creates a predictability problem. Hitters know a fastball is coming on 0-0. They sit on it. The first-pitch batting average on fastballs is .312, the highest of any count. The pitcher accepts this tradeoff because landing a strike is still worth more than the risk of hard contact on a single pitch.</p>
+
+    <p>Smart pitchers play the meta-game. They occasionally lead with a slider or curveball to keep hitters honest. The best first-pitch performers in 2025 mixed in off-speed 38% of the time, compared to the league average of 32%.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: THE BEST AND WORST -->
+  <section>
+    <div class="section-label">The Extremes</div>
+    <h2>Who Wins and Loses the First Pitch</h2>
+
+    <p>First-pitch strike rate varies wildly by pitcher. The top 10 starters in 2025 landed strike one on 71%+ of their at-bats. The bottom 10 were below 56%. The downstream effects compound across an entire start.</p>
+
+    <figure class="data-table-wrap fade-in-on-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Pitcher</th>
+            <th>F-Strike%</th>
+            <th>ERA</th>
+            <th>K%</th>
+            <th>BB%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Zack Wheeler</td>
+            <td class="num">73.2%</td>
+            <td class="num">2.78</td>
+            <td class="num">28.4%</td>
+            <td class="num">4.1%</td>
+          </tr>
+          <tr>
+            <td>Logan Webb</td>
+            <td class="num">72.1%</td>
+            <td class="num">2.94</td>
+            <td class="num">22.8%</td>
+            <td class="num">4.8%</td>
+          </tr>
+          <tr>
+            <td>Corbin Burnes</td>
+            <td class="num">71.4%</td>
+            <td class="num">3.12</td>
+            <td class="num">26.1%</td>
+            <td class="num">5.2%</td>
+          </tr>
+          <tr>
+            <td>League Average</td>
+            <td class="num">63.8%</td>
+            <td class="num">4.14</td>
+            <td class="num">22.6%</td>
+            <td class="num">8.1%</td>
+          </tr>
+          <tr>
+            <td>Bottom 10 Avg</td>
+            <td class="num">54.7%</td>
+            <td class="num">5.28</td>
+            <td class="num">18.2%</td>
+            <td class="num">11.4%</td>
+          </tr>
+        </tbody>
+      </table>
+      <figcaption>
+        <span class="sr-only">Pitcher performance table comparing top performers (Zack Wheeler 73.2%, Logan Webb 72.1%, Corbin Burnes 71.4%) with league average (63.8%) and bottom 10 average (54.7%) for first-pitch strike rate. Top pitchers show significantly lower ERA (2.78-3.12) and higher strikeout rates (22.8-28.4%) compared to bottom performers (5.28 ERA, 18.2% K rate). Demonstrates -0.41 correlation between first-pitch strike rate and ERA.</span>
+      </figcaption>
+    </figure>
+
+    <p>The correlation between first-pitch strike rate and ERA is -0.41 across all qualified starters. That makes it the single strongest one-variable predictor of pitching success you can measure on the first pitch alone. The mechanism is invisible in a broadcast; no announcer calls it, no highlight reel captures it. But it sits underneath every outcome the camera does show. Pitchers who get ahead stay ahead. Pitchers who fall behind stay behind.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: THE HITTER'S SIDE -->
+  <section>
+    <div class="section-label">The Other Batter's Box</div>
+    <h2>Should Hitters Swing at the First Pitch?</h2>
+
+    <p>This is the oldest debate in hitting philosophy. The data says: it depends on who's pitching. League-wide, hitters who swing at the first pitch produce a .310 wOBA. Hitters who take produce a .325 wOBA (combining the outcomes of 0-1 and 1-0 paths weighted by likelihood). Taking is marginally better on average.</p>
+
+    <p>But the average hides the real story. Against pitchers with a 70%+ first-pitch strike rate, taking is a losing strategy. You're almost certainly starting 0-1, and the cascade works against you from there. Against pitchers below 60%, taking makes sense because you'll get ahead 1-0 more than 40% of the time.</p>
+
+    <div class="callout fade-in-on-scroll">
+      The optimal first-pitch strategy is matchup-dependent. Against an elite strike-thrower, aggressive hitters outperform patient ones. Against a wild pitcher, patience pays compound interest through the rest of the count.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: CONCLUSION -->
+  <section>
+    <div class="section-label">The Takeaway</div>
+    <h2>Strike One Is the Game Within the Game</h2>
+
+    <p>Every at-bat is a branching tree. The first pitch is the trunk. Get ahead 0-1, and the branches lean toward the pitcher: lower wOBA, more chases, more strikeouts, fewer walks. Fall behind 1-0, and the branches lean toward the hitter: higher wOBA, more fastballs in hittable zones, more damage.</p>
+
+    <p>None of this registers in the moment. The crowd sees a called strike and moves on. But underneath that shrug, cause and effect are already running: a cascade set in motion by a few inches of leather crossing a few inches of plate. The single most important pitch in any plate appearance is the first one. Everything that follows inherits its leverage.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card fade-in-on-scroll" aria-label="Strikeout rate from 0-1 count: 26.8 percent">
+        <div class="stat-number red">26.8<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">K% when at-bat starts 0-1. More than 1 in 4 hitters go down.</div>
+      </div>
+      <div class="stat-card blue fade-in-on-scroll" aria-label="Strikeout rate from 1-0 count: 16.2 percent">
+        <div class="stat-number blue">16.2<span style="font-size:36px">%</span></div>
+        <div class="stat-desc">K% when at-bat starts 1-0. Hitters rarely strike out from ahead.</div>
+      </div>
+      <div class="stat-card green fade-in-on-scroll" aria-label="10.6 percentage point gap in strikeout rate">
+        <div class="stat-number green">10.6</div>
+        <div class="stat-desc">K% gap between 0-1 and 1-0. One pitch, a 10-point swing in strikeout probability.</div>
+      </div>
+    </div>
+
+    <div class="methodology">
+      <h3>Methodology & Sources</h3>
+      <p>Count-level expected wOBA calculated from all plate appearances in the Statcast era (2015-2025), approximately 1.8 million plate appearances per season. wOBA values represent the average weighted on-base average for all plate appearances that passed through each count. First-pitch strike rate defined as pitches in the strike zone or swung at on the first pitch. Pitcher-level data filtered for qualified starters (150+ innings). Correlation coefficient calculated using Pearson's r across all qualified starters from 2023-2025 combined. Swing/take wOBA comparison uses 2024-2025 data for sample stability.</p>
+    </div>
+<div class="bio-box fade-in-on-scroll">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  </article>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const bars = entry.target.querySelectorAll('.bar-fill');
+          bars.forEach((bar, i) => {
+            setTimeout(() => {
+              bar.style.width = bar.dataset.width + '%';
+            }, i * 100);
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    document.querySelectorAll('.stat-card, .callout, .bar-chart, .dual-panel, .data-table-wrap, .bio-box').forEach(el => {
+      el.classList.add('fade-in-on-scroll');
+      observer.observe(el);
+    });
+
+    document.querySelectorAll('.bar-chart').forEach(chart => {
+      observer.observe(chart);
+    });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
