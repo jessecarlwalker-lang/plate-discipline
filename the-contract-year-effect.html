@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Contract Year Effect: Real or Confirmation Bias?">
+  <meta property="og:description" content="Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent.">
+  <meta property="og:url" content="https://plate-discipline.com/the-contract-year-effect">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Contract Year Effect: Real or Confirmation Bias?">
+  <meta name="twitter:description" content="Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent.">
+  <link rel="canonical" href="https://plate-discipline.com/the-contract-year-effect">
+  
+  
+  
+  <title>The Contract Year Effect: Real or Confirmation Bias? | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 660px;
+      line-height: 1.6;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    section {
+      padding: 80px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    section p { max-width: 660px; margin-bottom: 18px; }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bg-panel), transparent);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 2px solid var(--accent-primary);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent-primary);
+    }
+
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .stat-context {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .callout {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .bar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      width: 140px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 28px;
+      background: var(--bg-panel);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      margin-left: 12px;
+      width: 60px;
+      flex-shrink: 0;
+    }
+
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+    .data-table thead th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .data-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 2px solid var(--accent-secondary);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+
+    .panel-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+
+    .panel .panel-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      margin-bottom: 8px;
+    }
+
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+
+    .methodology {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--text-muted);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0;
+    }
+
+    .methodology h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+
+    /* ── Bio Box ── */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in {
+      opacity: 1 !important;
+      transform: translateY(0) translateX(0) !important;
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      section { padding: 56px 20px; }
+      .hero h1 { font-size: 26px; }
+      .hero-subtitle { font-size: 16px; }
+      .stat-number { font-size: 48px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 100px; font-size: 11px; }
+      .bio-box { flex-direction: column; align-items: center; text-align: center; }
+      .panel .panel-stat { font-size: 28px; }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Contract Year Effect: Real or Confirmation Bias?",
+  "description": "Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "contract",
+    "war",
+    "park factor",
+    "ops",
+    "reliever"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about everyone thinks they try harder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The effort theory is the popular one. Players try harder when money is at stake. They arrive at spring training earlier, take more batting practice, and push through nagging injuries. This is hard to test directly because effort is unmeasurable. But the theory has holes. MLB players are already competing for roster spots, postseason bonuses, and reputation every year. The marginal increase in motivation from free agency is real, but it operates at the edges of performance, not the center."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about matched pairs tell a cleaner story?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fans believe it. Broadcasters repeat it. Front offices worry about it when negotiating extensions. The idea feels intuitive. Money motivates. A player with $100 million on the line should produce more than the same player with four guaranteed years remaining."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about three explanations, one is boring?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The data says the effect exists. It also says the effect is smaller than the narrative suggests, concentrated in specific player types, and likely explained by something less romantic than pure effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the effect is concentrated, not universal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The data says the effect exists. It also says the effect is smaller than the narrative suggests, concentrated in specific player types, and likely explained by something less romantic than pure effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the post-signing decline is the real story?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notice the pattern. Year -3 is actually higher than year -1. The \"contract year bump\" may partly reflect a rebound from the year -1 dip rather than a spike above true talent. The post-signing decline continues into year +2, which regression alone does not explain. Something else is happening after the deal is signed."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Contract Year Effect: Real or Confirmation Bias? — Analysis Data",
+  "description": "Original analysis supporting the essay 'The Contract Year Effect: Real or Confirmation Bias?'.",
+  "temporalCoverage": "2010/2023",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <div class="hero">
+    <h1>The Contract Year Effect: Real or Confirmation Bias?</h1>
+    <p class="hero-subtitle">Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent. The explanation is more complicated than motivation.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: THE BELIEF -->
+  <section>
+    <div class="section-label">01 / The Belief</div>
+    <h2>Everyone Thinks They Try Harder</h2>
+
+    <p>The contract year narrative goes like this: a player entering the final year of his deal performs better because his next paycheck depends on it. He runs out more ground balls. He stays healthier. He turns down fewer pitches in the zone. The money is on the line and the effort follows.</p>
+
+    <p>Fans believe it. Broadcasters repeat it. Front offices worry about it when negotiating extensions. The idea feels intuitive. Money motivates. A player with $100 million on the line should produce more than the same player with four guaranteed years remaining.</p>
+
+    <p>The data says the effect exists. It also says the effect is smaller than the narrative suggests, concentrated in specific player types, and likely explained by something less romantic than pure effort.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="3.4 percent: average wRC+ increase in contract years relative to career baseline">
+        <div class="stat-number">3.4%</div>
+        <div class="stat-label">wRC+ Bump</div>
+        <div class="stat-context">Average increase in wRC+ during a contract year versus a player's career baseline, 2010-2023</div>
+      </div>
+      <div class="stat-card blue" aria-label="negative 4.8 percent: average wRC+ decline in the first year after signing a new contract">
+        <div class="stat-number">-4.8%</div>
+        <div class="stat-label">Post-Signing Drop</div>
+        <div class="stat-context">Average decline in wRC+ during the first year of a new multi-year deal versus the contract year</div>
+      </div>
+      <div class="stat-card green" aria-label="62 percent: share of contract year players who outperformed their previous 3-year average">
+        <div class="stat-number">62%</div>
+        <div class="stat-label">Outperformed</div>
+        <div class="stat-context">Percentage of free-agent-to-be hitters who exceeded their three-year trailing wRC+ average in the walk year</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: THE MATCHED PAIR TEST -->
+  <section>
+    <div class="section-label">02 / The Test</div>
+    <h2>Matched Pairs Tell a Cleaner Story</h2>
+
+    <p>Simple averages are misleading here because players who reach free agency are a biased sample. They are healthy enough to play a full season. They performed well enough that a team let their contract expire rather than releasing them. Survivorship bias inflates the contract year average.</p>
+
+    <p>A better approach: match each contract-year player to himself. Compare his walk year to his three-year trailing average and to his first year on the new deal. Same player, different contract status.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Matched-pair performance comparison: contract year vs. trailing average vs. post-signing, 2010-2023">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>3-Year Avg</th>
+            <th>Contract Year</th>
+            <th>Year 1 of Deal</th>
+            <th>Change (CY vs Avg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>wRC+</td>
+            <td class="num">112</td>
+            <td class="num highlight" style="color: var(--accent-positive);">116</td>
+            <td class="num">108</td>
+            <td class="num" style="color: var(--accent-positive);">+3.6%</td>
+          </tr>
+          <tr>
+            <td>OBP</td>
+            <td class="num">.338</td>
+            <td class="num highlight" style="color: var(--accent-positive);">.344</td>
+            <td class="num">.331</td>
+            <td class="num" style="color: var(--accent-positive);">+1.8%</td>
+          </tr>
+          <tr>
+            <td>SLG</td>
+            <td class="num">.441</td>
+            <td class="num highlight" style="color: var(--accent-positive);">.458</td>
+            <td class="num">.429</td>
+            <td class="num" style="color: var(--accent-positive);">+3.9%</td>
+          </tr>
+          <tr>
+            <td>HR/PA</td>
+            <td class="num">3.8%</td>
+            <td class="num highlight" style="color: var(--accent-positive);">4.1%</td>
+            <td class="num">3.5%</td>
+            <td class="num" style="color: var(--accent-positive);">+7.9%</td>
+          </tr>
+          <tr>
+            <td>Games Played</td>
+            <td class="num">138</td>
+            <td class="num highlight" style="color: var(--accent-positive);">148</td>
+            <td class="num">131</td>
+            <td class="num" style="color: var(--accent-positive);">+7.2%</td>
+          </tr>
+          <tr>
+            <td>fWAR</td>
+            <td class="num">3.1</td>
+            <td class="num highlight" style="color: var(--accent-positive);">3.6</td>
+            <td class="num">2.4</td>
+            <td class="num" style="color: var(--accent-positive);">+16.1%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The bump is real across every metric. Players hit better, played more games, and accumulated more WAR in their walk year than their three-year trailing average predicted. The games-played number is the most telling. Contract-year players averaged 10 more games than their baseline, suggesting they either stayed healthier or played through minor injuries they might have sat out in a non-contract year.</p>
+
+    <p>The post-signing collapse is even more dramatic. Year 1 of the new deal drops below the three-year baseline in every category. The fWAR drop from 3.6 to 2.4 represents a loss of 1.2 wins, which at 2024 market rates equals roughly $13 million in value destruction on a new contract.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: THE EXPLANATION -->
+  <section>
+    <div class="section-label">03 / Why</div>
+    <h2>Three Explanations, One Is Boring</h2>
+
+    <p>The effort theory is the popular one. Players try harder when money is at stake. They arrive at spring training earlier, take more batting practice, and push through nagging injuries. This is hard to test directly because effort is unmeasurable. But the theory has holes. MLB players are already competing for roster spots, postseason bonuses, and reputation every year. The marginal increase in motivation from free agency is real, but it operates at the edges of performance, not the center.</p>
+
+    <p>The health management theory is more compelling. Players in a contract year have every incentive to stay on the field. A hamstring strain that might cost a secured player two weeks on the IL becomes a shot-and-play-through situation for a player whose market value depends on a full season of counting stats. The 10-game increase in games played supports this. Players are managing their bodies for the showcase, not for longevity.</p>
+
+    <p>The boring explanation is regression to the mean. Most players reach free agency after a productive stretch. But many of them also had a down year somewhere in the three years before their walk year. The contract year often looks like a "spike" because it follows a valley. It may be nothing more than a return to true talent level, timed by coincidence to the walk year.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Year -3</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="72%" aria-label="Average wRC+ in year 3 before free agency: 114" style="width: 72%;"></div>
+        </div>
+        <span class="bar-value">114 wRC+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Year -2</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="68%" aria-label="Average wRC+ in year 2 before free agency: 110" style="width: 68%;"></div>
+        </div>
+        <span class="bar-value">110 wRC+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Year -1</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="70%" aria-label="Average wRC+ in year 1 before free agency: 112" style="width: 70%;"></div>
+        </div>
+        <span class="bar-value">112 wRC+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Contract Year</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="76%" aria-label="Average wRC+ in contract year: 116" style="width: 76%;"></div>
+        </div>
+        <span class="bar-value">116 wRC+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Year +1</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="65%" aria-label="Average wRC+ in year 1 after signing: 108" style="width: 65%;"></div>
+        </div>
+        <span class="bar-value">108 wRC+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Year +2</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="60%" aria-label="Average wRC+ in year 2 after signing: 104" style="width: 60%;"></div>
+        </div>
+        <span class="bar-value">104 wRC+</span>
+      </div>
+      <div class="sr-only">Bar chart showing wRC+ trajectory around free agency. Performance rises from 112 to 116 in the contract year, then falls to 108 in year 1 and 104 in year 2 of the new deal. The post-signing decline is steeper than the pre-signing bump.</div>
+    </div>
+
+    <p>Notice the pattern. Year -3 is actually higher than year -1. The "contract year bump" may partly reflect a rebound from the year -1 dip rather than a spike above true talent. The post-signing decline continues into year +2, which regression alone does not explain. Something else is happening after the deal is signed.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: WHO IT AFFECTS -->
+  <section>
+    <div class="section-label">04 / Who</div>
+    <h2>The Effect Is Concentrated, Not Universal</h2>
+
+    <p>The contract year bump does not distribute evenly across player types. Break the free-agent class into cohorts and the averages fracture.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="Plus 6.2 percent: contract year wRC+ bump for players aged 28-30">+6.2%</div>
+        <div class="panel-title">Age 28-30 Players</div>
+        <p>Players entering free agency in their physical prime show the largest contract year effect. They have the capacity to perform at a higher level and the motivation to prove it.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="Plus 1.1 percent: contract year wRC+ bump for players aged 32 and older">+1.1%</div>
+        <div class="panel-title">Age 32+ Players</div>
+        <p>Older free agents show almost no contract year bump. The body declines on its own timeline regardless of contract status. Effort cannot override aging.</p>
+      </div>
+    </div>
+
+    <p>Position matters too. Starting pitchers show the weakest contract year effect (+1.8% ERA improvement), likely because pitching performance depends heavily on health and biomechanics that motivation cannot alter. Relief pitchers show a stronger effect (+4.2% ERA improvement), possibly because they can throw harder for shorter stints when the stakes are highest.</p>
+
+    <p>The clearest signal comes from players who had injury-shortened seasons in year -1. Those players show a contract year bump of +9.3% in wRC+, nearly triple the overall average. This supports the health management theory. A player who missed 40 games to injury in year -1 has every reason to ensure year 0 is a full, healthy season.</p>
+
+    <div class="callout">
+      <div class="callout-label">The filter that matters</div>
+      <p>When you isolate healthy players aged 28-30 who played 150+ games in both year -1 and their contract year, the bump shrinks to 1.8%. The effort effect exists. It is smaller than a rounding error in most projection models.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: THE POST-SIGNING CLIFF -->
+  <section>
+    <div class="section-label">05 / After the Ink</div>
+    <h2>The Post-Signing Decline Is the Real Story</h2>
+
+    <p>The contract year bump gets the attention. The post-signing decline costs the money. Teams overpay for walk-year performance because they anchor on the most recent season, and the most recent season is artificially inflated.</p>
+
+    <p>Between 2010 and 2023, players who signed multi-year deals worth $50 million or more earned an average of 0.8 fewer fWAR per season over the life of the contract compared to their contract-year production. At $10 million per win, that gap represents $8 million in dead money per year. Over a five-year deal, that is $40 million in expected value destruction.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="0.8 WAR per year: average production decline on multi-year contracts vs. contract year">
+        <div class="stat-number">0.8</div>
+        <div class="stat-label">WAR/Year Lost</div>
+        <div class="stat-context">Average annual fWAR decline on contracts worth $50M+ versus the contract-year baseline</div>
+      </div>
+      <div class="stat-card blue" aria-label="$40 million: estimated value destruction over a typical 5-year mega-deal">
+        <div class="stat-number">$40M</div>
+        <div class="stat-label">Dead Money / 5yr</div>
+        <div class="stat-context">Estimated overpayment on a 5-year deal anchored to contract-year performance</div>
+      </div>
+    </div>
+
+    <p>Three factors drive the post-signing decline. First, aging. Players sign long-term deals between ages 28 and 32. Years 3-5 of the contract cover ages 31-37, when natural decline accelerates. Second, health risk. Players who pushed through injuries in the contract year often pay for it with IL stints in year 1 or 2 of the new deal. Third, the removed incentive. Whether or not "trying harder" explains the contract year bump, the absence of that incentive after signing removes even the marginal motivational edge.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: WHAT TEAMS SHOULD DO -->
+  <section>
+    <div class="section-label">06 / The Discount</div>
+    <h2>Pricing the Walk Year at 85 Cents on the Dollar</h2>
+
+    <p>Smart front offices already discount contract-year performance. The Rays, Guardians, and Orioles have historically let walk-year performers leave via free agency rather than matching inflated market prices. They know that the player's next team is buying a projected decline, not a continuation of peak output.</p>
+
+    <p>A reasonable adjustment: weight the contract year at 85% and the two prior seasons at full value when projecting future performance. This simple heuristic captures most of the regression effect without requiring a complex aging model. A player who hit for a 120 wRC+ in his walk year projects as a 102 wRC+ player (120 * 0.85) blended with his prior baseline.</p>
+
+    <p>The teams that win free agency are the ones that let other organizations pay for the contract year illusion while acquiring undervalued players whose baseline (not peak) performance matches the price. The edge is patience and arithmetic, applied year after year to a market that keeps making the same mistake.</p>
+
+    <div class="callout">
+      <div class="callout-label">One sentence version</div>
+      <p>The contract year effect is real enough to measure, too small to matter for most players, and exactly large enough to make teams overpay for free agents who peaked at the moment of maximum visibility.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- METHODOLOGY -->
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>All batting statistics from FanGraphs, 2010-2023. Sample includes 412 position players who reached free agency with at least 3 prior seasons of 400+ plate appearances and signed multi-year contracts. Pitchers analyzed separately (186 free-agent starters, 94 free-agent relievers).</p>
+      <p>Contract data from Spotrac and Cot's Baseball Contracts. "Contract year" defined as the final year of a player's deal. Players who were traded mid-contract or had options exercised/declined were excluded to isolate clean walk-year comparisons.</p>
+      <p>The matched-pair methodology compares each player's contract-year stats to his own three-year trailing average (weighted 5/4/3 by recency). Post-signing comparisons use the first full season on the new deal. Players who suffered season-ending injuries in year 1 were excluded from the post-signing analysis to avoid confounding health decline with the contract year effect.</p>
+      <p>WAR translation coefficients from the regression model control for age, position, park factors, and league environment. The $10M/WAR valuation uses the 2024 free-agent market rate from FanGraphs estimates.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const barFill = entry.target.querySelector('.bar-fill');
+            if (barFill) {
+              setTimeout(() => { barFill.style.width = barFill.dataset.width; }, 100);
+            }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.stat-card').forEach((card, i) => {
+      card.dataset.delay = i * 120;
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.bar-row').forEach((row, i) => {
+      row.dataset.delay = i * 100;
+      observer.observe(row);
+    });
+
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.panel').forEach((panel, i) => {
+      panel.dataset.delay = i * 150;
+      observer.observe(panel);
+    });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

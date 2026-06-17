@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jun 2026 13:16:06 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 10:31:39 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Contract Year Effect</title>
+      <link>https://plate-discipline.com/the-contract-year-effect</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-contract-year-effect</guid>
+      <description>Players in their walk year outperform career averages by 3-5%. Then they sign and regress. The pattern is consistent.</description>
+      <pubDate>Wed, 17 Jun 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The First-Pitch Strike Cascade</title>
       <link>https://plate-discipline.com/the-first-pitch-strike-cascade</link>

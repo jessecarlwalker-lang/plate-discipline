@@ -23,6 +23,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Injury Epidemic: https://plate-discipline.com/the-injury-epidemic
 - The Regression Candidate: https://plate-discipline.com/the-regression-candidate
 - The First-Pitch Strike Cascade: https://plate-discipline.com/the-first-pitch-strike-cascade
+- The Contract Year Effect: https://plate-discipline.com/the-contract-year-effect
 
 ## Content Format
 
