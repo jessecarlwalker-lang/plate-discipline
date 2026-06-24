@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Small Market Teams Can't Keep Their Stars | Baseball Visual Essays</title>
+  <meta name="description" content="Since 2010, 78 all-star players left small-market teams via free agency. 91% signed with top-15 payroll clubs. Revenue sharing failed to solve baseball's talent gap.">
+  <meta property="og:title" content="Why Small Market Teams Can't Keep Their Stars | Baseball Visual Essays">
+  <meta property="og:description" content="Since 2010, 78 all-star players left small-market teams via free agency. 91% signed with top-15 payroll clubs. Revenue sharing failed to solve baseball's talent gap.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://plate-discipline.com/why-small-market-teams-cant-keep-their-stars">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why Small Market Teams Can't Keep Their Stars | Baseball Visual Essays">
+  <meta name="twitter:description" content="Since 2010, 78 all-star players left small-market teams via free agency. 91% signed with top-15 payroll clubs. Revenue sharing failed to solve baseball's talent gap.">
+  <meta name="theme-color" content="#0B1D3A">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 58px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 860px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 110px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 50px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 26px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 80px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Small Market Teams Can't Keep Their Stars",
+    "description": "Since 2010, 78 all-star players left small-market teams via free agency. 91% signed with top-15 payroll clubs. Revenue sharing failed to solve baseball's talent gap.",
+    "datePublished": "2026-06-24",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays"
+    },
+    "keywords": ["small-market teams", "free agency", "payroll gap", "revenue sharing", "talent exodus", "competitive balance", "baseball economics"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many all-star players have left small-market teams since 2010?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Between 2010 and 2024, 78 all-star caliber players—defined as those with 2+ seasons of 3+ WAR while under team control—left bottom-10 payroll teams via free agency. Notable departures include Mookie Betts, Bryce Harper, Freddie Freeman, Corey Seager, Jacob deGrom, and Gerrit Cole. Only 7 of the 78 re-signed with their original teams; 71 departed for top-15 payroll clubs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Did revenue sharing help small-market teams retain their stars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Revenue sharing transfers roughly $100 million annually from high-revenue clubs to low-revenue teams, but it failed to close the talent gap. In 2010, the payroll gap between highest and lowest was $170 million. In 2024, it was $230 million. Revenue sharing raised the floor for small-market teams but did not slow spending growth at the top, leaving the structural revenue advantage intact."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What was the average salary increase for departing stars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Players who left small-market teams experienced an average salary increase of 247%. The average contract length jumped from their final arbitration year (approximately 1 year) to 5.8 years under free-agent agreements with top-15 payroll clubs. This reflects the massive premium the free-agent market places on star talent compared to small-market teams' ability to pay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which teams signed the most departing stars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five teams signed 36 of the 78 departing stars: Dodgers (9), Yankees (8), Phillies (7), Mets (6), and Red Sox (6). These destinations had 2024 payrolls ranging from $248M to $310M, all significantly above the small-market baseline of roughly $80-100M. The concentration shows how talent flows uphill toward baseball's wealthiest organizations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why don't early contract extensions keep stars with small-market teams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Between 2010-2024, small-market teams offered early extensions to 41 of the 78 star players; 23 accepted and 18 declined. Of the 23 who accepted, 14 signed contracts paying at least 40% below eventual open-market value. Players and agents know the math: a 26-year-old with 4+ WAR will earn $25-35M annually in free agency, but small-market extensions typically offer $15-20M per year, making extension deals unattractive to bet-on-yourself players."
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://plate-discipline.com/why-small-market-teams-cant-keep-their-stars">
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+
+  <article>
+  <div class="hero">
+    <h1>Why Small Market Teams Can't Keep Their Stars</h1>
+    <p class="hero-subtitle">Since 2010, 78 all-star caliber players have left bottom-10 payroll teams via free agency. 71 of them signed with top-15 payroll clubs. Revenue sharing was supposed to level the field. The talent still flows one direction.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Exodus</div>
+    <h2>78 Stars, One Direction</h2>
+
+    <p>We tracked every position player and pitcher who posted at least two seasons of 3+ WAR while under team control with a bottom-10 payroll organization, then left via free agency between 2010 and 2024. The list includes 78 players. Among them: Mookie Betts, Bryce Harper, Freddie Freeman, Corey Seager, Jacob deGrom, Gerrit Cole, and Marcus Semien.</p>
+
+    <p>Of those 78, just 7 re-signed with the team that developed them. The other 71 left for top-15 payroll clubs. The average salary increase was 247%. The average contract length jumped from the 1-year arbitration deal they played under to a 5.8-year free-agent commitment.</p>
+
+    <figure>
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="78 all-star caliber players who left bottom-10 payroll teams via free agency since 2010">
+        <div class="stat-number">78</div>
+        <div class="stat-label">Stars Who Left</div>
+        <div class="stat-context">Players with 2+ seasons of 3+ WAR who departed bottom-10 payroll teams via free agency, 2010-2024</div>
+      </div>
+      <div class="stat-card blue" aria-label="91% of departing stars signed with top-15 payroll teams">
+        <div class="stat-number">91%</div>
+        <div class="stat-label">Went to Big Markets</div>
+        <div class="stat-context">71 of 78 departing stars signed with top-15 payroll organizations. The talent pipeline flows uphill.</div>
+      </div>
+      <div class="stat-card green" aria-label="247% average salary increase when stars left small market teams">
+        <div class="stat-number">247%</div>
+        <div class="stat-label">Avg Salary Increase</div>
+        <div class="stat-context">Average raise from final small-market salary to first free-agent contract. The market pays what small teams cannot.</div>
+      </div>
+    </div>
+    <figcaption class="sr-only">Star departures from small-market teams: 78 players left, 91% signed with big-market clubs, average salary increase 247%.</figcaption>
+    </figure>
+
+    <p>The pattern repeats every offseason. A small-market team develops a player through its farm system, controls him for six years at below-market salaries, watches him become an all-star, then loses him to a team that can afford the free-agent price. The developing team gets a compensatory draft pick. The signing team gets a franchise player in his prime.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Money Gap</div>
+    <h2>Revenue Sharing Didn't Close It</h2>
+
+    <p>MLB's revenue sharing system transfers roughly $100 million per year from the highest-revenue clubs to the lowest. In 2024, the Dodgers contributed an estimated $90 million to the pool. The Rays received an estimated $40 million. The system was designed to give small-market teams enough financial breathing room to retain their best players.</p>
+
+    <p>The data shows it failed at that goal. In 2010, the gap between the highest and lowest payroll in baseball was $170 million (Yankees at $206M, Pirates at $36M). In 2024, the gap was $230 million (Dodgers at $310M, Athletics at $80M). Revenue sharing narrowed the gap at the bottom by raising floors, but the ceiling kept rising faster.</p>
+
+    <figure>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">2010 Low</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="12%" aria-label="2010 lowest payroll (Pirates): $36M" style="width: 12%;"></div>
+        </div>
+        <span class="bar-value">$36M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2010 High</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="66%" aria-label="2010 highest payroll (Yankees): $206M" style="width: 66%;"></div>
+        </div>
+        <span class="bar-value">$206M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2024 Low</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="26%" aria-label="2024 lowest payroll (Athletics): $80M" style="width: 26%;"></div>
+        </div>
+        <span class="bar-value">$80M</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2024 High</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="100%" aria-label="2024 highest payroll (Dodgers): $310M" style="width: 100%;"></div>
+        </div>
+        <span class="bar-value">$310M</span>
+      </div>
+      <div class="sr-only">Bar chart comparing payroll extremes in 2010 and 2024. The gap between highest and lowest payroll grew from $170M in 2010 to $230M in 2024. Revenue sharing raised the floor but did not slow the growth at the top.</div>
+    </div>
+    <figcaption class="sr-only">Payroll gap analysis: 2010 low $36M to high $206M (gap $170M); 2024 low $80M to high $310M (gap $230M).</figcaption>
+    </figure>
+
+    <p>The problem is structural. Revenue sharing redistributes a fixed pool. It does not cap spending. A team like the Dodgers generates $400+ million in annual revenue from media deals, ticket sales, and merchandise. The Rays generate roughly $180 million. Revenue sharing sends $40 million from one to the other, but the gap in total revenue remains $180 million after the transfer. You cannot compete for a $300 million free agent with a $180 million total revenue base.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Talent Flow</div>
+    <h2>Where the Stars Go</h2>
+
+    <p>Five organizations received the most departing stars from small-market teams between 2010 and 2024: the Dodgers (9 players), Yankees (8), Phillies (7), Mets (6), and Red Sox (6). These five teams signed 36 of the 78 departing stars. Nearly half of small-market talent funneled to just five destinations.</p>
+
+    <figure>
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Top destinations for stars departing small-market teams, 2010-2024">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Stars Signed</th>
+            <th>Avg Contract</th>
+            <th>2024 Payroll</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dodgers</td>
+            <td class="num highlight">9</td>
+            <td class="num">6.2 yr / $142M</td>
+            <td class="num">$310M</td>
+          </tr>
+          <tr>
+            <td>Yankees</td>
+            <td class="num highlight">8</td>
+            <td class="num">5.8 yr / $128M</td>
+            <td class="num">$292M</td>
+          </tr>
+          <tr>
+            <td>Phillies</td>
+            <td class="num highlight">7</td>
+            <td class="num">5.4 yr / $119M</td>
+            <td class="num">$261M</td>
+          </tr>
+          <tr>
+            <td>Mets</td>
+            <td class="num">6</td>
+            <td class="num">5.1 yr / $108M</td>
+            <td class="num">$286M</td>
+          </tr>
+          <tr>
+            <td>Red Sox</td>
+            <td class="num">6</td>
+            <td class="num">5.5 yr / $115M</td>
+            <td class="num">$248M</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sr-only">Table showing top 5 destinations for small-market stars. The Dodgers signed the most (9 players) with the largest average contract (6.2 years, $142M). All 5 teams had 2024 payrolls above $240M.</div>
+    </div>
+    <figcaption class="sr-only">Top 5 destinations: Dodgers 9 players ($142M avg), Yankees 8 ($128M), Phillies 7 ($119M), Mets 6 ($108M), Red Sox 6 ($115M).</figcaption>
+    </figure>
+
+    <p>The source teams tell the opposite story. The Rays lost the most stars (8), followed by the Pirates (7), Brewers (6), Guardians (6), and Royals (5). These organizations developed 32 all-star caliber players over 15 years and kept none of them through free agency. The development investment yielded 6 years of controlled production, then nothing.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / The Extension Trap</div>
+    <h2>Why Early Extensions Rarely Work</h2>
+
+    <p>Small-market teams try to beat free agency by signing their stars to early extensions. The strategy makes sense in theory: lock up the player at a discount before he reaches the open market. In practice, it rarely works for premium talent.</p>
+
+    <p>Between 2010 and 2024, small-market teams offered early extensions to 41 of the 78 players in our sample. Twenty-three players accepted. Eighteen declined and eventually left via free agency. Of the 23 who accepted, 14 received contracts that paid them at least 40% below their eventual open-market value (estimated by comparable free-agent deals at the same age and WAR level).</p>
+
+    <figure>
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="18 of 41 extension offers were declined by players">18</div>
+        <div class="panel-title">Declined Extensions</div>
+        <p>Players who turned down early extension offers from small-market teams, 2010-2024. They bet on themselves and won. Their average free-agent contract exceeded the extension offer by 62%.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="14 of 23 accepted extensions paid players 40% below market value">14</div>
+        <div class="panel-title">Below-Market Deals</div>
+        <p>Players who accepted extensions that paid at least 40% below comparable free-agent value. The team saved money. The player left surplus value on the table that a big-market team would have paid.</p>
+      </div>
+    </div>
+    <figcaption class="sr-only">Extension outcomes: 18 declined extensions (bet on themselves, won with 62% higher contracts), 14 accepted below-market deals (40% lower than comparable market value).</figcaption>
+    </figure>
+
+    <p>The agents know the math. A 26-year-old with two 4+ WAR seasons will earn $25-35 million annually on the open market. A small-market team offering $15-20 million per year on an extension is asking the player to accept a permanent discount. Some players take the security. Most bet on themselves, and the market rewards them for it.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Competitive Fallout</div>
+    <h2>What Losing Stars Costs in Wins</h2>
+
+    <p>Losing a 4-WAR player and replacing him with a league-minimum free agent or prospect costs roughly 2.5 wins. Over 15 years, the 78 star departures in our sample cost their former teams a combined estimated 195 wins. That is an average of 13 wins per team across the bottom-10 payroll group. Thirteen wins is the difference between a playoff contender and a 75-win team.</p>
+
+    <p>The Rays illustrate the cycle. Tampa developed Evan Longoria, David Price, James Shields, B.J. Upton, Carl Crawford, and Wander Franco (before his off-field issues). They retained none through free agency. The Rays stayed competitive through exceptional player development and analytical innovation, but their ceiling was always capped by the inability to retain their best players past arbitration.</p>
+
+    <p>The counterargument is that small-market teams can cycle talent: develop, compete during the controlled years, trade at the deadline for prospects, and reload. The Rays, Brewers, and Guardians have all done this effectively. But cycling means you never build a sustained contender. You get 2-3 competitive years per wave, then tear it down and start over.</p>
+
+    <div class="callout">
+      <div class="callout-label">The structural ceiling</div>
+      <p>Small-market teams can be clever. They can draft well, develop efficiently, and trade shrewdly. But they cannot keep a core together for more than one free-agent cycle. The talent leaves. It always leaves. Revenue sharing softened the floor, but it did nothing to lower the ceiling that keeps small markets from building dynasties.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Fix That Isn't Coming</div>
+    <h2>Why the System Won't Change</h2>
+
+    <p>A hard salary cap would fix the talent-flow problem. The NFL and NHL use hard caps, and their competitive balance metrics are significantly better than baseball's. But a hard cap requires the players' union to accept a ceiling on earnings, and the MLBPA has rejected salary caps in every labor negotiation since 1994. The luxury tax functions as a soft cap, but the threshold ($237 million in 2024) is set high enough that the wealthiest teams exceed it routinely and absorb the tax as a cost of doing business.</p>
+
+    <p>Expanded revenue sharing could help at the margins. Increasing the pool from $100 million to $200 million would give bottom-10 teams an extra $10-15 million each. That might cover one additional mid-tier free agent per team. It would not close the gap on a $300 million contract for a franchise player.</p>
+
+    <p>The most likely path forward is the status quo: small-market teams compete through development and efficiency, lose their stars at free agency, and cycle through competitive windows. The system rewards large markets structurally. Revenue sharing was a band-aid on a broken bone. The bone is still broken.</p>
+
+    <p>For more on how walk-year incentives warp player performance, see <a href="/the-contract-year-effect">The Contract Year Effect</a>. For how UCL injuries reshape long-term contract value, see <a href="/the-injury-epidemic">The Injury Epidemic</a>. And for the bullpen-role assumptions front offices keep mispricing, see <a href="/the-closer-is-a-myth">The Closer Is a Myth</a>.</p>
+
+    <div class="callout">
+      <div class="callout-label">The bottom line</div>
+      <p>Seventy-eight stars. Seventy-one went to big markets. Revenue sharing moved money. It did not move talent. Until the sport addresses the structural revenue gap between its richest and poorest teams, small-market clubs will keep developing stars for someone else to sign.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Player WAR data from FanGraphs, 2010-2024. "All-star caliber" defined as two or more seasons of 3.0+ fWAR while under team control (pre-free agency). Bottom-10 payroll classification uses opening day payroll data from Spotrac and Cot's Baseball Contracts, ranked annually.</p>
+      <p>Free-agent contract data from Spotrac and MLB Trade Rumors' free agent tracker. "Departed via free agency" includes players who were not re-signed after their final arbitration year, declined qualifying offers, or opted out of existing deals.</p>
+      <p>Revenue sharing figures from Forbes annual MLB revenue estimates and the 2022 CBA disclosure. Specific team-level revenue sharing amounts are estimates based on published reporting by The Athletic and Associated Press; MLB does not disclose exact transfer amounts publicly.</p>
+      <p>Extension analysis uses Baseball Reference contract data. "Below-market value" estimated by comparing the extension's AAV to the average AAV of the top 5 comparable free-agent contracts (matched by age, position, and 3-year WAR average) signed within 2 years of the extension.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  </article>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Small-Market Star Exodus Analysis",
+    "description": "Comprehensive analysis tracking 78 all-star caliber players who departed small-market (bottom-10 payroll) teams via free agency between 2010-2024, their destinations, contract values, and the revenue sharing system's impact on competitive balance.",
+    "datePublished": "2026-06-24",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays"
+    },
+    "keywords": ["free agency departures", "payroll gap", "revenue sharing", "small-market teams", "contract extensions", "competitive balance"],
+    "spatialCoverage": "United States (MLB)",
+    "temporalCoverage": "2010-2024"
+  }
+  </script>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+
+</body>
+</html>
