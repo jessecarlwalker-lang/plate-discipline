@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2026 10:31:40 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 10:29:50 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The $200 Million Rotation</title>
+      <link>https://plate-discipline.com/the-200-million-rotation</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-200-million-rotation</guid>
+      <description>Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million. Buying pitching has diminishing returns; building it does not.</description>
+      <pubDate>Wed, 01 Jul 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Why Small Market Teams Can&#x27;t Keep Their Stars</title>
       <link>https://plate-discipline.com/why-small-market-teams-cant-keep-their-stars</link>

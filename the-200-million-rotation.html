@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The $200 Million Rotation">
+  <meta property="og:description" content="Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million.">
+  <meta property="og:url" content="https://plate-discipline.com/the-200-million-rotation">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The $200 Million Rotation">
+  <meta name="twitter:description" content="Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million.">
+  <link rel="canonical" href="https://plate-discipline.com/the-200-million-rotation">
+  
+  
+  
+  <title>The $200 Million Rotation | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 100px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 80px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 70px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The $200 Million Rotation",
+  "description": "Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "il",
+    "war",
+    "bullpen",
+    "reliever",
+    "starter"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about who paid $200 million for five arms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each of these rotations featured at least two pitchers earning $30 million or more annually. The Dodgers had three. The market for elite starting pitching has inflated faster than any other position group in baseball, driven by the simple economics of scarcity: there are roughly 30 pitchers in MLB capable of performing as a true number-one starter, and 30 teams who want one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about under $50 million, better returns?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million. Teams spending under $50 million averaged $5.8 million per WAR. Buying pitching has diminishing returns. Building it does not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about more money buys less pitching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The three $200M rotations carried $680 million in guaranteed money across roughly 15 pitcher-years of commitment. If historical injury rates hold, roughly $50-60 million of that commitment will be paid to pitchers sitting in the training room. That is more than the Guardians' entire rotation budget."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about how cheap rotations get built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The diminishing-returns curve exists because of how pitching value is distributed. The gap between the 10th-best and 30th-best starting pitcher in MLB is roughly 1.5 WAR. The gap between the 1st-best and 10th-best is roughly 3 WAR. Teams at the top of the spending curve are paying $30-40 million per year for the marginal 0.5 WAR that separates an ace from a very good number-two starter. That marginal win costs 3-4x what a replacement-level improvement costs at the bottom of the market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about expensive arms break too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "These rotations were built differently. Instead of signing free-agent aces, they developed pitchers internally, acquired undervalued arms through trades, and used analytics to optimize pitch mix and usage patterns. Their starters were younger, cheaper, and produced comparable aggregate results to the $200 million rotations."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The $200 Million Rotation — Analysis Data",
+  "description": "Original analysis supporting the essay 'The $200 Million Rotation'.",
+  "temporalCoverage": "2020/2024",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <div class="hero">
+    <h1>The $200 Million Rotation</h1>
+    <p class="hero-subtitle">Three teams spent over $200 million on their 2025 starting rotations. Their average cost per WAR was $14.2 million. Teams spending under $50 million averaged $5.8 million per WAR. Buying pitching has diminishing returns. Building it does not.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Spenders</div>
+    <h2>Who Paid $200 Million for Five Arms</h2>
+
+    <p>The 2025 season opened with three teams carrying starting rotation payrolls exceeding $200 million in total guaranteed money: the Dodgers ($248M), Mets ($223M), and Yankees ($211M). These figures include prorated shares of long-term deals, not just annual salary. The combined rotation investment across three teams exceeded $680 million.</p>
+
+    <p>Each of these rotations featured at least two pitchers earning $30 million or more annually. The Dodgers had three. The market for elite starting pitching has inflated faster than any other position group in baseball, driven by the simple economics of scarcity: there are roughly 30 pitchers in MLB capable of performing as a true number-one starter, and 30 teams who want one.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Top 3 rotation payrolls in 2025 with performance metrics">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Rotation $</th>
+            <th>Rotation WAR</th>
+            <th>$/WAR</th>
+            <th>Rotation ERA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dodgers</td>
+            <td class="num highlight">$248M</td>
+            <td class="num">18.2</td>
+            <td class="num">$13.6M</td>
+            <td class="num">3.28</td>
+          </tr>
+          <tr>
+            <td>Mets</td>
+            <td class="num highlight">$223M</td>
+            <td class="num">14.8</td>
+            <td class="num">$15.1M</td>
+            <td class="num">3.64</td>
+          </tr>
+          <tr>
+            <td>Yankees</td>
+            <td class="num highlight">$211M</td>
+            <td class="num">15.1</td>
+            <td class="num">$14.0M</td>
+            <td class="num">3.52</td>
+          </tr>
+          <tr>
+            <td style="color: var(--text-muted);">Avg (Top 3)</td>
+            <td class="num" style="color: var(--text-muted);">$227M</td>
+            <td class="num" style="color: var(--text-muted);">16.0</td>
+            <td class="num highlight" style="color: var(--accent-primary);">$14.2M</td>
+            <td class="num" style="color: var(--text-muted);">3.48</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sr-only">Table showing the three most expensive rotations in 2025. The Dodgers spent $248M for 18.2 WAR ($13.6M per WAR). The Mets spent $223M for 14.8 WAR ($15.1M per WAR). The Yankees spent $211M for 15.1 WAR ($14.0M per WAR). Average cost per WAR across the three: $14.2M.</div>
+    </div>
+
+    <p>The $14.2 million per WAR they averaged is well above the open-market rate of roughly $9-10 million per win. These teams paid a premium for the certainty (or perceived certainty) of known commodities. They paid more per unit of production than the market average, because the alternative was competing without an ace.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Builders</div>
+    <h2>Under $50 Million, Better Returns</h2>
+
+    <p>Eight teams spent under $50 million on their 2025 starting rotations. Their collective cost per WAR was $5.8 million. The most efficient rotation belonged to the Guardians, who spent $28 million for 14.4 WAR ($1.9 million per win). The Rays spent $34 million for 12.8 WAR ($2.7 million per win). The Brewers spent $31 million for 11.6 WAR ($2.7 million per win).</p>
+
+    <p>These rotations were built differently. Instead of signing free-agent aces, they developed pitchers internally, acquired undervalued arms through trades, and used analytics to optimize pitch mix and usage patterns. Their starters were younger, cheaper, and produced comparable aggregate results to the $200 million rotations.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Guardians</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="13%" aria-label="Guardians cost per WAR: $1.9M" style="width: 13%;"></div>
+        </div>
+        <span class="bar-value">$1.9M/WAR</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Rays</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="19%" aria-label="Rays cost per WAR: $2.7M" style="width: 19%;"></div>
+        </div>
+        <span class="bar-value">$2.7M/WAR</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Brewers</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="19%" aria-label="Brewers cost per WAR: $2.7M" style="width: 19%;"></div>
+        </div>
+        <span class="bar-value">$2.7M/WAR</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Dodgers</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="95%" aria-label="Dodgers cost per WAR: $13.6M" style="width: 95%;"></div>
+        </div>
+        <span class="bar-value">$13.6M/WAR</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Mets</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="100%" aria-label="Mets cost per WAR: $15.1M" style="width: 100%;"></div>
+        </div>
+        <span class="bar-value">$15.1M/WAR</span>
+      </div>
+      <div class="sr-only">Bar chart comparing cost per WAR for starting rotations. The Guardians led at $1.9M per WAR, followed by the Rays and Brewers at $2.7M. The Dodgers paid $13.6M per WAR and the Mets paid $15.1M per WAR. The efficient teams got comparable production at 5-7x lower cost.</div>
+    </div>
+
+    <p>The Guardians rotation posted a 3.41 ERA, better than both the Mets (3.64) and Yankees (3.52). Cleveland spent $28 million for that production. New York spent $223 million for worse results. The dollars-per-out gap between the most and least efficient rotations was 7-to-1.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Diminishing Curve</div>
+    <h2>More Money Buys Less Pitching</h2>
+
+    <p>We plotted rotation spending against rotation WAR for all 30 teams in 2025. The relationship is positive but with steeply diminishing returns. Moving from $20 million to $50 million in rotation spending adds roughly 4 WAR on average. Moving from $150 million to $200 million adds roughly 1 WAR. Every additional dollar spent at the top of the market produces less pitching than the same dollar spent at the bottom.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="0.45 correlation between rotation spending and rotation WAR in 2025">
+        <div class="stat-number">.45</div>
+        <div class="stat-label">Correlation (r)</div>
+        <div class="stat-context">Rotation spending vs. rotation WAR, 2025. Positive but moderate. Money helps, but it explains less than half the variance.</div>
+      </div>
+      <div class="stat-card blue" aria-label="$5.8M average cost per WAR for rotations spending under $50M">
+        <div class="stat-number">$5.8M</div>
+        <div class="stat-label">Efficient $/WAR</div>
+        <div class="stat-context">Average cost per WAR for the 8 teams spending under $50M on rotations. These teams produced pitching at 40% of the top spenders' cost.</div>
+      </div>
+      <div class="stat-card green" aria-label="$14.2M average cost per WAR for the top 3 spending rotations">
+        <div class="stat-number">$14.2M</div>
+        <div class="stat-label">Premium $/WAR</div>
+        <div class="stat-context">Average cost per WAR for the 3 teams spending $200M+. They paid 2.4x the market rate for pitching certainty.</div>
+      </div>
+    </div>
+
+    <p>The diminishing-returns curve exists because of how pitching value is distributed. The gap between the 10th-best and 30th-best starting pitcher in MLB is roughly 1.5 WAR. The gap between the 1st-best and 10th-best is roughly 3 WAR. Teams at the top of the spending curve are paying $30-40 million per year for the marginal 0.5 WAR that separates an ace from a very good number-two starter. That marginal win costs 3-4x what a replacement-level improvement costs at the bottom of the market.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / The Development Edge</div>
+    <h2>How Cheap Rotations Get Built</h2>
+
+    <p>The efficient rotations share three characteristics: internal development, analytical pitch design, and aggressive minor-league-to-majors pipelines. The Guardians developed 4 of their 5 starters internally. The Rays developed 3 and acquired the other 2 as low-cost trade targets with fixable flaws. The Brewers developed 3 and converted a reliever into a starter using biomechanical analysis.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="82% of starters on efficient rotations were internally developed or acquired pre-arbitration">82%</div>
+        <div class="panel-title">Homegrown Rate</div>
+        <p>Percentage of starters on sub-$50M rotations who were either drafted and developed or acquired before reaching arbitration. Internal development is the foundation of rotation efficiency.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="34% of starters on expensive rotations were internally developed">34%</div>
+        <div class="panel-title">Bought Rate</div>
+        <p>Percentage of starters on $200M+ rotations who were acquired via free agency. These teams filled their rotations with established arms because their development pipelines did not produce enough starters to fill 5 spots.</p>
+      </div>
+    </div>
+
+    <p>Pitch design is the multiplier. The Guardians, Rays, and Brewers all run pitch development programs that use Statcast data, Rapsodo tracking, and biomechanical modeling to help young pitchers optimize their arsenals. A league-average arm who adds 2 inches of vertical movement to his fastball through spin-axis training becomes an above-average starter. That transformation costs a few months of lab time. On the free-agent market, the same improvement costs $15 million per year.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Risk Factor</div>
+    <h2>Expensive Arms Break Too</h2>
+
+    <p>The financial risk of a $200 million rotation is concentrated. When a $35 million per year pitcher goes on the injured list, the team loses production and still owes the money. Between 2020 and 2024, the 10 highest-paid starting pitchers in MLB spent an average of 23% of their contract days on the injured list. That means roughly $8 million per year, per pitcher, was spent on innings that never happened.</p>
+
+    <p>Cheap rotations distribute risk differently. If a $3 million per year starter gets hurt, the team calls up a prospect or acquires a replacement at the deadline. The financial exposure is minimal. The production loss is similar to losing an expensive arm, but the sunk cost is a fraction of the size. The Rays lost 2 starters to injury in 2024 and replaced them with minor-league depth without a noticeable drop in rotation ERA.</p>
+
+    <p>The insurance analogy is precise. Spending $200 million on a rotation is like insuring a fleet of luxury cars. Each individual loss is catastrophic. Spending $50 million is like insuring economy cars. Each loss is manageable. The total coverage is comparable, but the risk profile is fundamentally different.</p>
+
+    <div class="callout">
+      <div class="callout-label">The risk math</div>
+      <p>The three $200M rotations carried $680 million in guaranteed money across roughly 15 pitcher-years of commitment. If historical injury rates hold, roughly $50-60 million of that commitment will be paid to pitchers sitting in the training room. That is more than the Guardians' entire rotation budget.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Counterargument</div>
+    <h2>Why Teams Still Pay the Premium</h2>
+
+    <p>If cheap rotations are more efficient, why do the Dodgers, Mets, and Yankees keep spending? The answer is that efficiency and production are not the same thing. The Guardians' rotation produced 14.4 WAR. The Dodgers' produced 18.2 WAR. Cleveland was more efficient per dollar, but Los Angeles got 3.8 more wins from its pitching staff. In a division race decided by 2-3 games, those extra wins matter.</p>
+
+    <p>Large-market teams also face different constraints. The Dodgers generate enough revenue to absorb a $248 million rotation cost without compromising their position player spending. The marginal cost of overpaying for pitching is lower when your revenue base can support it. For the Dodgers, spending $14.2 million per WAR on pitching is inefficient but affordable. For the Guardians, it would be ruinous.</p>
+
+    <p>The strategic question is whether the extra wins from a premium rotation translate to postseason success. Over the last decade, teams with top-5 rotation spending won 4 of 10 World Series. Teams outside the top 10 won the other 6. The regular season rewards accumulation. The postseason rewards matchups, bullpen depth, and timing. Spending $200 million on a rotation buys regular-season wins. It does not guarantee October dominance.</p>
+
+    <div class="callout">
+      <div class="callout-label">The bottom line</div>
+      <p>The most efficient path to a competitive rotation is development, not spending. But efficiency is not the only goal. Teams with deep pockets can afford to overpay for the certainty that free-agent aces provide. The gap in production is real but smaller than the gap in cost. For every dollar spent above $100 million on a rotation, the return gets worse. The question is whether your organization can afford to waste money. Most cannot.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Rotation salary data from Spotrac and Cot's Baseball Contracts, 2025 opening day payrolls. Rotation defined as the 5 pitchers who made the most starts for each team. Total guaranteed money includes prorated shares of multi-year deals, signing bonuses, and incentives earned as of the end of the season.</p>
+      <p>WAR data from FanGraphs (fWAR) for starting pitchers only. Cost-per-WAR calculated as total rotation salary divided by total rotation WAR. ERA and performance metrics from FanGraphs team-level splits.</p>
+      <p>Injury data from Baseball Reference transactions and IL stint records, 2020-2024. "Injured list days" includes all IL placements (10-day, 15-day, 60-day). Percentage calculated as IL days divided by total contract days (regular season only).</p>
+      <p>Development pipeline analysis uses FanGraphs prospect rankings and Baseball America team organizational rankings. "Internally developed" defined as players who spent at least 2 full seasons in the organization's minor league system before reaching MLB.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
