@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jul 2026 10:29:50 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 05:30:39 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Prospect Bust Rate by Tool</title>
+      <link>https://plate-discipline.com/the-prospect-bust-rate-by-tool</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-prospect-bust-rate-by-tool</guid>
+      <description>Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally, but the outcomes are not equal.</description>
+      <pubDate>Wed, 08 Jul 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The $200 Million Rotation</title>
       <link>https://plate-discipline.com/the-200-million-rotation</link>

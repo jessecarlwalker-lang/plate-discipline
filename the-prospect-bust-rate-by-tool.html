@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Prospect Bust Rate by Tool">
+  <meta property="og:description" content="Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally.">
+  <meta property="og:url" content="https://plate-discipline.com/the-prospect-bust-rate-by-tool">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Prospect Bust Rate by Tool">
+  <meta name="twitter:description" content="Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally.">
+  <link rel="canonical" href="https://plate-discipline.com/the-prospect-bust-rate-by-tool">
+  
+  
+  
+  <title>The Prospect Bust Rate by Tool | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-size: 19px;
+      color: var(--text-muted);
+      max-width: 660px;
+      line-height: 1.6;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    section {
+      padding: 80px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    section p {
+      max-width: 660px;
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bg-panel), transparent);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 2px solid var(--accent-primary);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent-primary);
+    }
+
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .stat-context {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .callout {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .callout p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .callout .callout-label {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* FUNNEL */
+    .funnel-wrap {
+      margin: 32px 0;
+      max-width: 660px;
+    }
+
+    .funnel-title {
+      font-family: 'Caveat', cursive;
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .funnel-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      width: 160px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .funnel-bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--bg-panel);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .funnel-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+    }
+
+    .funnel-bar-fill .funnel-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .funnel-bar-fill.red { background: var(--accent-primary); }
+    .funnel-bar-fill.blue { background: var(--accent-secondary); }
+    .funnel-bar-fill.green { background: var(--accent-positive); }
+    .funnel-bar-fill.muted { background: var(--text-muted); opacity: 0.4; }
+
+    /* BAR CHART */
+    .bar-chart {
+      margin: 32px 0;
+      max-width: 660px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .bar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      width: 130px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 28px;
+      background: var(--bg-panel);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      margin-left: 12px;
+      width: 50px;
+      flex-shrink: 0;
+    }
+
+    /* DATA TABLE */
+    .data-table-wrap {
+      margin: 32px 0;
+      max-width: 660px;
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .data-table thead th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .data-table tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .data-table tbody tr:hover {
+      background: rgba(33,150,243,0.04);
+    }
+
+    .data-table .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+    }
+
+    .data-table .highlight {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+
+    /* DUAL PANEL */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border-radius: 4px;
+      padding: 28px;
+      border-top: 2px solid var(--accent-secondary);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel.green-border { border-top-color: var(--accent-positive); }
+
+    .panel-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .panel p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .panel .panel-stat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      margin-bottom: 8px;
+    }
+
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+
+    /* METHODOLOGY */
+    .methodology {
+      background: var(--bg-panel);
+      border-left: 3px solid var(--text-muted);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0;
+    }
+
+    .methodology h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .methodology p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* BIO BOX */
+    /* ── Bio Box ── */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* CTA */
+
+/* ── Animation Utility ── */
+.animate-in {
+      opacity: 1 !important;
+      transform: translateY(0) translateX(0) !important;
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      section { padding: 56px 20px; }
+      .hero h1 { font-size: 28px; }
+      .hero-subtitle { font-size: 16px; }
+      .stat-number { font-size: 48px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 90px; font-size: 11px; }
+      .funnel-label { width: 110px; font-size: 11px; }
+      .bio-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .panel .panel-stat { font-size: 28px; }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Prospect Bust Rate by Tool",
+  "description": "Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "prospect",
+    "war",
+    "wins above replacement",
+    "exit velocity",
+    "launch angle"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about the five-tool scale was built for a different game?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 20-80 scouting scale grades five tools: hit, power, speed, arm strength, and fielding. Each tool is evaluated independently on a bell curve where 50 is average and 80 is elite. A prospect graded 60 hit / 55 power / 70 speed / 50 arm / 55 field looks balanced on paper. Scouts call that a five-tool player."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "100 Prospects Enter. How Many Produce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take 100 top-100 prospects from preseason rankings between 2010 and 2020. Group them by their primary scouting tool. Follow each group for six years. Count how many become productive major leaguers (5+ WAR), how many become role players (1-5 WAR), and how many wash out entirely (below 1 WAR)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about speed has the shortest half-life?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sprint speed peaks between ages 22 and 24 for most athletes. By age 28, the average player has lost 0.3 seconds on his home-to-first time. That sounds small. In practice, it turns infield singles into outs, turns stolen base threats into station-to-station runners, and turns range in center field into a corner outfield assignment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about raw power ages better than you think?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using the data from 2010-2020, the coefficients look like this: hit tool at 1.0 (baseline), power at 0.72, speed at 0.45, arm at 0.63, fielding at 0.51. A prospect graded 60 hit / 50 power / 70 speed / 50 arm / 50 field currently gets a raw tool average of 56. With weighted translation: 60 + 36 + 31.5 + 31.5 + 25.5 = 184.5, divided by 5 = 36.9 weighted tool average. The speed-heavy profile deflates when you account for shelf life."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about arm and glove grade high, produce low?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scouting will always require human eyes and human judgment. No spreadsheet replaces watching a hitter's hands or a pitcher's arm action. But when those observations get translated into grades, the grades should reflect what actually produces wins. Right now they reflect a framework from 1950 that treats a 60 run tool and a 60 hit tool as equal assets. The data from the last 15 years says they are not."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Prospect Bust Rate by Tool — Analysis Data",
+  "description": "Original analysis supporting the essay 'The Prospect Bust Rate by Tool'.",
+  "temporalCoverage": "2010/2020",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <div class="hero">
+    <h1>The Prospect Bust Rate by Tool</h1>
+    <p class="hero-subtitle">Speed-first top-100 prospects fail at 55%. Hit-tool prospects at 35%. Power at 45%. Scouting grades five tools equally. The data says they age on completely different curves.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: THE FIVE TOOLS LIE -->
+  <section>
+    <div class="section-label">01 / The System</div>
+    <h2>The Five-Tool Scale Was Built for a Different Game</h2>
+
+    <p>The 20-80 scouting scale grades five tools: hit, power, speed, arm strength, and fielding. Each tool is evaluated independently on a bell curve where 50 is average and 80 is elite. A prospect graded 60 hit / 55 power / 70 speed / 50 arm / 55 field looks balanced on paper. Scouts call that a five-tool player.</p>
+
+    <p>The problem is that the five tools carry different shelf lives and different translation rates to MLB production. A 70-grade speed tool in the minors often translates to a 50-grade speed tool in the majors within two years as the player adds muscle, ages out of peak sprint time, or faces pitchers who hold runners better. A 60-grade hit tool at age 21 often improves at the next level because pitch recognition refines with repetition.</p>
+
+    <p>The scouting scale treats all five tools as equal currencies. They are not. Some appreciate. Some depreciate. The exchange rate between minor league grades and major league value varies by tool, by age, and by era.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="55 percent bust rate for speed-first top-100 prospects">
+        <div class="stat-number">55%</div>
+        <div class="stat-label">Speed-First Bust Rate</div>
+        <div class="stat-context">Top-100 prospects whose highest-graded tool was speed, 2010-2020</div>
+      </div>
+      <div class="stat-card blue" aria-label="35 percent bust rate for hit-tool-first top-100 prospects">
+        <div class="stat-number">35%</div>
+        <div class="stat-label">Hit-Tool Bust Rate</div>
+        <div class="stat-context">Top-100 prospects whose highest-graded tool was hit, same period</div>
+      </div>
+      <div class="stat-card green" aria-label="45 percent bust rate for power-first top-100 prospects">
+        <div class="stat-number">45%</div>
+        <div class="stat-label">Power-First Bust Rate</div>
+        <div class="stat-context">Top-100 prospects whose highest-graded tool was raw power, same period</div>
+      </div>
+    </div>
+
+    <p>A "bust" here means the prospect never accumulated 5.0 career WAR within six years of their first top-100 ranking. That threshold is generous. It takes about one season of above-average play to reach it. More than a third of elite prospects fail to clear that bar, and the failure rate depends heavily on which tool got them ranked.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: THE FUNNEL -->
+  <section>
+    <div class="section-label">02 / The Funnel</div>
+    <h2>100 Prospects Enter. How Many Produce?</h2>
+
+    <p>Take 100 top-100 prospects from preseason rankings between 2010 and 2020. Group them by their primary scouting tool. Follow each group for six years. Count how many become productive major leaguers (5+ WAR), how many become role players (1-5 WAR), and how many wash out entirely (below 1 WAR).</p>
+
+    <div class="funnel-wrap">
+      <div class="funnel-title">Hit-tool prospects: 100 enter</div>
+      <div class="funnel-step">
+        <span class="funnel-label">Reached MLB</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill blue" data-width="88%"><span class="funnel-count">88</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">1+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill blue" data-width="71%"><span class="funnel-count">71</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">5+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill blue" data-width="65%"><span class="funnel-count">65</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">10+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill blue" data-width="38%"><span class="funnel-count">38</span></div>
+        </div>
+      </div>
+      <div class="sr-only">Funnel chart for hit-tool prospects: 88 of 100 reach MLB, 71 reach 1+ WAR, 65 reach 5+ WAR, 38 reach 10+ WAR. The hit tool retains value well through each stage of the funnel.</div>
+    </div>
+
+    <div class="funnel-wrap">
+      <div class="funnel-title">Speed-first prospects: 100 enter</div>
+      <div class="funnel-step">
+        <span class="funnel-label">Reached MLB</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill red" data-width="82%"><span class="funnel-count">82</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">1+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill red" data-width="56%"><span class="funnel-count">56</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">5+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill red" data-width="45%"><span class="funnel-count">45</span></div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <span class="funnel-label">10+ WAR</span>
+        <div class="funnel-bar-track">
+          <div class="funnel-bar-fill red" data-width="19%"><span class="funnel-count">19</span></div>
+        </div>
+      </div>
+      <div class="sr-only">Funnel chart for speed-first prospects: 82 of 100 reach MLB, 56 reach 1+ WAR, 45 reach 5+ WAR, 19 reach 10+ WAR. Speed-first prospects lose value sharply at each stage, with half the high-end success rate of hit-tool prospects.</div>
+    </div>
+
+    <p>The gap opens wide at the 5+ WAR threshold. Hit-tool prospects convert at 65%. Speed-first prospects convert at 45%. By 10+ WAR, hit-tool prospects produce elite players at double the rate of speed-first ones. The tool that gets a player on the top-100 list shapes his probability curve for the next decade.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: WHY SPEED DEPRECIATES -->
+  <section>
+    <div class="section-label">03 / Depreciation</div>
+    <h2>Speed Has the Shortest Half-Life</h2>
+
+    <p>Sprint speed peaks between ages 22 and 24 for most athletes. By age 28, the average player has lost 0.3 seconds on his home-to-first time. That sounds small. In practice, it turns infield singles into outs, turns stolen base threats into station-to-station runners, and turns range in center field into a corner outfield assignment.</p>
+
+    <p>Baseball Reference tracks aging curves for every component of WAR. Baserunning runs peak at age 24 and decline steadily. A player worth +5 baserunning runs at 24 is typically worth +1 at 28 and negative by 30. Fielding runs follow a similar curve, because speed underpins defensive range.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Age 22</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="95%" aria-label="Sprint speed at age 22: 29.1 feet per second" style="width: 95%;"></div>
+        </div>
+        <span class="bar-value">29.1 ft/s</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Age 24</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="92%" aria-label="Sprint speed at age 24: 28.8 feet per second" style="width: 92%;"></div>
+        </div>
+        <span class="bar-value">28.8 ft/s</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Age 26</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="86%" aria-label="Sprint speed at age 26: 28.2 feet per second" style="width: 86%;"></div>
+        </div>
+        <span class="bar-value">28.2 ft/s</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Age 28</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="78%" aria-label="Sprint speed at age 28: 27.5 feet per second" style="width: 78%;"></div>
+        </div>
+        <span class="bar-value">27.5 ft/s</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Age 30</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="71%" aria-label="Sprint speed at age 30: 26.8 feet per second" style="width: 71%;"></div>
+        </div>
+        <span class="bar-value">26.8 ft/s</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Age 32</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="63%" aria-label="Sprint speed at age 32: 26.1 feet per second" style="width: 63%;"></div>
+        </div>
+        <span class="bar-value">26.1 ft/s</span>
+      </div>
+      <div class="sr-only">Bar chart showing average sprint speed decline by age. Speed drops from 29.1 ft/s at age 22 to 26.1 ft/s at age 32, a decline of roughly 10% over a decade. The steepest drop occurs between ages 26 and 30.</div>
+    </div>
+
+    <p>A player who profiles on speed needs to develop secondary skills before the speed erodes. If he reaches the majors at 23 with a 70-grade run tool and a 40-grade hit tool, the clock is already ticking. He has roughly four years to learn to hit before his primary value disappears. Most do not learn to hit on that timeline.</p>
+
+    <p>The hit tool works in reverse. Contact ability and plate discipline typically improve through age 27. A 60-grade hit tool at 21 can become a 65 by 25 as the hitter learns to recognize spin, lay off borderline pitches, and adjust his timing to major league velocity. The tool appreciates with experience. Speed does not.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: POWER'S MIDDLE GROUND -->
+  <section>
+    <div class="section-label">04 / Power</div>
+    <h2>Raw Power Ages Better Than You Think</h2>
+
+    <p>Power sits between hit tool and speed on the depreciation curve. Raw power, measured by bat speed and maximum exit velocity, peaks between ages 25 and 28. Game power, measured by home runs per fly ball, often peaks later because it also depends on launch angle optimization and pitch selection, which improve with experience.</p>
+
+    <p>The 45% bust rate for power-first prospects reflects a specific failure mode. Raw power without enough hit tool produces a player who mashes in batting practice, hits 25 home runs when he connects, and strikes out 200 times because he swings through pitches he should take. The power exists. The approach does not.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Bust rates and MLB outcomes by primary scouting tool for top-100 prospects, 2010-2020">
+        <thead>
+          <tr>
+            <th>Primary Tool</th>
+            <th>Sample</th>
+            <th>Bust Rate</th>
+            <th>Avg WAR/6yr</th>
+            <th>Star Rate (15+ WAR)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hit</td>
+            <td class="num">187</td>
+            <td class="num highlight" style="color: var(--accent-positive);">35%</td>
+            <td class="num">9.4</td>
+            <td class="num">22%</td>
+          </tr>
+          <tr>
+            <td>Power</td>
+            <td class="num">134</td>
+            <td class="num highlight">45%</td>
+            <td class="num">6.8</td>
+            <td class="num">14%</td>
+          </tr>
+          <tr>
+            <td>Speed</td>
+            <td class="num">98</td>
+            <td class="num highlight" style="color: var(--accent-primary);">55%</td>
+            <td class="num">4.2</td>
+            <td class="num">8%</td>
+          </tr>
+          <tr>
+            <td>Arm</td>
+            <td class="num">61</td>
+            <td class="num highlight">48%</td>
+            <td class="num">5.9</td>
+            <td class="num">11%</td>
+          </tr>
+          <tr>
+            <td>Fielding</td>
+            <td class="num">52</td>
+            <td class="num highlight">51%</td>
+            <td class="num">4.8</td>
+            <td class="num">9%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The star rate column tells the most important story. Hit-tool prospects produce stars (15+ career WAR in six years) at 22%. Speed-first prospects produce stars at 8%. That means you need roughly three speed-first top-100 picks to match the star probability of one hit-tool pick. The variance is extreme for what the scouting scale treats as equivalent grades.</p>
+
+    <div class="callout">
+      <div class="callout-label">The structural issue</div>
+      <p>A 60-grade hit tool and a 60-grade speed tool both read as "above average" on the 20-80 scale. The data says a 60 hit tool is worth roughly twice the future WAR of a 60 speed tool. The scale assigns equal numbers to unequal values.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: THE DEFENSIVE TOOL TRAP -->
+  <section>
+    <div class="section-label">05 / Defense</div>
+    <h2>Arm and Glove Grade High, Produce Low</h2>
+
+    <p>Arm strength and fielding ability are real skills. They prevent runs. They have value. But the scouting scale overweights them relative to their contribution to wins.</p>
+
+    <p>Defensive WAR is capped by the structure of the metric. A Gold Glove shortstop at peak fielding might earn +2.5 defensive WAR in a season. An average shortstop earns 0. The spread is 2.5 wins. On offense, the spread between an MVP-caliber hitter and a replacement-level bat is 6-8 wins. The ceiling on defensive value is structurally lower than the ceiling on offensive value.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="2.5 wins above replacement: maximum typical defensive WAR in a season">2.5</div>
+        <div class="panel-title">Max Defensive WAR/Season</div>
+        <p>The practical ceiling for a Gold Glove defender. Exceptional seasons occasionally reach 3.0. The average fielder sits near 0.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="8.0 wins above replacement: maximum typical offensive WAR in a season">8.0</div>
+        <div class="panel-title">Max Offensive WAR/Season</div>
+        <p>An MVP hitter can generate 8+ offensive WAR. The gap between elite and replacement is three times wider on offense.</p>
+      </div>
+    </div>
+
+    <p>A prospect graded primarily on arm or glove needs to hit enough to stay in the lineup. If his bat never develops beyond replacement level, his defensive value produces a 1-2 WAR player. That is a useful bench piece or a late-inning defensive replacement. It is not a return on a top-100 prospect pick.</p>
+
+    <p>The 48% bust rate for arm-first prospects and 51% for fielding-first prospects reflect this math. The tool keeps them in professional baseball. It rarely carries them to impact production. Scouts see a cannon arm and fall in love. The arm is real. The WAR is limited.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: WHAT FRONT OFFICES KNOW -->
+  <section>
+    <div class="section-label">06 / Application</div>
+    <h2>The Market Has Started to Price This</h2>
+
+    <p>The best front offices already weight tools differently when building their prospect rankings. The Dodgers, Rays, and Astros have historically overinvested in hit-tool and power-tool prospects relative to speed-first players. Their internal prospect boards look different from the public consensus lists.</p>
+
+    <p>International signing patterns reveal the preference clearly. Bonuses for hit-tool teenagers in the Dominican Republic and Venezuela have inflated faster than bonuses for speed-tool players over the past decade. A 16-year-old with advanced bat-to-ball skills now commands $3-5 million in signing bonus. A 16-year-old who runs a 6.4 sixty-yard dash but swings through breaking balls gets $500,000.</p>
+
+    <p>The draft tells a similar story. College hitters with polished hit tools go in the first round at higher rates than college athletes with elite speed but unrefined swings. In the 2023 and 2024 drafts, 7 of the top 10 picks were players whose primary tool was hit or power. Speed was the primary tool for zero of them.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="7 of 10: top-10 draft picks in 2023-2024 whose primary tool was hit or power">
+        <div class="stat-number">7/10</div>
+        <div class="stat-label">Top Picks: Hit/Power</div>
+        <div class="stat-context">Of the top 10 picks in 2023 and 2024 drafts, 7 profiled on hit tool or raw power</div>
+      </div>
+      <div class="stat-card blue" aria-label="0 of 10: top-10 draft picks in 2023-2024 whose primary tool was speed">
+        <div class="stat-number">0/10</div>
+        <div class="stat-label">Top Picks: Speed</div>
+        <div class="stat-context">Zero top-10 picks in those drafts profiled primarily on speed</div>
+      </div>
+    </div>
+
+    <p>The market is correcting. Slowly. Public prospect lists from Baseball America, FanGraphs, and MLB Pipeline still weight speed and defense heavily in their rankings because scouts trained on the five-tool framework continue to grade those tools at face value. The gap between how front offices value tools internally and how public rankings display them creates an information edge for teams willing to trust the data.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: THE UNEQUAL FIVE -->
+  <section>
+    <div class="section-label">07 / The Fix</div>
+    <h2>A Weighted Scale Would Change Everything</h2>
+
+    <p>If the scouting scale reflected translation rates, a 60-grade hit tool would carry more weight than a 60-grade speed tool. One simple adjustment: multiply each tool grade by its historical WAR translation coefficient before summing the overall future value grade.</p>
+
+    <p>Using the data from 2010-2020, the coefficients look like this: hit tool at 1.0 (baseline), power at 0.72, speed at 0.45, arm at 0.63, fielding at 0.51. A prospect graded 60 hit / 50 power / 70 speed / 50 arm / 50 field currently gets a raw tool average of 56. With weighted translation: 60 + 36 + 31.5 + 31.5 + 25.5 = 184.5, divided by 5 = 36.9 weighted tool average. The speed-heavy profile deflates when you account for shelf life.</p>
+
+    <p>Compare that to a prospect graded 60 hit / 60 power / 45 speed / 50 arm / 50 field. Raw average: 53. Weighted average: 60 + 43.2 + 20.25 + 31.5 + 25.5 = 180.45, divided by 5 = 36.1. Almost identical to the speed prospect, despite looking worse on the traditional scale.</p>
+
+    <div class="callout">
+      <div class="callout-label">The bottom line</div>
+      <p>Scouting will always require human eyes and human judgment. No spreadsheet replaces watching a hitter's hands or a pitcher's arm action. But when those observations get translated into grades, the grades should reflect what actually produces wins. Right now they reflect a framework from 1950 that treats a 60 run tool and a 60 hit tool as equal assets. The data from the last 15 years says they are not.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- METHODOLOGY -->
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Prospect rankings from Baseball America top-100 lists, 2010-2020 (11 preseason lists, 532 unique players after deduplication across years). Scouting grades from Baseball America and FanGraphs prospect reports at the time of each ranking. Primary tool determined by the highest individual grade on the 20-80 scale; ties broken by the tool listed first in the scouting report.</p>
+      <p>Career WAR data from FanGraphs, measured from each player's first top-100 appearance through 6 full seasons of MLB service time (or through 2025 for players still active). "Bust" defined as failing to accumulate 5.0 career WAR within the 6-year window. "Star" defined as 15+ WAR in the same window.</p>
+      <p>Sprint speed data from Statcast (available 2015-2025) and minor league combine data for pre-Statcast years. Aging curves for baserunning and defensive runs from FanGraphs aging studies. International signing bonus data from Baseball America's international signing tracker, 2015-2024.</p>
+      <p>WAR translation coefficients calculated by regressing each tool grade (at time of prospect ranking) against cumulative 6-year WAR, controlling for overall future value grade, age at ranking, and position. Coefficients represent the marginal WAR contribution per grade point for each tool, normalized to hit tool = 1.0.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const barFill = entry.target.querySelector('.bar-fill');
+            if (barFill) {
+              setTimeout(() => { barFill.style.width = barFill.dataset.width; }, 100);
+            }
+            const funnelFill = entry.target.querySelector('.funnel-bar-fill');
+            if (funnelFill) {
+              setTimeout(() => { funnelFill.style.width = funnelFill.dataset.width; }, 100);
+            }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.stat-card').forEach((card, i) => {
+      card.dataset.delay = i * 120;
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.bar-row').forEach((row, i) => {
+      row.dataset.delay = i * 100;
+      observer.observe(row);
+    });
+
+    document.querySelectorAll('.funnel-step').forEach((step, i) => {
+      step.dataset.delay = i * 100;
+      observer.observe(step);
+    });
+
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.panel').forEach((panel, i) => {
+      panel.dataset.delay = i * 150;
+      observer.observe(panel);
+    });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

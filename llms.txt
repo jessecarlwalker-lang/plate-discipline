@@ -26,6 +26,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Contract Year Effect: https://plate-discipline.com/the-contract-year-effect
 - Why Small Market Teams Can't Keep Their Stars: https://plate-discipline.com/why-small-market-teams-cant-keep-their-stars
 - The $200 Million Rotation: https://plate-discipline.com/the-200-million-rotation
+- The Prospect Bust Rate by Tool: https://plate-discipline.com/the-prospect-bust-rate-by-tool
 
 ## Content Format
 
