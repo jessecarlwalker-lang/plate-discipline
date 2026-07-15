@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wins Above Replacement, Explained From Zero | Baseball Visual Essays</title>
+  <meta name="description" content="WAR is the most cited and least understood stat in baseball. Learn how it measures wins above replacement, its six components, and how to read leaderboards.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="Wins Above Replacement, Explained From Zero | Baseball Visual Essays">
+  <meta property="og:description" content="WAR is the most cited and least understood stat in baseball. Learn how it measures wins above replacement, its six components, and how to read leaderboards.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="placeholder-image-url">
+  <meta property="og:url" content="placeholder-canonical-url">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wins Above Replacement, Explained From Zero | Baseball Visual Essays">
+  <meta name="twitter:description" content="WAR is the most cited and least understood stat in baseball. Learn how it measures wins above replacement, its six components, and how to read leaderboards.">
+  <meta name="twitter:image" content="placeholder-image-url">
+  <!-- Canonical URL: placeholder-canonical-url -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Wins Above Replacement, Explained From Zero",
+    "description": "WAR is the most cited and least understood stat in baseball. Learn how it measures wins above replacement, its six components, and how to read leaderboards.",
+    "image": "placeholder-image-url",
+    "datePublished": "placeholder-date",
+    "dateModified": "placeholder-date",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "placeholder-logo-url"
+      }
+    },
+    "keywords": ["WAR", "wins above replacement", "baseball statistics", "player valuation", "FanGraphs", "Baseball Reference", "sabermetrics"]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+
+    /* STAGE CARDS */
+    .stage-grid { display: flex; flex-direction: column; gap: 16px; margin: 32px 0; max-width: 660px; }
+    .stage-card { background: var(--bg-panel); border-radius: 4px; padding: 24px 28px; border-left: 3px solid var(--accent-secondary); display: flex; gap: 20px; align-items: flex-start; opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .stage-num { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-secondary); flex-shrink: 0; line-height: 1; }
+    .stage-content h3 { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .stage-content p { font-size: 15px; color: var(--text-muted); line-height: 1.55; margin-bottom: 0; }
+
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 150px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 70px; flex-shrink: 0; }
+
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      section { padding: 56px 20px; }
+      .hero h1 { font-size: 26px; }
+      .hero-subtitle { font-size: 16px; }
+      .stat-number { font-size: 48px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .dual-panel { grid-template-columns: 1fr; }
+      .bar-label { width: 100px; font-size: 11px; }
+      .bio-box { flex-direction: column; align-items: center; text-align: center; }
+      .panel .panel-stat { font-size: 28px; }
+      .stage-card { flex-direction: column; }
+      .stage-num { font-size: 28px; }
+    }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does WAR (Wins Above Replacement) measure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WAR measures how many wins a player contributed above a freely available minor leaguer or waiver pickup (replacement-level player) in the same playing time. A player with 6.0 WAR contributed roughly 6 wins more than a replacement would have. An average starter produces about 2.0 WAR per season, while MVP-caliber players reach 8.0+ WAR. It is a single composite statistic that attempts to answer how much a player helped his team win."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the six components of WAR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WAR for position players consists of: (1) Batting Runs - runs created above league average, (2) Baserunning Runs - stolen bases and extra base advancement, (3) Fielding Runs - defensive value above position average, (4) Positional Adjustment - adding value for demanding positions like shortstop/catcher, (5) League Adjustment - cross-league calibration, and (6) Replacement Level - the baseline of a freely available player (worth roughly 20 runs per season). All components are converted to runs, then divided by approximately 10 to calculate WAR."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is replacement level important in WAR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Replacement level is the most consequential design choice in WAR. It measures from a freely available baseline rather than league average. An average player produces about 2.0 WAR because he occupies a roster spot better filled than by a replacement-level player. A team of entirely replacement-level players would win approximately 47.5 games per 162-game season. This framework means every player gets credit simply for being available rather than someone worse, which captures the real value of playing time and roster depth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between fWAR and bWAR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FanGraphs publishes fWAR and Baseball Reference publishes bWAR. Both use the same framework but disagree on defensive metrics and pitcher evaluation. fWAR uses UZR (Ultimate Zone Rating) for defense and FIP (Fielding Independent Pitching) for pitchers, while bWAR uses DRS (Defensive Runs Saved) and actual runs allowed. These differences can swing a player's WAR by a full win in a season. Neither version is correct—both are estimates. Using one version consistently is more important than choosing the 'right' one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you interpret WAR values as a fan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WAR has established tiers: Below 0.0 is replacement or below; 0.0-0.9 is replacement level; 1.0-1.9 is bench/role player; 2.0-2.9 is average starter; 3.0-4.9 is good starter; 5.0-6.9 is All-Star; 7.0-7.9 is superstar; 8.0+ is MVP caliber. Career WAR of 40+ has a Hall of Fame case, 50-60 is typical Hall of Famer, 70+ is inner circle. For practical impact, upgrading from a 1.0 to 4.0 WAR player gains 3 wins—typically the gap between missing and making the playoffs."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "WAR Component Analysis and Methodology",
+    "description": "Comprehensive analysis of Wins Above Replacement calculations including component breakdowns, run values, positional adjustments, and worked examples using 2024 MLB league baselines.",
+    "author": {
+      "@type": "Person",
+      "name": "Jesse Walker"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Baseball Visual Essays"
+    },
+    "isBasedOn": [
+      {
+        "@type": "Dataset",
+        "name": "FanGraphs WAR Data and Linear Weights",
+        "url": "https://www.fangraphs.com"
+      },
+      {
+        "@type": "Dataset",
+        "name": "Baseball Reference WAR and Statistics",
+        "url": "https://www.baseball-reference.com"
+      }
+    ],
+    "keywords": ["WAR", "wins above replacement", "baseball analytics", "run values", "positional adjustment", "replacement level"],
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "variableMeasured": [
+      "Batting Runs (wRAA)",
+      "Baserunning Runs (BsR/SB)",
+      "Fielding Runs (UZR/DRS)",
+      "Positional Adjustment",
+      "League Adjustment",
+      "Replacement Level Baseline"
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://plate-discipline.com/wins-above-replacement-explained-from-zero">
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <article>
+  <div class="hero">
+    <h1>Wins Above Replacement, Explained From Zero</h1>
+    <p class="hero-subtitle">WAR is the most cited and least understood stat in baseball. It answers one question: how many wins did this player add that a freely available minor leaguer would not have?</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: THE QUESTION WAR ANSWERS -->
+  <section>
+    <div class="section-label">01 / The Question</div>
+    <h2>One Number to Measure Everything</h2>
+
+    <p>Baseball has hundreds of stats. Batting average measures one thing. On-base percentage measures another. Fielding percentage measures a third. Each stat lives in its own silo. None of them answers the question that matters most: how much did this player help his team win?</p>
+
+    <p>WAR attempts to answer that question with a single number. A player with 6.0 WAR contributed roughly 6 wins more than a replacement-level player would have in the same playing time. A player with 0.0 WAR performed at exactly the level of a freely available alternative. A player with negative WAR actively hurt his team compared to the cheapest option available.</p>
+
+    <p>The concept is simple. The calculation is where it gets complicated. WAR breaks a player's total contribution into components, measures each one separately, adds them up, and converts the sum into wins. Understanding those components changes how you read every leaderboard and every Hall of Fame argument.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="WAR of 2.0: average full-time starter">
+        <div class="stat-number">2.0</div>
+        <div class="stat-label">Average Starter</div>
+        <div class="stat-context">A full-time position player who performs at league average across all skills produces roughly 2.0 WAR per season</div>
+      </div>
+      <div class="stat-card blue" aria-label="WAR of 5.0: all-star caliber season">
+        <div class="stat-number">5.0</div>
+        <div class="stat-label">All-Star Caliber</div>
+        <div class="stat-context">An All-Star season. Top 20 at the position. The level where MVP ballots start listing a name</div>
+      </div>
+      <div class="stat-card green" aria-label="WAR of 8.0: MVP-level season">
+        <div class="stat-number">8.0+</div>
+        <div class="stat-label">MVP Territory</div>
+        <div class="stat-context">Historic season. Fewer than 10 players per year reach this level. Peak Trout, peak Ohtani</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: THE COMPONENTS -->
+  <section>
+    <div class="section-label">02 / The Build</div>
+    <h2>Six Pieces Stacked Into One Number</h2>
+
+    <p>WAR for a position player has six components. Each one isolates a different dimension of value, measured in runs above average or runs above replacement. The final step converts total runs into wins using a fixed ratio (roughly 10 runs per win in the current run environment).</p>
+
+    <div class="stage-grid">
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 1">1</div>
+        <div class="stage-content">
+          <h3>Batting Runs</h3>
+          <p>How many runs a hitter created above the league-average hitter, adjusted for park. Uses wRAA (weighted runs above average), which weights each plate appearance outcome by its run value. A single is worth about 0.47 runs. A home run is worth about 1.40. An out costs about -0.26.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 2">2</div>
+        <div class="stage-content">
+          <h3>Baserunning Runs</h3>
+          <p>Stolen bases, caught stealings, advancing on fly balls, taking extra bases on hits. Measured in runs gained or lost compared to a league-average baserunner. A stolen base adds roughly 0.2 runs. A caught stealing costs roughly 0.4.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 3">3</div>
+        <div class="stage-content">
+          <h3>Fielding Runs</h3>
+          <p>How many runs a fielder saved (or cost) compared to average at his position. FanGraphs uses UZR (Ultimate Zone Rating). Baseball Reference uses DRS (Defensive Runs Saved). Both systems divide the field into zones and measure how often a fielder converts batted balls into outs relative to expected rates.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 4">4</div>
+        <div class="stage-content">
+          <h3>Positional Adjustment</h3>
+          <p>Shortstop is harder than first base. Catcher is harder than left field. The positional adjustment adds runs for demanding positions and subtracts runs for easy ones. A catcher gets +12.5 runs per full season. A designated hitter gets -17.5. This ensures a 2.0 WAR catcher and a 2.0 WAR first baseman represent similar total contributions despite different offensive expectations.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 5">5</div>
+        <div class="stage-content">
+          <h3>League Adjustment</h3>
+          <p>A small correction that accounts for differences between the American and National League. Historically minor, this adjustment ensures cross-league comparisons stay fair when run environments differ.</p>
+        </div>
+      </div>
+      <div class="stage-card">
+        <div class="stage-num" aria-label="Component 6">6</div>
+        <div class="stage-content">
+          <h3>Replacement Level</h3>
+          <p>The baseline. A replacement-level player is a freely available minor leaguer or waiver pickup. WAR measures above this floor, not above zero or above average. The replacement level adds roughly 20 runs per full season for a position player. This is the single most important and most misunderstood piece of the formula.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Add all six components together in runs, then divide by the runs-per-win conversion (approximately 10). The result is WAR.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: REPLACEMENT LEVEL -->
+  <section>
+    <div class="section-label">03 / The Baseline</div>
+    <h2>Why Replacement Level Matters More Than Average</h2>
+
+    <p>The choice to measure from replacement level instead of league average is the most consequential design decision in WAR. It changes who looks valuable and by how much.</p>
+
+    <p>An average player produces about 2.0 WAR. Measured from average (runs above average), that same player would be worth 0.0. The stats would say he added nothing. But he did add something. He occupied a roster spot that would otherwise be filled by a worse player. The 2.0 WAR reflects the gap between his production and the freely available alternative.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="47.5 wins: total replacement-level baseline for a 162-game season">47.5</div>
+        <div class="panel-title">Replacement Wins</div>
+        <p>A team of entirely replacement-level players would win approximately 47.5 games over a 162-game season. That is the floor.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="1000 WAR: total WAR available above replacement across all MLB teams per season">~1000</div>
+        <div class="panel-title">Total WAR Pool</div>
+        <p>Roughly 1,000 WAR is distributed across all MLB players each season. The remaining wins (30 teams × 81 average wins = 2,430 total, minus 30 × 47.5 = 1,425 replacement wins) come from real player contributions.</p>
+      </div>
+    </div>
+
+    <p>This baseline is why WAR values playing time. A 2.0 WAR player who plays 150 games is more valuable than a 3.0 WAR player who plays 80 games in many roster construction scenarios. The replacement-level framework captures what happens in the games the second player misses: someone worse fills in.</p>
+
+    <p>Replacement level is calibrated to be roughly the talent level of a freely available player. In practice, this means a Triple-A depth piece or a player claimed off waivers. Teams always have access to this level of talent at minimum cost. WAR measures how far above that floor each player rises.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: A WORKED EXAMPLE -->
+  <section>
+    <div class="section-label">04 / Example</div>
+    <h2>Building WAR for a Real Season</h2>
+
+    <p>Take a hypothetical shortstop who hits .275/.345/.450 over 600 plate appearances, steals 15 bases, and plays above-average defense. Walk through the math.</p>
+
+    <figure>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Batting Runs</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="65%" aria-label="Batting runs: +18 runs above average" style="width: 65%;"></div>
+        </div>
+        <span class="bar-value">+18 runs</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Baserunning</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="20%" aria-label="Baserunning runs: +3 runs" style="width: 20%;"></div>
+        </div>
+        <span class="bar-value">+3 runs</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Fielding</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="35%" aria-label="Fielding runs: +7 runs above average" style="width: 35%;"></div>
+        </div>
+        <span class="bar-value">+7 runs</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Positional Adj</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="35%" aria-label="Positional adjustment: +7.5 runs for shortstop" style="width: 35%;"></div>
+        </div>
+        <span class="bar-value">+7.5 runs</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">League Adj</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="8%" aria-label="League adjustment: +0.5 runs" style="width: 8%;"></div>
+        </div>
+        <span class="bar-value">+0.5 runs</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Replacement</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="55%" aria-label="Replacement level: +20 runs" style="width: 55%;"></div>
+        </div>
+        <span class="bar-value">+20 runs</span>
+      </div>
+      <div class="sr-only">Bar chart showing WAR components for a hypothetical shortstop. Batting: +18 runs. Baserunning: +3 runs. Fielding: +7 runs. Positional adjustment: +7.5 runs. League adjustment: +0.5 runs. Replacement level: +20 runs. Total: 56 runs, which converts to approximately 5.6 WAR.</div>
+    </div>
+    <figcaption class="sr-only">WAR component breakdown for a .275/.345/.450 shortstop with 15 stolen bases and above-average defense: 5.6 WAR, an All-Star season.</figcaption>
+    </figure>
+
+    <p>Total: 18 + 3 + 7 + 7.5 + 0.5 + 20 = 56 runs above replacement. Divide by 10 runs per win. Result: 5.6 WAR. That is an All-Star season. A player worth roughly $56 million on the open market at current rates.</p>
+
+    <p>Notice that replacement level contributes 20 of those 56 runs. Every full-time player gets that credit simply for being on the field instead of a replacement. The remaining 36 runs are what separates this shortstop from an average starter. Take away the fielding and positional adjustment, and his bat alone produces about a 2.1 WAR season. The defense and position scarcity push him into star territory.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: FWAR VS BWAR -->
+  <section>
+    <div class="section-label">05 / The Split</div>
+    <h2>FanGraphs and Baseball Reference Disagree (And That Is Fine)</h2>
+
+    <p>Two versions of WAR exist in wide use. FanGraphs publishes fWAR. Baseball Reference publishes bWAR (or rWAR). They use the same framework but differ in how they measure defense and pitching.</p>
+
+    <figure>
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Comparison of fWAR and bWAR calculation differences">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>fWAR (FanGraphs)</th>
+            <th>bWAR (Baseball Reference)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Batting</td>
+            <td>wRAA (weighted runs above average)</td>
+            <td>wRAA (same)</td>
+          </tr>
+          <tr>
+            <td>Baserunning</td>
+            <td>BsR (FanGraphs composite)</td>
+            <td>Similar composite</td>
+          </tr>
+          <tr>
+            <td>Fielding</td>
+            <td class="highlight" style="color: var(--accent-secondary);">UZR (Ultimate Zone Rating)</td>
+            <td class="highlight" style="color: var(--accent-primary);">DRS (Defensive Runs Saved)</td>
+          </tr>
+          <tr>
+            <td>Pitching</td>
+            <td class="highlight" style="color: var(--accent-secondary);">FIP-based (fielding independent)</td>
+            <td class="highlight" style="color: var(--accent-primary);">RA9-based (runs allowed)</td>
+          </tr>
+          <tr>
+            <td>Positional</td>
+            <td>Same framework</td>
+            <td>Same framework</td>
+          </tr>
+          <tr>
+            <td>Replacement</td>
+            <td>Same baseline</td>
+            <td>Same baseline</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption class="sr-only">Comparison table showing differences between FanGraphs WAR (fWAR) and Baseball Reference WAR (bWAR) in batting, baserunning, fielding, pitching, positional adjustment, and replacement-level calculations.</figcaption>
+    </figure>
+
+    <p>The defensive metrics are the primary source of disagreement for position players. UZR and DRS measure fielding through different methodologies and can diverge by 10+ runs in a single season for the same player. This means a player's fWAR and bWAR can differ by a full win based solely on which fielding system you trust.</p>
+
+    <p>For pitchers, the gap is philosophical. FanGraphs uses FIP (Fielding Independent Pitching), which credits a pitcher only for strikeouts, walks, and home runs. Baseball Reference uses actual runs allowed, which includes the defense behind the pitcher. A pitcher with a 3.20 ERA and a 3.80 FIP will have a higher bWAR than fWAR. The question is whether the pitcher deserves credit for the defense or whether the defense happened independently.</p>
+
+    <p>Neither version is correct. Both are estimates. The truth sits somewhere between them. Using one version consistently is more important than choosing the "right" one.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: HOW TO READ IT -->
+  <section>
+    <div class="section-label">06 / The Leaderboard</div>
+    <h2>What the Numbers Mean in Practice</h2>
+
+    <p>WAR scales are not intuitive without benchmarks. Memorize these tiers and every leaderboard starts talking to you.</p>
+
+    <figure>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">Scrub (< 0)</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="5%" aria-label="Below 0 WAR: below replacement level" style="width: 5%;"></div>
+        </div>
+        <span class="bar-value">< 0.0</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Replacement</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="12%" aria-label="0.0 to 0.9 WAR: replacement level player" style="width: 12%;"></div>
+        </div>
+        <span class="bar-value">0.0-0.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Bench / Role</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="25%" aria-label="1.0 to 1.9 WAR: bench player or role player" style="width: 25%;"></div>
+        </div>
+        <span class="bar-value">1.0-1.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Average Starter</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="40%" aria-label="2.0 to 2.9 WAR: average everyday starter" style="width: 40%;"></div>
+        </div>
+        <span class="bar-value">2.0-2.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Good Starter</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="55%" aria-label="3.0 to 4.9 WAR: good starter, fringe all-star" style="width: 55%;"></div>
+        </div>
+        <span class="bar-value">3.0-4.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">All-Star</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="72%" aria-label="5.0 to 6.9 WAR: all-star caliber" style="width: 72%;"></div>
+        </div>
+        <span class="bar-value">5.0-6.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Superstar</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="85%" aria-label="7.0 to 7.9 WAR: superstar season" style="width: 85%;"></div>
+        </div>
+        <span class="bar-value">7.0-7.9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">MVP</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="100%" aria-label="8.0+ WAR: MVP-caliber season" style="width: 100%;"></div>
+        </div>
+        <span class="bar-value">8.0+</span>
+      </div>
+      <div class="sr-only">Bar chart showing WAR tiers. Below 0 is below replacement. 0-0.9 is replacement level. 1-1.9 is bench player. 2-2.9 is average starter. 3-4.9 is good starter. 5-6.9 is All-Star. 7-7.9 is superstar. 8.0+ is MVP. Each tier represents a distinct level of player value.</div>
+    </div>
+    <figcaption class="sr-only">WAR scale and player value tiers from below replacement (< 0.0) through MVP caliber (8.0+), including benchmarks for each tier.</figcaption>
+    </figure>
+
+    <p>A team that upgrades from a 1.0 WAR shortstop to a 4.0 WAR shortstop gains 3 wins. Over a 162-game season, 3 wins is the typical gap between a wildcard team and a team that misses the playoffs. That single roster upgrade, priced correctly, can be the difference.</p>
+
+    <p>Career WAR tells a different story. A player with 40+ career WAR has a strong Hall of Fame case. Between 50 and 60 is a typical Hall of Famer. Above 70 is inner circle. Barry Bonds (162.8), Willie Mays (156.2), and Babe Ruth (183.1) anchor the all-time leaderboard by a margin that no active player is likely to approach.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: THE LIMITS -->
+  <section>
+    <div class="section-label">07 / The Caveats</div>
+    <h2>Where WAR Falls Short</h2>
+
+    <p>WAR is an estimate, not a measurement. It does not capture clutch performance, clubhouse leadership, pitch framing (partially addressed in newer versions), baserunning instincts beyond stolen bases, or the ability to perform under playoff pressure. These are real skills. They have value. WAR misses them.</p>
+
+    <p>Defensive metrics are noisy in single-season samples. A player's UZR can swing by 15 runs from one year to the next without any real change in his fielding ability. This means single-season WAR for defensive-heavy players should be interpreted with wider confidence intervals than for bat-first players.</p>
+
+    <p>WAR treats all wins as equal. A win in September for a contending team is more valuable than a win in May for a rebuilding team in terms of actual playoff impact. WAR does not account for this. It measures total contribution across all contexts equally.</p>
+
+    <div class="callout">
+      <div class="callout-label">The right way to use it</div>
+      <p>WAR is the best single number we have. It is not the only number you should use. Treat it as a starting point that tells you roughly how good a player was, then dig into the components when precision matters. The number gets you to the right neighborhood. The components get you to the right house.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- METHODOLOGY -->
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources & Calculation Method</h3>
+      <p><strong>Primary sources:</strong> WAR calculations and component breakdowns from FanGraphs (fWAR) and Baseball Reference (bWAR). Run values for batting events sourced from the FanGraphs linear weights table, updated annually. Positional adjustments from the FanGraphs positional adjustment scale (based on Sean Smith's original framework, updated in 2020). Defensive metrics: fWAR uses Ultimate Zone Rating (UZR, updated by Mitchel Lichtman); bWAR uses Defensive Runs Saved (DRS, developed by John Dewan).</p>
+      <p><strong>Replacement-level baseline:</strong> Both FanGraphs and Baseball Reference target a replacement-level winning percentage of .294, equivalent to 47.5 wins over a 162-game season. Replacement level is calibrated against freely available talent (Triple-A depth pieces, waiver pickups, and league-minimum rosters). The runs-per-win conversion of approximately 10 derives from the Pythagorean expected win-loss formula (wins = runs^2 / (runs^2 + runs against^2)).</p>
+      <p><strong>Component assembly:</strong> Batting Runs (wRAA) = sum of plate appearance outcomes weighted by run value, park-adjusted. Baserunning Runs = stolen base gains + extra base advancement minus caught stealing penalties. Fielding Runs = zone-based comparison to positional average. Positional Adjustment = runs added/subtracted per 162 games by position (catcher +12.5, DH -17.5, shortstop +7.5, etc.). League Adjustment = cross-league calibration (typically minor). All components summed, then divided by 10 to convert runs to wins.</p>
+      <p><strong>Career and leaderboard data:</strong> All-time WAR rankings from Baseball Reference. The ~1,000 total WAR distributed across MLB annually reflects (30 teams × 162 games × ~1.05 runs per game - 30 × 47.5 replacement wins = ~1,425 replacement wins) ÷ 10 = ~1,000 WAR available above replacement.</p>
+      <p><strong>Example specifications:</strong> The hypothetical shortstop uses 2024 league-average baselines and park-neutral assumptions. Run values (single = 0.47, HR = 1.40, strikeout = -0.26, walk = 0.33) derive from 2024 FanGraphs linear weights. Positional adjustment for shortstop = +7.5 runs per 162 games. Replacement level = +20 runs per full season (160+ plate appearances).</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker, author of Baseball Visual Essays" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+  </article>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const barFill = entry.target.querySelector('.bar-fill');
+            if (barFill) { setTimeout(() => { barFill.style.width = barFill.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.stat-card').forEach((card, i) => { card.dataset.delay = i * 120; observer.observe(card); });
+    document.querySelectorAll('.bar-row').forEach((row, i) => { row.dataset.delay = i * 100; observer.observe(row); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((panel, i) => { panel.dataset.delay = i * 150; observer.observe(panel); });
+    document.querySelectorAll('.stage-card').forEach((card, i) => { card.dataset.delay = i * 100; observer.observe(card); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
