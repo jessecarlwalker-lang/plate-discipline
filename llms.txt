@@ -30,6 +30,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - Wins Above Replacement, Explained From Zero: https://plate-discipline.com/wins-above-replacement-explained-from-zero
 - The Analytics Backlash: Are Teams Overcorrecting?: https://plate-discipline.com/the-analytics-backlash-are-teams-overcorrecting
 - The Fantasy Baseball Mispricing Index: https://plate-discipline.com/the-fantasy-baseball-mispricing-index
+- The Expansion Draft Nightmare: https://plate-discipline.com/the-expansion-draft-nightmare
 
 ## Content Format
 

@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Jul 2026 05:29:39 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 05:31:00 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Expansion Draft Nightmare</title>
+      <link>https://plate-discipline.com/the-expansion-draft-nightmare</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-expansion-draft-nightmare</guid>
+      <description>MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules.</description>
+      <pubDate>Wed, 05 Aug 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Fantasy Baseball Mispricing Index</title>
       <link>https://plate-discipline.com/the-fantasy-baseball-mispricing-index</link>

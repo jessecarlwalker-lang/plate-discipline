@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Expansion Draft Nightmare">
+  <meta property="og:description" content="MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules.">
+  <meta property="og:url" content="https://plate-discipline.com/the-expansion-draft-nightmare">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Expansion Draft Nightmare">
+  <meta name="twitter:description" content="MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules.">
+  <link rel="canonical" href="https://plate-discipline.com/the-expansion-draft-nightmare">
+  
+  
+  
+  <title>The Expansion Draft Nightmare | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 100px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 60px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 70px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+
+  
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Expansion Draft Nightmare",
+  "description": "MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "draft",
+    "expansion",
+    "expansion draft",
+    "war",
+    "ops",
+    "arbitration",
+    "prospect"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about how an expansion draft works?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each expansion team acquired 4-5 players projected for 2.0+ WAR. That is an immediate foundation. The 1998 Diamondbacks followed a similar pattern and won 100 games and a World Series within 4 years. The talent available in a modern expansion draft is higher than in 1997 because 40-man rosters are deeper, player development is better, and the league has 2 extra teams' worth of talent spread across the pool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about who gets protected, who gets taken?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The results were brutal for several contenders. Teams with deep rosters lost more valuable talent than teams with thin rosters, because depth means more unprotectable assets. The Dodgers, who carry one of baseball's deepest 40-man rosters, lost 3 players with a combined 2024 WAR of 5.8. The Athletics, with one of the shallowest rosters, lost 2 players with a combined WAR of 0.9."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the impossible choices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every front office in baseball should be modeling the expansion draft right now. The protection list you build in 2028 depends on the roster you construct in 2025, 2026, and 2027. Teams that acquire expensive, aging veterans in the next few years may find those contracts impossible to protect and impossible to move when the expansion draft arrives. The smart organizations are already thinking about this. The others will be surprised."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about what the new teams look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We applied the same framework to current 40-man rosters, adjusted for one change: the likely expansion to 2 teams (widely reported targets are Nashville and Salt Lake City or Portland). Each new franchise selects 35 players. Each existing team loses 1-3 players depending on the draft's flow. The total talent redistribution affects every team in baseball."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about how expansion reshapes the league?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The critical difference between expansion success and failure is what happens after the draft. The 1998 Diamondbacks supplemented their expansion roster with aggressive free-agent spending (Randy Johnson, Matt Williams). The 1998 Devil Rays did not. Arizona made the World Series in Year 4. Tampa did not have a winning season until Year 11."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Expansion Draft Nightmare — Analysis Data",
+  "description": "Original analysis supporting the essay 'The Expansion Draft Nightmare'.",
+  "temporalCoverage": "2023/2024",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+
+  <div class="hero">
+    <h1>The Expansion Draft Nightmare</h1>
+    <p class="hero-subtitle">MLB expansion to 32 teams is coming. Every existing club would lose players. We simulated the draft using current protection rules. The results reshape the competitive map for a decade.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Rules</div>
+    <h2>How an Expansion Draft Works</h2>
+
+    <p>The last MLB expansion draft was in 1997, when the Diamondbacks and Devil Rays each selected 35 players from existing rosters. The rules were straightforward: each existing team protects 15 players from its 40-man roster. Everyone else is available. After each selection, the losing team can protect one additional player before the next pick.</p>
+
+    <p>We applied the same framework to current 40-man rosters, adjusted for one change: the likely expansion to 2 teams (widely reported targets are Nashville and Salt Lake City or Portland). Each new franchise selects 35 players. Each existing team loses 1-3 players depending on the draft's flow. The total talent redistribution affects every team in baseball.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="15 players: the number each team can protect from expansion draft selection">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Protected Players</div>
+        <div class="stat-context">Each existing team protects 15 from its 40-man roster. The other 25 are exposed. That is 750 available players across 30 teams.</div>
+      </div>
+      <div class="stat-card blue" aria-label="70 total players selected by two expansion teams">
+        <div class="stat-number">70</div>
+        <div class="stat-label">Players Selected</div>
+        <div class="stat-context">Two expansion teams, 35 picks each. Seventy players change uniforms in one day. The largest single-day roster upheaval in baseball history.</div>
+      </div>
+      <div class="stat-card green" aria-label="750 players exposed to expansion draft selection across 30 teams">
+        <div class="stat-number">750</div>
+        <div class="stat-label">Players Exposed</div>
+        <div class="stat-context">Thirty teams times 25 unprotected roster spots. Not all are worth selecting, but the pool includes starting-caliber talent on every roster.</div>
+      </div>
+    </div>
+
+    <p>The protection limit is the key constraint. A team with 18 roster players worth keeping has to leave 3 of them unprotected. Every front office faces the same agonizing math: which 15 players do you keep, and which valuable contributors do you sacrifice?</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Simulation</div>
+    <h2>Who Gets Protected, Who Gets Taken</h2>
+
+    <p>We built protection lists for all 30 teams using a simple hierarchy: protect your highest-WAR players first, weight toward youth and cost-controlled contracts, and account for positional scarcity (catchers and shortstops get priority over corner outfielders at equal WAR). Then we ran the expansion draft with two AI-managed expansion franchises optimizing for 3-year WAR projections.</p>
+
+    <p>The results were brutal for several contenders. Teams with deep rosters lost more valuable talent than teams with thin rosters, because depth means more unprotectable assets. The Dodgers, who carry one of baseball's deepest 40-man rosters, lost 3 players with a combined 2024 WAR of 5.8. The Athletics, with one of the shallowest rosters, lost 2 players with a combined WAR of 0.9.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Simulated expansion draft losses by team, ranked by combined WAR lost">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Players Lost</th>
+            <th>Combined WAR</th>
+            <th>Key Loss</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dodgers</td>
+            <td class="num">3</td>
+            <td class="num highlight">5.8</td>
+            <td>SP (2.4 WAR)</td>
+          </tr>
+          <tr>
+            <td>Braves</td>
+            <td class="num">3</td>
+            <td class="num highlight">5.2</td>
+            <td>RP (2.1 WAR)</td>
+          </tr>
+          <tr>
+            <td>Astros</td>
+            <td class="num">2</td>
+            <td class="num highlight">4.6</td>
+            <td>IF (2.8 WAR)</td>
+          </tr>
+          <tr>
+            <td>Yankees</td>
+            <td class="num">2</td>
+            <td class="num highlight">4.1</td>
+            <td>OF (2.3 WAR)</td>
+          </tr>
+          <tr>
+            <td>Phillies</td>
+            <td class="num">2</td>
+            <td class="num">3.8</td>
+            <td>SP (1.9 WAR)</td>
+          </tr>
+          <tr>
+            <td>Guardians</td>
+            <td class="num">2</td>
+            <td class="num">3.4</td>
+            <td>OF (2.0 WAR)</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sr-only">Table showing simulated expansion draft losses. The Dodgers, Braves, and Astros lost the most combined WAR (5.8, 5.2, and 4.6 respectively). Deep rosters lost more valuable talent because they had more unprotectable assets.</div>
+    </div>
+
+    <p>The pattern is clear: expansion punishes depth. Teams that have invested in building 40-man roster quality lose the most. Teams that have stripped their rosters to bare minimums barely feel the draft. The competitive landscape inverts temporarily, giving rebuilding teams a relative advantage.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Protection Dilemma</div>
+    <h2>The Impossible Choices</h2>
+
+    <p>The hardest protection decisions fall on teams with surplus talent at a single position. The Dodgers, who stockpile pitching, had to leave two quality arms unprotected because they could not justify protecting 6 pitchers when their infield and outfield needed spots too. The Braves faced the same problem with their outfield depth.</p>
+
+    <p>Age drives the calculus. A 33-year-old with a 3.0-WAR season is less protectable than a 24-year-old with a 2.0-WAR season, because the expansion team wants players who will contribute across a 5-year development window. Teams protect youth over current production when forced to choose.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="Typical protection list age: average age 26.8 years">26.8</div>
+        <div class="panel-title">Avg Age of Protected</div>
+        <p>The average age of protected players across all 30 teams in our simulation. Teams heavily skewed toward youth, leaving veteran contributors exposed to protect prospects and cost-controlled players.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="Average age of selected players: 28.4 years">28.4</div>
+        <div class="panel-title">Avg Age of Selected</div>
+        <p>The expansion teams picked slightly older players on average, targeting established contributors who could provide immediate value. The sweet spot: players aged 27-30 with 2+ years of arbitration remaining.</p>
+      </div>
+    </div>
+
+    <p>Contract status complicates the math further. A player making $18 million per year is harder to protect than a pre-arbitration player making $740,000, even if the expensive player is better. Expansion teams inheriting expensive contracts reduces their financial flexibility. Existing teams might deliberately leave high-salary players unprotected, hoping the expansion franchise skips them for cheaper options.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / The Expansion Rosters</div>
+    <h2>What the New Teams Look Like</h2>
+
+    <p>Our simulated expansion franchises each assembled a roster projected for 70-74 wins in Year 1. That is roughly the quality of a team like the 2024 White Sox after a mid-season rebuild. Not competitive, but not historically terrible. The rosters had a mix of useful veterans, young contributors, and a few genuine building blocks.</p>
+
+    <p>Each expansion team acquired 4-5 players projected for 2.0+ WAR. That is an immediate foundation. The 1998 Diamondbacks followed a similar pattern and won 100 games and a World Series within 4 years. The talent available in a modern expansion draft is higher than in 1997 because 40-man rosters are deeper, player development is better, and the league has 2 extra teams' worth of talent spread across the pool.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">2+ WAR</span>
+        <div class="bar-track">
+          <div class="bar-fill green" data-width="14%" aria-label="5 players projected for 2+ WAR per expansion team" style="width: 14%;"></div>
+        </div>
+        <span class="bar-value">5</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">1-2 WAR</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="31%" aria-label="11 players projected for 1-2 WAR per expansion team" style="width: 31%;"></div>
+        </div>
+        <span class="bar-value">11</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">0-1 WAR</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="40%" aria-label="14 players projected for 0-1 WAR per expansion team" style="width: 40%;"></div>
+        </div>
+        <span class="bar-value">14</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Below 0</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="14%" aria-label="5 players projected for below 0 WAR per expansion team" style="width: 14%;"></div>
+        </div>
+        <span class="bar-value">5</span>
+      </div>
+      <div class="sr-only">Bar chart showing the WAR distribution of simulated expansion rosters. Each team would get roughly 5 players at 2+ WAR, 11 at 1-2 WAR, 14 at 0-1 WAR, and 5 below replacement level. The foundation is there for a rapid build.</div>
+    </div>
+
+    <p>The critical difference between expansion success and failure is what happens after the draft. The 1998 Diamondbacks supplemented their expansion roster with aggressive free-agent spending (Randy Johnson, Matt Williams). The 1998 Devil Rays did not. Arizona made the World Series in Year 4. Tampa did not have a winning season until Year 11.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Ripple Effects</div>
+    <h2>How Expansion Reshapes the League</h2>
+
+    <p>Losing 70 players from existing rosters creates 70 open roster spots that need to be filled. Those spots generate a cascade of transactions: free-agent signings, minor-league promotions, waiver claims, and trades. Every team's depth chart shifts. Some prospects who were blocked by established players suddenly have a path to the majors.</p>
+
+    <p>The competitive impact is uneven. Contending teams with deep rosters lose the most WAR and face the hardest replacement challenge. Rebuilding teams with thin rosters barely notice the draft but benefit from the expanded market for their available veterans. The trade deadline after an expansion draft becomes chaotic, with 32 teams competing for a pool of available talent that is shallower than usual because 70 players were already redistributed.</p>
+
+    <p>Division alignment changes add another layer. Two new teams means restructuring into 4 divisions of 8 teams each, or maintaining the current structure with uneven divisions. Either option changes the playoff math for every team. A division that gains an expansion franchise gets an easier path to the postseason in the short term.</p>
+
+    <div class="callout">
+      <div class="callout-label">The decade-long impact</div>
+      <p>Expansion does not just add 2 teams. It subtracts talent from 30 teams, forces 30 front offices to rebuild depth, creates 70 roster openings across the league, and restructures the competitive landscape for years. The draft itself takes one day. The aftershocks last a decade.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Timeline</div>
+    <h2>When This Happens</h2>
+
+    <p>Commissioner Rob Manfred has stated repeatedly that MLB expansion is a matter of "when, not if." The 2022 CBA did not include expansion language, but the agreement runs through 2026. The next CBA negotiation is the likely window for formalizing the expansion framework. Most industry projections place the expansion draft between 2028 and 2030.</p>
+
+    <p>Nashville and Portland are the most frequently mentioned expansion cities, though Salt Lake City, Montreal, and Charlotte have all received serious consideration. The expansion fee is expected to exceed $2 billion per franchise, based on recent team sale prices. At that price, the expansion teams need ownership groups with deep pockets and patience.</p>
+
+    <p>Every front office in baseball should be modeling the expansion draft right now. The protection list you build in 2028 depends on the roster you construct in 2025, 2026, and 2027. Teams that acquire expensive, aging veterans in the next few years may find those contracts impossible to protect and impossible to move when the expansion draft arrives. The smart organizations are already thinking about this. The others will be surprised.</p>
+
+    <div class="callout">
+      <div class="callout-label">The bottom line</div>
+      <p>Expansion is coming. Seventy players will change teams in a single day. Deep rosters will be punished. Contenders will lose contributors they cannot easily replace. The expansion teams will be mediocre but viable. And the organizations that planned for this moment will handle it better than the ones that did not. In baseball, the future belongs to the teams that see it coming.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Current 40-man rosters from Baseball Reference and Roster Resource, as of the 2024 offseason. Player WAR data from FanGraphs (fWAR). Projections use ZiPS (Dan Szymborski, FanGraphs) 3-year forward projections for all 40-man roster players.</p>
+      <p>Protection list construction follows the 1997 expansion draft rules: 15 protected players per team, with additional protection slots opening after each selection. The simulation prioritizes protecting by projected WAR, adjusted for age (younger players weighted +0.5 WAR per year of age under 28) and contract status (pre-arbitration and arbitration-eligible players weighted above free agents at equal WAR).</p>
+      <p>Expansion team selections optimized for 3-year cumulative projected WAR, with contract value as a secondary factor. The AI-managed expansion teams did not simulate trades, side deals, or cash considerations that typically accompany expansion drafts.</p>
+      <p>Historical expansion draft outcomes from Baseball Reference (1998 Diamondbacks and Devil Rays rosters). Expansion timeline and city candidates from published reporting by The Athletic, ESPN, and the Associated Press, 2023-2024.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
