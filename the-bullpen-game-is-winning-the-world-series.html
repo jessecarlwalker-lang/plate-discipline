@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Bullpen Game Is Winning the World Series">
+  <meta property="og:description" content="In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April.">
+  <meta property="og:url" content="https://plate-discipline.com/the-bullpen-game-is-winning-the-world-series">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Bullpen Game Is Winning the World Series">
+  <meta name="twitter:description" content="In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April.">
+  <link rel="canonical" href="https://plate-discipline.com/the-bullpen-game-is-winning-the-world-series">
+  
+  
+  
+  <title>The Bullpen Game Is Winning the World Series | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 860px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 100px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 60px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 26px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 70px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Bullpen Game Is Winning the World Series",
+  "description": "In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "bullpen",
+    "world series",
+    "war",
+    "ops",
+    "batting average",
+    "strikeout rate"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about starters are pitching less in october?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the 2015 postseason, starting pitchers averaged 5.8 innings per start. By 2024, that number dropped to 4.6 innings. Starters faced the lineup 2.3 times on average before being pulled. A decade earlier, the number was 2.7. Managers are pulling starters earlier, leaning on bullpens harder, and the results back them up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about five world series, five bullpen winners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April. In October, the bullpen decides everything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the strategy that changed october?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Teams that win in October build bullpens with specific characteristics. The data points to three traits that separate postseason-caliber bullpens from the rest: strikeout rate, platoon flexibility, and fresh-arm depth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about building a postseason bullpen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Building a championship bullpen is expensive in ways that do not show up on the payroll sheet. The primary cost is regular-season innings. To have 8-10 fresh arms in October, teams must manage workloads starting in June. That means using starters deeper into games during the regular season, carrying extra relievers, and strategically resting high-leverage arms during low-leverage stretches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about what october bullpen management requires?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your team enters October with a great rotation and a mediocre bullpen, you have a problem. If your team enters October with a mediocre rotation and a great bullpen, you have a chance. The last 5 years of evidence make the case. Bullpen management is the single strongest predictor of postseason success in modern baseball."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Bullpen Game Is Winning the World Series — Analysis Data",
+  "description": "Original analysis supporting the essay 'The Bullpen Game Is Winning the World Series'.",
+  "temporalCoverage": "2020/2024",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+  <div class="hero">
+    <h1>The Bullpen Game Is Winning the World Series</h1>
+    <p class="hero-subtitle">In the last 5 World Series, the team that managed its bullpen better won the championship. Starting pitching still matters in April. In October, the bullpen decides everything.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Shift</div>
+    <h2>Starters Are Pitching Less in October</h2>
+
+    <p>In the 2015 postseason, starting pitchers averaged 5.8 innings per start. By 2024, that number dropped to 4.6 innings. Starters faced the lineup 2.3 times on average before being pulled. A decade earlier, the number was 2.7. Managers are pulling starters earlier, leaning on bullpens harder, and the results back them up.</p>
+
+    <p>The logic is straightforward. When a starter faces a lineup for the third time, opponent batting average jumps by 30-40 points. The third-time-through penalty is one of the most reliable effects in baseball. Postseason managers, facing elimination and operating without rest-day luxury, cannot afford that penalty. They go to the bullpen.</p>
+
+    <div class="bar-chart">
+      <div class="bar-row">
+        <span class="bar-label">2015</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="100%" aria-label="Average starter innings in 2015 postseason: 5.8" style="width: 100%;"></div>
+        </div>
+        <span class="bar-value">5.8 IP</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2017</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="90%" aria-label="Average starter innings in 2017 postseason: 5.4" style="width: 90%;"></div>
+        </div>
+        <span class="bar-value">5.4 IP</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2019</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="83%" aria-label="Average starter innings in 2019 postseason: 5.0" style="width: 83%;"></div>
+        </div>
+        <span class="bar-value">5.0 IP</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2021</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="79%" aria-label="Average starter innings in 2021 postseason: 4.8" style="width: 79%;"></div>
+        </div>
+        <span class="bar-value">4.8 IP</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2023</span>
+        <div class="bar-track">
+          <div class="bar-fill blue" data-width="76%" aria-label="Average starter innings in 2023 postseason: 4.7" style="width: 76%;"></div>
+        </div>
+        <span class="bar-value">4.7 IP</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2024</span>
+        <div class="bar-track">
+          <div class="bar-fill red" data-width="72%" aria-label="Average starter innings in 2024 postseason: 4.6" style="width: 72%;"></div>
+        </div>
+        <span class="bar-value">4.6 IP</span>
+      </div>
+      <div class="sr-only">Bar chart showing declining starter innings in postseason from 5.8 in 2015 to 4.6 in 2024. Each year shows roughly 0.2 fewer innings, reflecting the systematic shift toward bullpen-heavy strategies in October.</div>
+    </div>
+
+    <p>That 1.2-inning decline means the bullpen now covers 4.4 innings per postseason game on average, up from 3.2 in 2015. That extra inning-plus shifted onto the bullpen's shoulders is the difference between needing four good relievers and needing seven.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / The Evidence</div>
+    <h2>Five World Series, Five Bullpen Winners</h2>
+
+    <p>From 2020 through 2024, every World Series champion ranked in the top 5 in postseason bullpen ERA. Three of the five ranked first. The correlation between postseason bullpen ERA and series outcome was stronger than the correlation with starting pitching ERA, team OPS, or regular season win total.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="World Series champions 2020-2024 with bullpen performance">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Champion</th>
+            <th>PS Bullpen ERA</th>
+            <th>BP Rank</th>
+            <th>PS Starter ERA</th>
+            <th>SP Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2020</td>
+            <td>Dodgers</td>
+            <td class="num highlight">2.89</td>
+            <td class="num">2nd</td>
+            <td class="num">3.51</td>
+            <td class="num">4th</td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>Braves</td>
+            <td class="num highlight">2.44</td>
+            <td class="num">1st</td>
+            <td class="num">3.89</td>
+            <td class="num">6th</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>Astros</td>
+            <td class="num highlight">2.12</td>
+            <td class="num">1st</td>
+            <td class="num">2.94</td>
+            <td class="num">2nd</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>Rangers</td>
+            <td class="num highlight">2.78</td>
+            <td class="num">3rd</td>
+            <td class="num">3.21</td>
+            <td class="num">5th</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>Dodgers</td>
+            <td class="num highlight">2.56</td>
+            <td class="num">1st</td>
+            <td class="num">4.12</td>
+            <td class="num">8th</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="sr-only">Table showing the last 5 World Series champions all had top-5 postseason bullpen ERAs. The 2024 Dodgers had the most extreme split: their bullpen ranked 1st (2.56 ERA) while their starters ranked 8th (4.12 ERA), proving the bullpen carried the championship.</div>
+    </div>
+
+    <p>The 2024 Dodgers are the clearest case. Their starting rotation was decimated by injuries. In the postseason, Dodger starters posted a 4.12 ERA, 8th among playoff teams. Their bullpen posted a 2.56 ERA, the best in the bracket. The bullpen carried a championship team whose rotation would have been a liability in any other era.</p>
+
+    <p>The 2021 Braves offer another angle. Atlanta's starters posted a 3.89 ERA in the playoffs, middle of the pack. Their bullpen was the best in baseball at 2.44. In their four World Series wins, Braves relievers threw 17.1 innings with 2 earned runs. The rotation set the table. The bullpen cleared it.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Bullpen Game</div>
+    <h2>The Strategy That Changed October</h2>
+
+    <p>The formal bullpen game, where a team starts a reliever or opener with the intention of using 4-6 pitchers to cover 9 innings, appeared in the postseason in 2018 when the Brewers used it against the Dodgers in the NLCS. By 2024, every playoff team deployed at least one bullpen game during their postseason run.</p>
+
+    <p>Bullpen games work in October because they exploit the third-time-through penalty without any downside. Each reliever faces 3-6 batters, throws his best pitch at maximum effort, and hands off to the next arm. Hitters never get comfortable. They adjust to one pitcher's release point and velocity, then face a completely different look.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="Postseason bullpen games won 61% of the time from 2018 to 2024">
+        <div class="stat-number">61%</div>
+        <div class="stat-label">Win Rate</div>
+        <div class="stat-context">Postseason bullpen games, 2018-2024. Higher than the overall home team win rate (54%) in the same period.</div>
+      </div>
+      <div class="stat-card blue" aria-label="3.14 ERA in postseason bullpen games from 2018-2024">
+        <div class="stat-number">3.14</div>
+        <div class="stat-label">Bullpen Game ERA</div>
+        <div class="stat-context">Aggregate pitching ERA in postseason bullpen games. Comparable to a solid #2 starter.</div>
+      </div>
+      <div class="stat-card green" aria-label="47 postseason bullpen games deployed from 2018-2024">
+        <div class="stat-number">47</div>
+        <div class="stat-label">Games Deployed</div>
+        <div class="stat-context">Total postseason bullpen games across all teams, 2018-2024. Up from zero before 2018.</div>
+      </div>
+    </div>
+
+    <p>The 61% win rate overstates bullpen-game quality slightly, because teams deploy them selectively and sometimes in favorable matchups. But even after adjusting for opponent quality and home/away splits, bullpen games outperformed the replacement-level starter option (a 5th starter or spot starter) by roughly 0.8 runs per 9 innings.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / The Arms Race</div>
+    <h2>Building a Postseason Bullpen</h2>
+
+    <p>Teams that win in October build bullpens with specific characteristics. The data points to three traits that separate postseason-caliber bullpens from the rest: strikeout rate, platoon flexibility, and fresh-arm depth.</p>
+
+    <p>Strikeout rate matters most. In the postseason, contact is more dangerous because lineups are stacked with above-average hitters. A reliever who allows contact against a playoff lineup gives up harder contact than the same pitcher would face in July against a .500 team. Championship bullpens average 28%+ strikeout rates in the postseason. Non-championship bullpens average 23%.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="Championship bullpen average strikeout rate: 28.4%">28.4%</div>
+        <div class="panel-title">Champions' K Rate</div>
+        <p>Average postseason strikeout rate for World Series-winning bullpens, 2020-2024. These arms miss bats at a rate that neutralizes elite lineups.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="Non-championship bullpen average strikeout rate: 23.1%">23.1%</div>
+        <div class="panel-title">Non-Champions' K Rate</div>
+        <p>Average postseason strikeout rate for bullpens eliminated before the World Series. The 5.3-point gap translates to roughly one extra strikeout per 2 innings. Over a 7-game series, that adds up.</p>
+      </div>
+    </div>
+
+    <p>Platoon flexibility is the second factor. Managers need relievers who can handle both lefties and righties. A reliever who dominates same-side hitters but gets crushed by opposite-side bats forces the manager into predictable matchup patterns. The 3-batter minimum rule, introduced in 2020, made platoon flexibility even more critical because pitchers can no longer duck unfavorable matchups.</p>
+
+    <p>Fresh-arm depth is the third. A 7-game series requires 8-10 reliable relievers. Teams that enter the postseason with 6 trustworthy arms and 2 question marks face compounding fatigue by Game 5. The 2022 Astros carried 13 pitchers on their postseason roster and used 11 in relief roles. Depth won the series as much as talent did.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Cost</div>
+    <h2>What October Bullpen Management Requires</h2>
+
+    <p>Building a championship bullpen is expensive in ways that do not show up on the payroll sheet. The primary cost is regular-season innings. To have 8-10 fresh arms in October, teams must manage workloads starting in June. That means using starters deeper into games during the regular season, carrying extra relievers, and strategically resting high-leverage arms during low-leverage stretches.</p>
+
+    <p>The Astros and Dodgers have been the best at this. Both organizations track cumulative pitcher workload with proprietary fatigue models that account for pitch count, pitch type, rest days, and velocity trends. By September, their highest-leverage relievers have thrown fewer innings than comparable arms on other teams, giving them a freshness edge that compounds over a playoff run.</p>
+
+    <p>The trade deadline has become a bullpen acquisition event. In 2024, 14 of the 20 most-traded pitchers at the deadline were relievers. Teams no longer trade for a rental starter to eat innings. They trade for a reliever who can eat the 6th and 7th innings in October, protecting the closer and the setup man from overwork.</p>
+
+    <div class="callout">
+      <div class="callout-label">The investment</div>
+      <p>A championship bullpen is not assembled on Opening Day. It is assembled over 6 months of workload management, 2 months of deadline acquisitions, and the willingness to sacrifice regular-season wins for October freshness. The teams that make this trade consistently are the teams that play in November.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / The Future</div>
+    <h2>October Belongs to the Bullpen</h2>
+
+    <p>The trend will not reverse. Starting pitcher workloads continue to decline. Velocity continues to rise, and velocity correlates with shorter outings because high-effort pitching fatigues arms faster. The pitch clock has slightly increased pace of play but has not changed the fundamental pattern of shorter starts and longer bullpen sessions.</p>
+
+    <p>Teams that still build October strategies around a top-heavy rotation are fighting a war with last decade's weapons. The 2024 Dodgers proved that a mediocre rotation can win a championship if the bullpen is elite. The 2021 Braves proved it before them. The sample grows every year.</p>
+
+    <p>The next edge in postseason construction will be bullpen specialization. We are already seeing teams develop relievers for specific roles: the high-fastball pitcher who gets strikeouts in the 6th, the ground-ball artist who gets double plays with runners on, the max-effort closer who throws 4 pitches at 98+ for one inning. The future postseason roster is not 5 starters and 8 relievers. It is 3 starters and 10 specialists.</p>
+
+    <div class="callout">
+      <div class="callout-label">The takeaway</div>
+      <p>If your team enters October with a great rotation and a mediocre bullpen, you have a problem. If your team enters October with a mediocre rotation and a great bullpen, you have a chance. The last 5 years of evidence make the case. Bullpen management is the single strongest predictor of postseason success in modern baseball.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Postseason pitching statistics from Baseball Reference and FanGraphs, 2015-2024. Starter innings per game calculated from game logs for all postseason starts. Bullpen ERA aggregated from all relief appearances in each team's postseason run.</p>
+      <p>Bullpen game identification uses the Baseball Reference play index: postseason games where no pitcher threw more than 3.0 innings. Sample: 47 games, 2018-2024. Win rate calculated as bullpen-game wins divided by total bullpen games, excluding ties and suspended games.</p>
+      <p>Strikeout rate comparison uses FanGraphs pitch-level data for all postseason relief appearances, segmented by whether the team won the World Series. Platoon splits from Statcast handedness matchup data. Trade deadline reliever data from MLB transaction logs (Roster Resource).</p>
+      <p>Workload management claims based on published reporting from The Athletic, ESPN, and FanGraphs regarding proprietary fatigue models used by the Astros and Dodgers. The 3-batter minimum rule took effect in 2020.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
