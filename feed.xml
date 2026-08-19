@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Aug 2026 05:29:58 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 05:29:43 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Betting Lines Know More Than You Think</title>
+      <link>https://plate-discipline.com/betting-lines-know-more-than-you-think</link>
+      <guid isPermaLink="true">https://plate-discipline.com/betting-lines-know-more-than-you-think</guid>
+      <description>Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts.</description>
+      <pubDate>Wed, 19 Aug 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Bullpen Game Is Winning the World Series</title>
       <link>https://plate-discipline.com/the-bullpen-game-is-winning-the-world-series</link>

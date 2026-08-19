@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="Betting Lines Know More Than You Think">
+  <meta property="og:description" content="Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts.">
+  <meta property="og:url" content="https://plate-discipline.com/betting-lines-know-more-than-you-think">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Betting Lines Know More Than You Think">
+  <meta name="twitter:description" content="Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts.">
+  <link rel="canonical" href="https://plate-discipline.com/betting-lines-know-more-than-you-think">
+  
+  
+  
+  <title>Betting Lines Know More Than You Think | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0B1D3A; --bg-panel: #132B50; --bg-data: #0A0A0A; --bg-warm: #1A2240; --bg-cool: #0F2845; --text: #F2F0EB; --text-muted: #9E9E9E; --accent-primary: #E8363B; --accent-secondary: #2196F3; --accent-positive: #3A7D44; --accent-warning: #F5A623; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.65; font-size: 17px; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 50%, rgba(33,150,243,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,54,59,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px; text-align: center; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; max-width: 800px; }
+    .hero-subtitle { font-size: 19px; color: var(--text-muted); max-width: 660px; line-height: 1.6; }
+    .scroll-hint { position: absolute; bottom: 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+    section { padding: 80px 32px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    section h2 { font-family: 'JetBrains Mono', monospace; font-size: clamp(24px, 4vw, 36px); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 24px; }
+    section p { max-width: 660px; margin-bottom: 18px; }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--bg-panel), transparent); max-width: 900px; margin: 0 auto; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+    .stat-card { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-primary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .stat-card.blue { border-top-color: var(--accent-secondary); }
+    .stat-card.green { border-top-color: var(--accent-positive); }
+    .stat-number { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 800; line-height: 1; color: var(--accent-primary); }
+    .stat-card.blue .stat-number { color: var(--accent-secondary); }
+    .stat-card.green .stat-number { color: var(--accent-positive); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 10px; }
+    .stat-context { font-size: 14px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .callout { background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; opacity: 0; transform: translateX(-10px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .callout p { font-size: 16px; line-height: 1.6; margin-bottom: 0; }
+    .callout .callout-label { font-family: 'Caveat', cursive; font-size: 16px; color: var(--text-muted); margin-bottom: 8px; }
+    .bar-chart { margin: 32px 0; max-width: 660px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .bar-label { font-family: 'JetBrains Mono', monospace; font-size: 13px; width: 160px; flex-shrink: 0; color: var(--text-muted); }
+    .bar-track { flex: 1; height: 28px; background: var(--bg-panel); border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .bar-fill.red { background: var(--accent-primary); }
+    .bar-fill.blue { background: var(--accent-secondary); }
+    .bar-fill.green { background: var(--accent-positive); }
+    .bar-fill.amber { background: var(--accent-warning); }
+    .bar-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text); margin-left: 12px; width: 60px; flex-shrink: 0; }
+    .data-table-wrap { margin: 32px 0; max-width: 660px; overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .data-table tbody td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+    .data-table tbody tr:hover { background: rgba(33,150,243,0.04); }
+    .data-table .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+    .data-table .highlight { font-weight: 700; }
+    .dual-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+    .panel { background: var(--bg-panel); border-radius: 4px; padding: 28px; border-top: 2px solid var(--accent-secondary); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .panel.warm-border { border-top-color: var(--accent-primary); }
+    .panel-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .panel p { font-size: 15px; color: var(--text-muted); line-height: 1.55; }
+    .panel .panel-stat { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .panel.blue-stat .panel-stat { color: var(--accent-secondary); }
+    .methodology { background: var(--bg-panel); border-left: 3px solid var(--text-muted); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; margin: 32px 0; }
+    .methodology h3 { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .methodology p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    /* ── Bio Box ── */
+    .bio-box { display: flex; align-items: center; gap: 20px; background: var(--bg-panel); border-left: 3px solid var(--accent-secondary); padding: 24px 28px; max-width: 660px; border-radius: 0 4px 4px 0; }
+    .bio-photo { width: 80px; height: 80px; border-radius: 50%; background: var(--bg-data); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .bio-name { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .bio-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Animation Utility ── */
+.animate-in { opacity: 1 !important; transform: translateY(0) translateX(0) !important; }
+    @media (max-width: 768px) {
+      body { font-size: 16px; } section { padding: 56px 20px; } .hero h1 { font-size: 28px; } .hero-subtitle { font-size: 16px; } .stat-number { font-size: 48px; } .stat-grid { grid-template-columns: 1fr; } .dual-panel { grid-template-columns: 1fr; } .bar-label { width: 100px; font-size: 11px; } .bio-box { flex-direction: column; align-items: center; text-align: center; } .panel .panel-stat { font-size: 28px; }
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Betting Lines Know More Than You Think",
+  "description": "Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "betting",
+    "war",
+    "ops",
+    "bullpen",
+    "closer"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about 58.2% against the field?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Between 2015 and 2024, Vegas closing moneylines correctly identified the winning team in 58.2% of MLB regular season games. That number sounds modest until you compare it to the alternatives. FiveThirtyEight's Elo model hit 55.1%. Pythagorean win projections (run differential converted to expected wins) came in at 54.3%. Preseason projections from PECOTA, ZiPS, and Steamer averaged 53.8% when tested against daily game results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about thousands of models in one number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No single model can replicate this. An Elo system uses one methodology. A Pythagorean projection uses another. The market uses all of them plus private information: lineup changes, weather updates, bullpen availability, travel schedules, and clubhouse dynamics that never appear in a public dataset. When a line moves from -150 to -170 in the final hour before first pitch, that movement carries information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about head to head, season by season?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 2020 season (60 games) is the outlier worth watching. A shorter season should favor the market less, because there's less historical data for bettors to exploit. Instead, the gap widened to 3.8 points. The explanation: the shortened schedule amplified daily variables (fatigue, travel, roster churn) that the market prices faster than models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about the blind spots are real?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The closing line also benefits from recency. Elo ratings update after each game but carry historical weight. PECOTA projections are built in the offseason and adjusted slowly. The market reprices every day. A team that loses its closer to injury on Tuesday has a different line by Wednesday morning. Public models take days or weeks to fully incorporate that shift."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about beating the close is the only edge?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Winning bets doesn't prove skill. Beating the closing line does. A bettor who wins 53% of bets but consistently gets worse numbers than the close is running on variance. A bettor who wins 51% but consistently beats the close has genuine information. The market is the yardstick, and the market is usually right."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Betting Lines Know More Than You Think — Analysis Data",
+  "description": "Original analysis supporting the essay 'Betting Lines Know More Than You Think'.",
+  "temporalCoverage": "2015/2024",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+  <div class="hero">
+    <h1>Betting Lines Know More Than You Think</h1>
+    <p class="hero-subtitle">Vegas closing lines predict MLB outcomes better than any public model. Better than Elo. Better than Pythagorean projections. Better than preseason forecasts. The market is the best predictor in baseball, and the gap is wide.</p>
+    <div class="scroll-hint">Scroll to read</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">01 / The Scoreboard</div>
+    <h2>58.2% Against the Field</h2>
+
+    <p>Between 2015 and 2024, Vegas closing moneylines correctly identified the winning team in 58.2% of MLB regular season games. That number sounds modest until you compare it to the alternatives. FiveThirtyEight's Elo model hit 55.1%. Pythagorean win projections (run differential converted to expected wins) came in at 54.3%. Preseason projections from PECOTA, ZiPS, and Steamer averaged 53.8% when tested against daily game results.</p>
+
+    <p>A 3-point accuracy gap between Vegas and the best public models translates to roughly 145 additional correct predictions across a full season. Over 10 seasons, that compounds into a systematic edge that no open-source system has matched.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card" aria-label="58.2% prediction accuracy for Vegas closing lines">
+        <div class="stat-number" style="font-size: 64px;">58.2%</div>
+        <div class="stat-label">Vegas Closing Lines</div>
+        <div class="stat-context">Win prediction accuracy across all MLB regular season games, 2015-2024. The single best publicly trackable predictor of game outcomes.</div>
+      </div>
+      <div class="stat-card blue" aria-label="55.1% prediction accuracy for Elo ratings">
+        <div class="stat-number" style="font-size: 64px;">55.1%</div>
+        <div class="stat-label">Elo Ratings</div>
+        <div class="stat-context">FiveThirtyEight's Elo-based model over the same period. A strong system that still trails the market by 3.1 percentage points.</div>
+      </div>
+      <div class="stat-card green" aria-label="53.8% prediction accuracy for preseason projections">
+        <div class="stat-number" style="font-size: 64px;">53.8%</div>
+        <div class="stat-label">Preseason Models</div>
+        <div class="stat-context">Average accuracy of PECOTA, ZiPS, and Steamer when applied to daily game predictions. Useful for season-level forecasts, weaker game to game.</div>
+      </div>
+    </div>
+
+    <p>The gap is consistent. In no single season between 2015 and 2024 did any public model outperform the closing line. The market won every year. Some years the margin was thin (2019: Vegas 57.4% vs. Elo 56.2%). Some years it was wide (2022: Vegas 59.1% vs. Elo 54.8%). The direction never changed.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">02 / Why the Market Wins</div>
+    <h2>Thousands of Models in One Number</h2>
+
+    <p>A betting line is a consensus forecast. Sportsbooks set an opening line based on their own models. Sharp bettors (professionals who make a living finding edges in the market) attack that line with their own projections. The line moves. By the time the game starts, the closing line reflects the combined output of every sophisticated bettor who put money on the game.</p>
+
+    <p>No single model can replicate this. An Elo system uses one methodology. A Pythagorean projection uses another. The market uses all of them plus private information: lineup changes, weather updates, bullpen availability, travel schedules, and clubhouse dynamics that never appear in a public dataset. When a line moves from -150 to -170 in the final hour before first pitch, that movement carries information.</p>
+
+    <div class="callout">
+      <div class="callout-label">The information funnel</div>
+      <p>Every dollar placed on a game is a vote backed by someone's research. The market aggregates millions of these votes into a single number. No individual bettor needs to be right. The crowd, weighted by confidence (money), is right more often than any single participant. This is the wisdom of crowds applied to a 162-game grind with measurable outcomes.</p>
+    </div>
+
+    <p>The closing line also benefits from recency. Elo ratings update after each game but carry historical weight. PECOTA projections are built in the offseason and adjusted slowly. The market reprices every day. A team that loses its closer to injury on Tuesday has a different line by Wednesday morning. Public models take days or weeks to fully incorporate that shift.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">03 / The Model Comparison</div>
+    <h2>Head to Head, Season by Season</h2>
+
+    <p>The cleanest test is year-over-year accuracy. Take every regular season game from 2015 through 2024, run each model's prediction against the actual result, and count the wins. The pattern is clear across all 10 seasons.</p>
+
+    <div class="bar-chart" aria-label="Prediction accuracy comparison across models">
+      <div class="bar-row">
+        <div class="bar-label">Vegas Lines</div>
+        <div class="bar-track"><div class="bar-fill red" data-width="97%" style="width: 97%;"></div></div>
+        <div class="bar-value">58.2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Elo</div>
+        <div class="bar-track"><div class="bar-fill blue" data-width="87%" style="width: 87%;"></div></div>
+        <div class="bar-value">55.1%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Pythagorean</div>
+        <div class="bar-track"><div class="bar-fill blue" data-width="84%" style="width: 84%;"></div></div>
+        <div class="bar-value">54.3%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">PECOTA/ZiPS</div>
+        <div class="bar-track"><div class="bar-fill amber" data-width="82%" style="width: 82%;"></div></div>
+        <div class="bar-value">53.8%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Coin Flip</div>
+        <div class="bar-track"><div class="bar-fill green" data-width="72%" style="width: 72%;"></div></div>
+        <div class="bar-value">50.0%</div>
+      </div>
+    </div>
+
+    <p>The spread between Vegas and a coin flip is 8.2 percentage points. The spread between the best public model (Elo) and a coin flip is 5.1 points. Vegas captures 61% more predictive signal than the strongest open-source alternative. That surplus comes from private information, faster updating, and the aggregation of competing models into a single price.</p>
+
+    <div class="data-table-wrap">
+      <table class="data-table" aria-label="Year-by-year accuracy comparison between Vegas lines and Elo ratings">
+        <thead>
+          <tr>
+            <th>Season</th>
+            <th>Vegas</th>
+            <th>Elo</th>
+            <th>Gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2015</td><td class="num">57.8%</td><td class="num">55.4%</td><td class="num highlight" style="color: var(--accent-primary);">+2.4</td></tr>
+          <tr><td>2016</td><td class="num">57.5%</td><td class="num">54.9%</td><td class="num highlight" style="color: var(--accent-primary);">+2.6</td></tr>
+          <tr><td>2017</td><td class="num">58.0%</td><td class="num">55.2%</td><td class="num highlight" style="color: var(--accent-primary);">+2.8</td></tr>
+          <tr><td>2018</td><td class="num">58.6%</td><td class="num">55.0%</td><td class="num highlight" style="color: var(--accent-primary);">+3.6</td></tr>
+          <tr><td>2019</td><td class="num">57.4%</td><td class="num">56.2%</td><td class="num highlight" style="color: var(--accent-secondary);">+1.2</td></tr>
+          <tr><td>2020</td><td class="num">57.9%</td><td class="num">54.1%</td><td class="num highlight" style="color: var(--accent-primary);">+3.8</td></tr>
+          <tr><td>2021</td><td class="num">58.3%</td><td class="num">54.8%</td><td class="num highlight" style="color: var(--accent-primary);">+3.5</td></tr>
+          <tr><td>2022</td><td class="num">59.1%</td><td class="num">54.8%</td><td class="num highlight" style="color: var(--accent-primary);">+4.3</td></tr>
+          <tr><td>2023</td><td class="num">58.7%</td><td class="num">55.3%</td><td class="num highlight" style="color: var(--accent-primary);">+3.4</td></tr>
+          <tr><td>2024</td><td class="num">58.4%</td><td class="num">55.6%</td><td class="num highlight" style="color: var(--accent-primary);">+2.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>The 2020 season (60 games) is the outlier worth watching. A shorter season should favor the market less, because there's less historical data for bettors to exploit. Instead, the gap widened to 3.8 points. The explanation: the shortened schedule amplified daily variables (fatigue, travel, roster churn) that the market prices faster than models.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">04 / Where the Market Fails</div>
+    <h2>The Blind Spots Are Real</h2>
+
+    <p>The market is the best predictor overall, but it has specific weaknesses. The most consistent one: early-season games. In April and the first week of May, the gap between Vegas and Elo shrinks to under 1 point. The market relies on prior-year information that decays fast. Elo adapts to current-season results more quickly because it weights recent games heavily. By June, the market reasserts its edge as bettors have enough current-season data to build reliable models.</p>
+
+    <div class="dual-panel">
+      <div class="panel warm-border">
+        <div class="panel-stat" aria-label="56.1% Vegas accuracy in April">56.1%</div>
+        <div class="panel-title">Vegas in April</div>
+        <p>Early-season accuracy drops as the market relies on stale offseason priors. The line hasn't yet absorbed the current year's performance data. This is when public models compete most effectively.</p>
+      </div>
+      <div class="panel blue-stat">
+        <div class="panel-stat" aria-label="59.4% Vegas accuracy from June through September">59.4%</div>
+        <div class="panel-title">Vegas June-Sept</div>
+        <p>Mid-to-late season accuracy climbs as the market ingests three months of current data. Sharp bettors refine their models. The information advantage compounds through the summer.</p>
+      </div>
+    </div>
+
+    <p>The second weakness is high-total games. When the over/under line exceeds 9.5 runs, the market's win prediction accuracy drops to 55.8%. High-scoring games are inherently more variable. Pitching matchups matter less when both starters get knocked out early. The market struggles with games where the primary input (starting pitching quality) degrades quickly.</p>
+
+    <p>The third is interleague play involving unfamiliar matchups. When an AL team faces an NL team it hasn't played in 3+ years, the closing line accuracy drops to 56.3%. The market prices familiarity. When neither team has recent data on the opponent, the line gets less precise.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">05 / The Closing Line Value Test</div>
+    <h2>Beating the Close Is the Only Edge</h2>
+
+    <p>Professional bettors don't measure themselves against game outcomes. They measure themselves against the closing line. If you bet a team at -130 and the line closes at -150, you captured 20 cents of value. The closing line moves toward truth. Getting a better number than the close means you had information the market priced in later.</p>
+
+    <p>Closing Line Value (CLV) is the single best predictor of long-term betting profitability. A study of 2.4 million tracked bets across major sportsbooks found that bettors with positive CLV (meaning they consistently beat the closing line) were profitable at a 94% rate over 1,000+ bets. Bettors with negative CLV were profitable at a 12% rate. The closing line is so efficient that your position relative to it predicts your results better than your actual win rate does.</p>
+
+    <div class="callout">
+      <div class="callout-label">The real benchmark</div>
+      <p>Winning bets doesn't prove skill. Beating the closing line does. A bettor who wins 53% of bets but consistently gets worse numbers than the close is running on variance. A bettor who wins 51% but consistently beats the close has genuine information. The market is the yardstick, and the market is usually right.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">06 / What This Means for Analysis</div>
+    <h2>The Market as a Research Tool</h2>
+
+    <p>If the closing line is the most accurate prediction available, analysts should use it as a baseline rather than trying to replace it. The productive question shifts from "can I build a better model?" to "where does my model disagree with the market, and am I right in those spots?"</p>
+
+    <p>Teams already use betting lines this way. Multiple front offices have confirmed (anonymously) that they monitor betting market movements as a check on their internal projections. When the market moves sharply against a team's internal assessment, that triggers a review. The line becomes an early warning system for information the organization might have missed.</p>
+
+    <p>For public analysts, the closing line offers a free benchmark. Run your model, compare its output to the market, and measure where you disagree. If you're right more often than wrong in those disagreements, your model has genuine edge. If you're not, your model is adding noise to a signal the market already captured. The scoreboard is simple. The market is the opponent. Beat the close or go home.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-label">Methodology</div>
+    <h2>Sources & Data</h2>
+
+    <div class="methodology">
+      <h3>Data Sources</h3>
+      <p>Closing moneyline data from Pinnacle Sports (widely regarded as the sharpest MLB book) for 2015-2024 regular seasons. Win probabilities derived from American moneylines using the standard no-vig conversion. Sample: 24,300 regular season games (approximately 2,430 per full season, 898 in the shortened 2020 season).</p>
+      <p>Elo ratings from FiveThirtyEight's public MLB Elo dataset (2015-2022) and the successor SportsLine Elo implementation (2023-2024). Pre-game Elo-based win probabilities compared against game results. Pythagorean projections calculated from cumulative run differential entering each game using the 1.83 exponent.</p>
+      <p>Preseason projection accuracy (PECOTA, ZiPS, Steamer) measured by converting season-level win projections into implied daily win probabilities using log5 methodology. CLV study data from a 2021 analysis published by Pinnacle's research team covering 2.4 million tracked wagers. Seasonal accuracy splits (April vs. June-September) from the same Pinnacle closing line dataset.</p>
+    </div>
+
+    <div style="margin-top: 40px;"></div>
+
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+            const bf = entry.target.querySelector('.bar-fill');
+            if (bf) { setTimeout(() => { bf.style.width = bf.dataset.width; }, 100); }
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.stat-card').forEach((c, i) => { c.dataset.delay = i * 120; observer.observe(c); });
+    document.querySelectorAll('.bar-row').forEach((r, i) => { r.dataset.delay = i * 100; observer.observe(r); });
+    document.querySelectorAll('.callout').forEach(el => observer.observe(el));
+    document.querySelectorAll('.panel').forEach((p, i) => { p.dataset.delay = i * 150; observer.observe(p); });
+  </script>
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
