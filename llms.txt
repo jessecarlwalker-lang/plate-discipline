@@ -34,6 +34,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Bullpen Game Is Winning the World Series: https://plate-discipline.com/the-bullpen-game-is-winning-the-world-series
 - Betting Lines Know More Than You Think: https://plate-discipline.com/betting-lines-know-more-than-you-think
 - The Robo-Ump Test Run: https://plate-discipline.com/the-robo-ump-test-run
+- Jet Lag at the Plate: https://plate-discipline.com/jet-lag-at-the-plate
 
 ## Content Format
 

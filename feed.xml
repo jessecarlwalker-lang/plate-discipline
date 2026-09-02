@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2026 05:29:16 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 05:29:38 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Jet Lag at the Plate</title>
+      <link>https://plate-discipline.com/jet-lag-at-the-plate</link>
+      <guid isPermaLink="true">https://plate-discipline.com/jet-lag-at-the-plate</guid>
+      <description>West-to-east travel costs MLB teams measurable offensive production. Body clocks set to Pacific time face 7 PM first pitches that feel like 4 PM, and some teams pay a much heavier price than others.</description>
+      <pubDate>Wed, 02 Sep 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Robo-Ump Test Run</title>
       <link>https://plate-discipline.com/the-robo-ump-test-run</link>
