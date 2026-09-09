@@ -35,6 +35,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - Betting Lines Know More Than You Think: https://plate-discipline.com/betting-lines-know-more-than-you-think
 - The Robo-Ump Test Run: https://plate-discipline.com/the-robo-ump-test-run
 - Jet Lag at the Plate: https://plate-discipline.com/jet-lag-at-the-plate
+- The Mike Trout Problem: https://plate-discipline.com/the-mike-trout-problem
 
 ## Content Format
 
