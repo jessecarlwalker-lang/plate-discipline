@@ -5,8 +5,15 @@
     <link>https://plate-discipline.com</link>
     <description>Data-driven visual essays about baseball. Spin rates, swing decisions, and probability shifts, designed to be felt, not just read.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Sep 2026 05:30:33 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 05:30:07 +0000</lastBuildDate>
     <atom:link href="https://plate-discipline.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Most Boring Game of 2025</title>
+      <link>https://plate-discipline.com/the-most-boring-game-of-2025</link>
+      <guid isPermaLink="true">https://plate-discipline.com/the-most-boring-game-of-2025</guid>
+      <description>A 2-1 pitcher&#x27;s duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that&#x27;s backward.</description>
+      <pubDate>Wed, 16 Sep 2026 08:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>The Mike Trout Problem</title>
       <link>https://plate-discipline.com/the-mike-trout-problem</link>

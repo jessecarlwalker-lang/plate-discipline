@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A 2-1 pitcher&#x27;s duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that&#x27;s backward.">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Most Boring Game of 2025 | Baseball Visual Essays">
+  <meta property="og:description" content="A 2-1 pitcher&#x27;s duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that&#x27;s backward.">
+  <meta property="og:url" content="https://plate-discipline.com/the-most-boring-game-of-2025">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Most Boring Game of 2025 | Baseball Visual Essays">
+  <meta name="twitter:description" content="A 2-1 pitcher&#x27;s duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that&#x27;s backward.">
+  <link rel="canonical" href="https://plate-discipline.com/the-most-boring-game-of-2025">
+  
+  
+  
+  <title>The Most Boring Game of 2025 | Baseball Visual Essays</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 3.5rem);
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      max-width: 660px;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 90px 32px;
+    }
+
+    .container.wide {
+      max-width: 900px;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-cool) 0%, var(--bg) 100%);
+      padding: 32px;
+    }
+
+    .hero h1 {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 540px;
+      line-height: 1.5;
+    }
+
+    .hero .date {
+      margin-top: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* DIVIDERS */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-secondary) 50%, transparent);
+      margin: 3rem 0;
+      max-width: 660px;
+    }
+
+    /* STAT CARDS */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background-color: var(--bg-panel);
+      padding: 2rem 1.5rem;
+      border-top: 2px solid var(--accent-primary);
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .stat-card:nth-child(1) { animation-delay: 0s; }
+    .stat-card:nth-child(2) { animation-delay: 0.15s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.45s; }
+
+    .stat-card.alt-primary {
+      border-top-color: var(--accent-secondary);
+    }
+
+    .stat-card.alt-positive {
+      border-top-color: var(--accent-positive);
+    }
+
+    .stat-card.alt-warning {
+      border-top-color: var(--accent-warning);
+    }
+
+    .stat-card .value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      color: var(--accent-primary);
+    }
+
+    .stat-card.alt-secondary .value {
+      color: var(--accent-secondary);
+    }
+
+    .stat-card.alt-positive .value {
+      color: var(--accent-positive);
+    }
+
+    .stat-card.alt-warning .value {
+      color: var(--accent-warning);
+    }
+
+    .stat-card .label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.4;
+    }
+
+    /* BAR CHART */
+    .bar-chart {
+      margin: 2rem 0;
+    }
+
+    .bar-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .bar-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      min-width: 120px;
+      color: var(--text-muted);
+    }
+
+    .bar-wrapper {
+      flex: 1;
+      height: 28px;
+      background-color: var(--bg-data);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 1rem;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 2px;
+      width: 0;
+      animation: barFill 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .bar-item:nth-child(1) .bar-fill { animation-delay: 0.1s; }
+    .bar-item:nth-child(2) .bar-fill { animation-delay: 0.2s; }
+    .bar-item:nth-child(3) .bar-fill { animation-delay: 0.3s; }
+    .bar-item:nth-child(4) .bar-fill { animation-delay: 0.4s; }
+    .bar-item:nth-child(5) .bar-fill { animation-delay: 0.5s; }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 14px;
+      min-width: 50px;
+      text-align: right;
+      color: var(--text);
+    }
+
+    @keyframes barFill {
+      from { width: 0; }
+      to { width: var(--fill-width, 100%); }
+    }
+
+    /* CALLOUT */
+    .callout {
+      background-color: var(--bg-panel);
+      padding: 2rem;
+      border-left: 3px solid var(--accent-secondary);
+      margin: 2rem 0;
+      max-width: 660px;
+    }
+
+    .callout p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+
+    /* DUAL PANELS */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .panel {
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .panel.warm {
+      background-color: var(--bg-warm);
+    }
+
+    .panel.cool {
+      background-color: var(--bg-cool);
+    }
+
+    .panel h3 {
+      margin-bottom: 1rem;
+    }
+
+    .panel p {
+      margin-bottom: 0.8rem;
+    }
+
+    /* METHODOLOGY */
+    .methodology {
+      background-color: var(--bg-panel);
+      padding: 2rem;
+      max-width: 660px;
+      margin: 2rem 0;
+      border-top: 2px solid var(--accent-secondary);
+    }
+
+    .methodology h3 {
+      color: var(--accent-secondary);
+    }
+
+    .methodology ol {
+      margin-left: 1.5rem;
+    }
+
+    .methodology li {
+      margin-bottom: 0.8rem;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* BIO BOX */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      margin: 3rem 0;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ── */
+
+    /* ── Scroll Animations ── */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container {
+        padding: 60px 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .stat-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card .value {
+        font-size: 48px;
+      }
+
+      .dual-panel {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .bar-label {
+        min-width: 80px;
+        font-size: 12px;
+      }
+
+      .bar-value {
+        font-size: 12px;
+      }
+
+      .bio-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Most Boring Game of 2025 | Baseball Visual Essays",
+  "description": "A 2-1 pitcher's duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that's backward.",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "war",
+    "ops",
+    "batting average",
+    "strikeout rate"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about we measure boredom wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a league with 30 teams, one team getting this historically bad raises a question: Is the system working? When a team can be this comprehensively worse than every other competitor, what does that say about parity, salary cap enforcement, and the basic health of baseball?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about it was a pitcher's year. almost too much?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a league with 30 teams, one team getting this historically bad raises a question: Is the system working? When a team can be this comprehensively worse than every other competitor, what does that say about parity, salary cap enforcement, and the basic health of baseball?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about bad baseball drives fans away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a league with 30 teams, one team getting this historically bad raises a question: Is the system working? When a team can be this comprehensively worse than every other competitor, what does that say about parity, salary cap enforcement, and the basic health of baseball?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about boredom is measurable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a league with 30 teams, one team getting this historically bad raises a question: Is the system working? When a team can be this comprehensively worse than every other competitor, what does that say about parity, salary cap enforcement, and the basic health of baseball?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about colorado's 2025 was a referendum on competitive balance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This is also a story about the Rockies' 2025 season. Historically, catastrophically bad. One of 3 teams since 1940 to allow 1,000+ runs. And this one game, where a position player took the mound and a team allowed 18 runs, is the clearest lens into what went wrong."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Most Boring Game of 2025 | Baseball Visual Essays: Analysis Data",
+  "description": "Original analysis supporting the essay 'The Most Boring Game of 2025 | Baseball Visual Essays'.",
+  "temporalCoverage": "2000/2016",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>The Most Boring Game</h1>
+  <p class="subtitle">Orioles 18, Rockies 0. The game that proved boredom is measurable. Win probability proves it.</p>
+  <p class="date">July 26, 2025</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="container">
+  <div class="section-label">The Thesis</div>
+  <h2>We measure boredom wrong.</h2>
+
+  <p>A 2-1 pitcher's duel in 11 innings feels tense. An 18-0 blowout feels dead. We assume the latter is boring because someone won decisively. But that's backward. Boredom is win probability. When the outcome stops being uncertain, the game stops mattering, whether you're in the 3rd inning or the 9th.</p>
+
+  <p>The Orioles' obliteration of the Rockies on July 26 hit 99% Baltimore win probability by the 4th inning. Nothing after that mattered. Every pitch, every at-bat, every inning was dead time. That's statistical theater.</p>
+
+  <p>This is also a story about the Rockies' 2025 season. Historically, catastrophically bad. One of 3 teams since 1940 to allow 1,000+ runs. And this one game, where a position player took the mound and a team allowed 18 runs, is the clearest lens into what went wrong.</p>
+
+  <div class="divider"></div>
+</section>
+
+<!-- STAT CARDS SECTION 1 -->
+<section class="container">
+  <div class="section-label">The Game</div>
+
+  <div class="stat-cards">
+    <div class="stat-card">
+      <div class="value">18–0</div>
+      <div class="label">Final Score</div>
+    </div>
+    <div class="stat-card alt-secondary">
+      <div class="value">Orioles</div>
+      <div class="label">First team in modern era where 12+ batters each had ≥1 hit and ≥1 run</div>
+    </div>
+    <div class="stat-card alt-positive">
+      <div class="value">17–0</div>
+      <div class="label">Previous Orioles franchise record shutout (1969)</div>
+    </div>
+    <div class="stat-card alt-warning">
+      <div class="value">9</div>
+      <div class="label">Runs scored in the 7th inning alone</div>
+    </div>
+  </div>
+
+  <p>Baltimore's lineup went perfect. Every. Single. Starter. Reached base and scored. Systemic collapse on the other side of the plate.</p>
+
+  <div class="divider"></div>
+</section>
+
+<!-- DUAL PANEL -->
+<section class="container wide">
+  <div class="section-label">Two Stories</div>
+
+  <div class="dual-panel">
+    <div class="panel warm">
+      <h3>What Happened On Field</h3>
+      <p>Tyler O'Neill hit a home run and a single, walked twice, drove in 3 runs. Gunnar Henderson and Coby Mayo each hit 2-run doubles in the 7th.</p>
+      <p>Colorado resorted to position player pitching by the 8th. DH Kyle Farmer took the mound. By then the game's fate had been sealed for 4 innings.</p>
+      <p>The team surrendered.</p>
+    </div>
+    <div class="panel cool">
+      <h3>What It Meant</h3>
+      <p>The Rockies allowed 1,000+ runs in 2025. One of only 3 teams since 1940 to reach that mark. Their run differential was the worst in 125 years of MLB; it wasn't close.</p>
+      <p>This game was the logical conclusion of a season where the organization had no margin for error and made every possible error anyway.</p>
+      <p>A position player on the mound became the symbol of it.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+</section>
+
+<!-- CONTEXT: 2025 SEASON DATA -->
+<section class="container">
+  <div class="section-label">The 2025 League Context</div>
+  <h2>It was a pitcher's year. Almost too much.</h2>
+
+  <p>The 2025 season was defined by offense declining to historic lows. League batting average sat at .243 (the lowest since the mound was lowered in 1968). Strikeout rate hovered around 23-24% of all at-bats. There were zero no-hitters all season, and only 29 complete games.</p>
+
+  <p>Average starter innings pitched per game dropped to 5.21 IP, down from 5.88 in the 2000-2016 era. Teams burned through relievers like fuel. Position player pitching became so routine it was called "a farce of statistics" by mid-season.</p>
+
+  <p>Into this environment, the Rockies' collapse looked even starker. While the rest of baseball struggled to score, Colorado couldn't stop bleeding runs.</p>
+
+  <div class="stat-cards">
+    <div class="stat-card">
+      <div class="value">.243</div>
+      <div class="label">League batting average (lowest since 1968)</div>
+    </div>
+    <div class="stat-card alt-secondary">
+      <div class="value">23–24%</div>
+      <div class="label">Strikeout rate (% of all ABs)</div>
+    </div>
+    <div class="stat-card alt-warning">
+      <div class="value">0</div>
+      <div class="label">No-hitters in 2025 (first time since 2005)</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+</section>
+
+<!-- ATTENTION CRISIS -->
+<section class="container">
+  <div class="section-label">The Ripple</div>
+  <h2>Bad baseball drives fans away.</h2>
+
+  <p>The 2025 season saw attendance collapse at storied franchises. St. Louis Cardinals drew 2.25 million fans (their lowest non-COVID total since 1984). Minnesota Twins sank to 1.768 million, down from historical averages around 2.2-2.5 million in good years.</p>
+
+  <p>When a team is mathematically eliminated by July, when every game feels predetermined, people stop showing up. And when multiple teams hit that threshold, the entire league notices.</p>
+
+  <p>The Orioles-Rockies game on July 26 was a symptom. A game so thoroughly over by the 4th inning that 90,000 empty seats across the league started to make sense.</p>
+
+  <div class="divider"></div>
+</section>
+
+<!-- WHY THIS GAME MATTERS -->
+<section class="container">
+  <div class="section-label">The Argument</div>
+  <h2>Boredom is measurable.</h2>
+
+  <p>Sports betting odds have a concept called "win probability." At any point in a game, bookmakers assign a likelihood to each team's victory. In close games, win probability swings dramatically. A home run in the 7th of a 1-run game might shift WPA from 40% to 75% in seconds.</p>
+
+  <p>In the Orioles-Rockies game, win probability hit 99% Baltimore by the 4th inning. Everything after was statistical dead time. Zero uncertainty from pitch 80 onward. The score being lopsided is the effect, the certainty arriving early is the cause.</p>
+
+  <p>Contrast this to a theoretical World Series Game 7 in the 9th inning, down 1 run, bases loaded. Win probability swings 30 percentage points with each pitch. That's engagement. That's care.</p>
+
+  <p>The game that bored us most was the one where we knew the ending earliest.</p>
+
+  <div class="callout">
+    <p>The most boring baseball game is the one where the outcome becomes certain too soon. Measure boredom by win probability, not by runs.</p>
+  </div>
+
+  <div class="divider"></div>
+</section>
+
+<!-- ROCKIES CONTEXT -->
+<section class="container">
+  <div class="section-label">The Bigger Picture</div>
+  <h2>Colorado's 2025 was a referendum on competitive balance.</h2>
+
+  <p>Colorado arrived at historic failure systematically. A roster built for an era that no longer existed, pitching depth that didn't exist, and luck that evaporated entirely.</p>
+
+  <p>By July, they were mathematically hopeless. By August, they were experimenting with position players on the mound. By September, fans had stopped coming. The Orioles-Rockies game on July 26 was just the clearest, most brutal expression of a season already decided.</p>
+
+  <p>In a league with 30 teams, one team getting this historically bad raises a question: Is the system working? When a team can be this comprehensively worse than every other competitor, what does that say about parity, salary cap enforcement, and the basic health of baseball?</p>
+
+  <p>The game itself (18-0, position players pitching, every batter scoring) will be forgotten by April 2026. But the question it raises won't be.</p>
+
+  <div class="divider"></div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="container">
+  <div class="section-label">Sources & Method</div>
+  <div class="methodology">
+    <h3>Data Sources</h3>
+    <ol>
+      <li>MLB.com official box scores and season statistics</li>
+      <li>Baseball-Reference.com historical records and run differential tracking</li>
+      <li>FanGraphs advanced metrics (WAR, WPA calculations)</li>
+      <li>ESPN attendance records for 2025 season</li>
+      <li>FiveThirtyEight win probability calculations and league-wide statistics</li>
+      <li>The Athletic's end-of-season statistical analysis</li>
+    </ol>
+    <p style="margin-top: 1.5rem; font-size: 14px;">Win Probability Added (WPA) is calculated as the shift in a team's probability of winning after each play. A game where WPA plateaus early indicates reduced competitive tension and lower audience engagement.</p>
+  </div>
+</section>
+
+<!-- BIO BOX -->
+<section class="container">
+  <div class="bio-box">
+    <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+    <div class="bio-text">
+      <div class="bio-name">Jesse Walker</div>
+      <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<script>
+  // Intersection Observer for scroll-triggered animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  document.querySelectorAll('.container, .methodology, .bio-box').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Bar chart animation on scroll
+  const barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll('.bar-fill');
+        const data = [
+          { width: '95' }, // 95%
+          { width: '87' }, // 87%
+          { width: '78' }, // 78%
+          { width: '63' }, // 63%
+          { width: '52' }  // 52%
+        ];
+        bars.forEach((bar, idx) => {
+          bar.style.setProperty('--fill-width', data[idx].width + '%');
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const barCharts = document.querySelectorAll('.bar-chart');
+  barCharts.forEach(chart => barObserver.observe(chart));
+</script>
+
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

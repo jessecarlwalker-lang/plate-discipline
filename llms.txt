@@ -36,6 +36,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - The Robo-Ump Test Run: https://plate-discipline.com/the-robo-ump-test-run
 - Jet Lag at the Plate: https://plate-discipline.com/jet-lag-at-the-plate
 - The Mike Trout Problem: https://plate-discipline.com/the-mike-trout-problem
+- The Most Boring Game of 2025: https://plate-discipline.com/the-most-boring-game-of-2025
 
 ## Content Format
 
