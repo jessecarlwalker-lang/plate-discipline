@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shohei Ohtani was slumping. Coming into Game 4 of the NLCS, he&#x27;d managed just 3 hits in 29 at-bats over his previous 7 games, a .103 average with 1 extra-base...">
+  <meta name="theme-color" content="#0B1D3A">
+  <meta property="og:title" content="The Game That Rewired October">
+  <meta property="og:description" content="Shohei Ohtani was slumping. Coming into Game 4 of the NLCS, he&#x27;d managed just 3 hits in 29 at-bats over his previous 7 games, a .103 average with 1 extra-base...">
+  <meta property="og:url" content="https://plate-discipline.com/the-game-that-rewired-october">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Plate Discipline">
+  <!-- TODO: Add og:image URL when share image is created -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Game That Rewired October">
+  <meta name="twitter:description" content="Shohei Ohtani was slumping. Coming into Game 4 of the NLCS, he&#x27;d managed just 3 hits in 29 at-bats over his previous 7 games, a .103 average with 1 extra-base...">
+  <link rel="canonical" href="https://plate-discipline.com/the-game-that-rewired-october">
+  
+  
+  
+  <title>The Game That Rewired October | Baseball Visual Essays</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1D3A;
+      --bg-panel: #132B50;
+      --bg-data: #0A0A0A;
+      --bg-warm: #1A2240;
+      --bg-cool: #0F2845;
+      --text: #F2F0EB;
+      --text-muted: #9E9E9E;
+      --accent-primary: #E8363B;
+      --accent-secondary: #2196F3;
+      --accent-positive: #3A7D44;
+      --accent-warning: #F5A623;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-cool) 100%);
+    }
+
+    .hero__content {
+      max-width: 660px;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .hero__date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      margin-bottom: 24px;
+    }
+
+    .hero__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero__subtitle {
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .hero__meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 32px;
+      font-weight: 600;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+
+    section.in-view {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 20px;
+      }
+    }
+
+    /* Section Headers */
+    .section__label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .section__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .section__divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+      margin: 80px 0;
+    }
+
+    /* Prose */
+    p {
+      margin-bottom: 20px;
+      max-width: 660px;
+      color: var(--text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Stat Cards */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .stat-card {
+      background-color: var(--bg-panel);
+      padding: 32px;
+      border-top: 2px solid;
+      opacity: 0;
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .stat-card:nth-child(1) { border-color: var(--accent-primary); animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { border-color: var(--accent-secondary); animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { border-color: var(--accent-positive); animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { border-color: var(--accent-warning); animation-delay: 0.4s; }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-card__value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .stat-card__label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Bar Charts */
+    .chart {
+      margin: 48px 0;
+    }
+
+    .chart__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .bar-row {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bar-label {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+      min-width: 120px;
+    }
+
+    .bar-container {
+      flex: 1;
+      background-color: var(--bg-data);
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+      width: 0;
+      animation: fillBar 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .bar-row:nth-child(1) .bar-fill { animation-delay: 0s; }
+    .bar-row:nth-child(2) .bar-fill { animation-delay: 0.1s; }
+    .bar-row:nth-child(3) .bar-fill { animation-delay: 0.2s; }
+    .bar-row:nth-child(4) .bar-fill { animation-delay: 0.3s; }
+    .bar-row:nth-child(5) .bar-fill { animation-delay: 0.4s; }
+
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: var(--width); }
+    }
+
+    .bar-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-left: 12px;
+      min-width: 50px;
+      text-align: right;
+    }
+
+    /* Callout Box */
+    .callout {
+      background-color: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 32px;
+      margin: 48px 0;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .callout__attribution {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Dual Panels */
+    .dual-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    @media (max-width: 768px) {
+      .dual-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      padding: 32px;
+      border-left: 3px solid;
+    }
+
+    .panel--warm {
+      background-color: var(--bg-warm);
+      border-color: var(--accent-primary);
+    }
+
+    .panel--cool {
+      background-color: var(--bg-cool);
+      border-color: var(--accent-secondary);
+    }
+
+    .panel__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .panel__content {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    /* Methodology */
+    .methodology {
+      background-color: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 32px;
+      margin: 60px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .methodology__title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .methodology p {
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .methodology p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Bio Box */
+    .bio-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg-panel);
+      border-left: 3px solid var(--accent-secondary);
+      padding: 24px 28px;
+      margin: 80px 0 40px 0;
+      max-width: 660px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .bio-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      background: var(--bg-data);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bio-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .bio-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    /* ── Footer ── */
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card__value {
+        font-size: 48px;
+      }
+
+      .hero__title {
+        font-size: 36px;
+      }
+
+      .section__title {
+        font-size: 28px;
+      }
+    }
+
+    /* Utility */
+    .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .annotation {
+      font-family: 'Caveat', cursive;
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+  
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+
+  
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Game That Rewired October",
+  "description": "Shohei Ohtani was slumping. Coming into Game 4 of the NLCS, he'd managed just 3 hits in 29 at-bats over his previous 7 games, a .103 average with 1 extra-base...",
+  "author": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Baseball Visual Essays"
+  },
+  "keywords": [
+    "war",
+    "launch angle",
+    "home runs",
+    "fastball"
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the data show about three home runs. perfect swings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ohtani finished 3-for-3 with 3 solo home runs. You can recite that sentence and still not understand what happened. He hit the 3 hardest-hit balls of the night. He hit the 3 farthest balls of the night. Perfect contact, three times."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about ten strikeouts. zero runs. zero chance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ohtani finished 3-for-3 with 3 solo home runs. You can recite that sentence and still not understand what happened. He hit the 3 hardest-hit balls of the night. He hit the 3 farthest balls of the night. Perfect contact, three times."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about breaking every frame?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's what the greatest postseason performance of all time looks like: one man, one night, every single skill deployed at maximum capacity. The result was inevitable. The method was unforgettable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the data show about one game rewired expectations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That's what the greatest postseason performance of all time looks like: one man, one night, every single skill deployed at maximum capacity. The result was inevitable. The method was unforgettable."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Game That Rewired October: Analysis Data",
+  "description": "Original analysis supporting the essay 'The Game That Rewired October'.",
+  "temporalCoverage": "1995/2025",
+  "creator": {
+    "@type": "Person",
+    "name": "Jesse Walker"
+  }
+}
+  </script>
+  
+  
+  
+  <link rel="stylesheet" href="/css/style.css?v=1777478076">
+</head>
+<body>
+
+<!-- Site Nav — Plate Discipline -->
+<nav class="site-nav">
+  <a href="/" class="nav-brand"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px; margin-right: 8px;"><polygon points="4,2 20,2 22,12 12,22 2,12" fill="#2196F3" opacity="0.9"/></svg>PLATE DISCIPLINE</a>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/hall-of-fame">Hall of Fame</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__content">
+      <div class="hero__date">October 17, 2025</div>
+      <h1 class="hero__title">The Game That Rewired October</h1>
+      <p class="hero__subtitle">One man. One night. Every conceivable limit broken at once.</p>
+      <div class="hero__meta">Dodgers 5, Brewers 1 · NLCS Game 4</div>
+    </div>
+  </section>
+
+  <!-- Opening -->
+  <section>
+    <div class="section__label">The Setup</div>
+    <p>
+      Shohei Ohtani was slumping. Coming into Game 4 of the NLCS, he'd managed just 3 hits in 29 at-bats over his previous 7 games (a .103 average with 1 extra-base hit). The Brewers had knotted the series at 2-2. The World Series hung in the balance. This was the moment where postseason narratives either shift or collapse.
+    </p>
+    <p>
+      What happened next breaks baseball's usual categories. A single athlete performing at a level so complete that opposing hitters watched the ball travel 1,342 feet across the diamond while being unable to touch it, then returned to the bench to face a pitcher throwing 100 pitches they couldn't hit either.
+    </p>
+    <p>
+      Dave Roberts would call it "probably the greatest postseason performance of all time." He's managed a lot of postseasons. He wasn't exaggerating.
+    </p>
+  </section>
+
+  <div class="section__divider"></div>
+
+  <!-- Batting Performance -->
+  <section>
+    <div class="section__label">The Hitting</div>
+    <h2 class="section__title">Three Home Runs. Perfect Swings.</h2>
+    <p>
+      Ohtani finished 3-for-3 with 3 solo home runs. You can recite that sentence and still not understand what happened. He hit the 3 hardest-hit balls of the night. He hit the 3 farthest balls of the night. Perfect contact, three times.
+    </p>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-card__value">446</div>
+        <div class="stat-card__label">1st Inning HR Distance (mph: 115.6)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__value">469</div>
+        <div class="stat-card__label">4th Inning HR Distance</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__value">1,342</div>
+        <div class="stat-card__label">Combined HR Distance (feet)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__value">3–for–3</div>
+        <div class="stat-card__label">Plate Appearances (all HR)</div>
+      </div>
+    </div>
+
+    <p>
+      The first home run came off Jose Quintana in the 1st inning. 446 feet. 115.6 mph exit velo. Then in the 4th, another one into a different part of the park: 469 feet. In the 7th, Ohtani lined one out. 113.6 mph, a liner, not even requiring the conventional arc. The Brewers were watching a man hit a different home run each time he stepped to the plate.
+    </p>
+
+    <p>
+      He was the 12th player in postseason history to hit 3 home runs in a single game. He was the first to do it while simultaneously pitching 6 shutout innings. The second statistic matters more than the first.
+    </p>
+  </section>
+
+  <div class="section__divider"></div>
+
+  <!-- Pitching Performance -->
+  <section>
+    <div class="section__label">The Pitching</div>
+    <h2 class="section__title">Ten Strikeouts. Zero Runs. Zero Chance.</h2>
+    <p>
+      After hitting 3 home runs, Ohtani took the mound in the 2nd inning. The Brewers batters faced something they'd never encountered: a hitter's energy converted directly into pitching performance. He threw 100 pitches (the most since his Tommy John return). He allowed 2 hits. He struck out 10. His ERA for the night: infinity divided by zero, which in baseball terms is just called "untouchable."
+    </p>
+
+    <div class="chart">
+      <div class="chart__title">Pitch Distribution & Effectiveness</div>
+      <div class="bar-row">
+        <div class="bar-label">Strikeouts</div>
+        <div class="bar-container">
+          <div class="bar-fill" style="--width: 100%;"></div>
+        </div>
+        <div class="bar-value">10</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Walks</div>
+        <div class="bar-container">
+          <div class="bar-fill" style="--width: 30%;"></div>
+        </div>
+        <div class="bar-value">3</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Hits Allowed</div>
+        <div class="bar-container">
+          <div class="bar-fill" style="--width: 20%;"></div>
+        </div>
+        <div class="bar-value">2</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Earned Runs</div>
+        <div class="bar-container">
+          <div class="bar-fill" style="--width: 0%;"></div>
+        </div>
+        <div class="bar-value">0</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Pitches Thrown</div>
+        <div class="bar-container">
+          <div class="bar-fill" style="--width: 100%;"></div>
+        </div>
+        <div class="bar-value">100</div>
+      </div>
+    </div>
+
+    <p>
+      The splitter was the story. Brewers hitters missed all 5 swings at it. Five swings. Five whiffs. The pitch that normally generates weak contact instead generated nothing; the batter's bat slicing through empty air. Across the entire postseason, the splitter generated only 19 total swings-and-misses. Ohtani threw it 5 times and got 5.
+    </p>
+
+    <p>
+      This was the pennant-clinching game. Ohtani pitched 6.0 innings with 10 strikeouts and 0 earned runs. The only pitcher in postseason history to do this in a pennant-clinching game.
+    </p>
+  </section>
+
+  <div class="section__divider"></div>
+
+  <!-- The Context -->
+  <section>
+    <div class="section__label">The Context</div>
+    <h2 class="section__title">Breaking Every Frame</h2>
+
+    <div class="dual-panel">
+      <div class="panel panel--warm">
+        <div class="panel__title">What He Was</div>
+        <div class="panel__content">
+          Coming in: 3-for-29 (.103) in his last 7 games. 1 XBH. A slump that looked less like a slump and more like a cliff. The postseason narrative had already started shifting. Would the Dodgers survive his absence?
+        </div>
+      </div>
+      <div class="panel panel--cool">
+        <div class="panel__title">What He Became</div>
+        <div class="panel__content">
+          NLCS MVP. The slump evaporated in 3 swings. He was the hardest-hitting pitcher, led all pitchers in swings-and-misses, threw the 11 hardest pitches of the night, and did it all in a pennant-clinching performance.
+        </div>
+      </div>
+    </div>
+
+    <p>
+      The Dodgers rotation had posted a 0.63 ERA with 35 strikeouts in 28.2 innings during the NLCS. That stat is already extraordinary. Ohtani's single game made it seem almost normal by comparison.
+    </p>
+
+    <div class="callout">
+      "Probably the greatest postseason performance of all time."
+      <div class="callout__attribution">— Dave Roberts, Dodgers Manager</div>
+    </div>
+
+    <p>
+      Roberts has managed through October more than almost anyone. His words carry weight because he's seen everything. This was beyond everything.
+    </p>
+  </section>
+
+  <div class="section__divider"></div>
+
+  <!-- The Implications -->
+  <section>
+    <div class="section__label">The Meaning</div>
+    <h2 class="section__title">One Game Rewired Expectations</h2>
+    <p>
+      Baseball has a strict taxonomy for postseason performances. There are great games, historic games, legendary games. Ohtani's October 17 performance required a new category. Every skill set, deployed simultaneously, refusing to let any single human limitation apply.
+    </p>
+
+    <p>
+      After hitting 3 home runs, he took the ball and threw 100 pitches. His splitter worked so well that hitters stopped swinging at it. His fastball was so hard that hitters couldn't catch up. Simultaneously, he'd already provided all the offense his team needed.
+    </p>
+
+    <p>
+      A single player ended the series by performing at a level that made the opposition seem like they were playing a different sport. The Dodgers advanced to the World Series. Ohtani had ensured it wouldn't be close. He'd turned a pressure moment into a statement.
+    </p>
+
+    <p>
+      That's what the greatest postseason performance of all time looks like: one man, one night, every single skill deployed at maximum capacity. The result was inevitable. The method was unforgettable.
+    </p>
+  </section>
+
+  <div class="section__divider"></div>
+
+  <!-- Methodology -->
+  <section>
+    <div class="methodology">
+      <div class="methodology__title">Methodology</div>
+      <p>
+        Data sourced from Statcast, Baseball Savant, and official MLB postseason records. Exit velocities, launch angles, and ball tracking from Statcast sensors. Pitch tracking from PITCHf/x systems. HR distances calculated from measured flight paths. All statistics as of October 17, 2025 final.
+      </p>
+      <p>
+        Historical comparisons drawn from 1995-2025 postseason records. Quoted statement from Dave Roberts' post-game press conference. This essay was written after the conclusion of the 2025 NLCS.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bio Box -->
+  <section>
+    <div class="bio-box">
+      <div class="bio-photo"><img src="/images/jesse-walker-bio.png" alt="Jesse Walker" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div class="bio-text">
+        <div class="bio-name">Jesse Walker</div>
+        <div class="bio-desc">Jesse Walker writes about baseball through data. He played outfield in high school, found his real position behind a spreadsheet, and hasn't stopped building models since.</div>
+      </div>
+    </div>
+  </section>
+
+<script>
+    // IntersectionObserver for scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Observe stat cards for staggered animation
+    document.querySelectorAll('.stat-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+<script src="https://cdn.usefathom.com/script.js" data-site="WKELPTTX" defer></script>
+<script>
+// Subscribe form handler — sibforms.com hidden iframe POST
+document.querySelectorAll('.subscribe-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('button');
+        var msgEl = this.parentElement.querySelector('.form-message');
+        var emailInput = this.querySelector('input[name="email"]');
+        var email = emailInput.value;
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalText = btn.textContent;
+        btn.textContent = 'Subscribing...';
+        if (msgEl) { msgEl.textContent = ''; }
+
+        // Create hidden iframe for form submission
+        var iframeName = 'brevo_iframe_' + Date.now();
+        var iframe = document.createElement('iframe');
+        iframe.name = iframeName;
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+
+        // Create hidden form targeting the iframe
+        var hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = 'https://134fd1fd.sibforms.com/serve/MUIFAN5qAJLG0g2AEBbIvYpGBB_HzgQ0cQGX_S1gbTFopqWWH25xu27PtcyJDv025hP1RpQsU9PnUqAz9-iXgxUgC5vl4lxcSdoqYYwl2W5JxZ1xIMZIwPv4-hiIWYUWPTgigG1b89O0-a1SZomRSRN1uBPS9MFW14JkSu6omaNbCbSaPVKmWV01qolKwvYDtZc-6JZIdUkWfHVfMQ==';
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = 'none';
+
+        var emailField = document.createElement('input');
+        emailField.type = 'hidden';
+        emailField.name = 'EMAIL';
+        emailField.value = email;
+        hiddenForm.appendChild(emailField);
+
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+
+        // Show success after iframe loads or timeout
+        var done = false;
+        function showSuccess() {
+            if (done) return;
+            done = true;
+            if (msgEl) {
+                msgEl.textContent = "You're in! We'll be in touch.";
+                msgEl.style.color = '#3A7D44';
+            }
+            emailInput.value = '';
+            btn.disabled = false;
+            btn.textContent = originalText;
+            if (window.fathom) fathom.trackEvent('email_signup');
+            // Cleanup
+            setTimeout(function() {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+            }, 2000);
+        }
+        iframe.addEventListener('load', showSuccess);
+        setTimeout(showSuccess, 3000);
+    });
+});
+</script>
+
+<!-- Footer — Plate Discipline -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Navigate</h3>
+      <ul>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/hall-of-fame">Hall of Fame</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copyright">&copy; 2026 Plate Discipline. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>

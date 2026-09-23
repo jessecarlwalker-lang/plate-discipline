@@ -37,6 +37,7 @@ Data-driven visual essays about baseball. Spin rates, swing decisions, and proba
 - Jet Lag at the Plate: https://plate-discipline.com/jet-lag-at-the-plate
 - The Mike Trout Problem: https://plate-discipline.com/the-mike-trout-problem
 - The Most Boring Game of 2025: https://plate-discipline.com/the-most-boring-game-of-2025
+- The Game That Rewired October: https://plate-discipline.com/the-game-that-rewired-october
 
 ## Content Format
 
